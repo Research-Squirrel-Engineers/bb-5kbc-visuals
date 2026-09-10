@@ -1,0 +1,11 @@
+# Rendering: resvg-py rasterises the hand-authored SVGs to PNG, in-process --
+# no mmdc/Node, no rsvg-convert/ImageMagick/libcairo. Pinned because
+# svg_to_bytes()'s keyword arguments (this repo relies on font_files and
+# skip_system_fonts) are part of its public API surface, not yet at 1.0.
+# Same pin as the sibling repo crossy-visuals.
+resvg-py==0.5.0
+
+# Not currently used by any step (no raster images are cropped/composited in
+# this repo, unlike crossy-visuals' mascot badges) -- kept only if a future
+# step needs it. Safe to remove if the repo stays text/shape-only.
+# pillow>=10

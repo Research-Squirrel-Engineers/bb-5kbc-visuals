@@ -1,0 +1,89 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Geo-entities: admin hierarchy, deduplication, five external identifiers</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<circle cx="190.0" cy="155.0" r="60.0" fill="#dce8ea" stroke="#386870" stroke-width="2"/>
+<circle cx="190.0" cy="155.0" r="54.0" fill="none" stroke="#386870" stroke-width="1" opacity="0.55"/>
+<text x="190.0" y="151.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#2c2c2a">Land</text>
+<text x="190.0" y="169.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" fill="#2c2c2a" opacity="0.75">land_{hash}</text>
+<circle cx="460.0" cy="155.0" r="60.0" fill="#dce8ea" stroke="#386870" stroke-width="2"/>
+<circle cx="460.0" cy="155.0" r="54.0" fill="none" stroke="#386870" stroke-width="1" opacity="0.55"/>
+<text x="460.0" y="151.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#2c2c2a">Bundesland</text>
+<text x="460.0" y="169.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" fill="#2c2c2a" opacity="0.75">bundesland_{hash}</text>
+<circle cx="730.0" cy="155.0" r="60.0" fill="#dce8ea" stroke="#386870" stroke-width="2"/>
+<circle cx="730.0" cy="155.0" r="54.0" fill="none" stroke="#386870" stroke-width="1" opacity="0.55"/>
+<text x="730.0" y="151.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#2c2c2a">Kreis</text>
+<text x="730.0" y="169.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" fill="#2c2c2a" opacity="0.75">kreis_{hash}</text>
+<circle cx="1000.0" cy="155.0" r="60.0" fill="#dce8ea" stroke="#386870" stroke-width="2"/>
+<circle cx="1000.0" cy="155.0" r="54.0" fill="none" stroke="#386870" stroke-width="1" opacity="0.55"/>
+<text x="1000.0" y="151.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#2c2c2a">Gemeinde</text>
+<text x="1000.0" y="169.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" fill="#2c2c2a" opacity="0.75">gemeinde_{hash}</text>
+<rect x="1200.0" y="97.0" width="240.0" height="116.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="2.0"/>
+<text x="1320.0" y="147.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">Fundstelle</text>
+<text x="1320.0" y="167.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">crm:E27_Site</text>
+<line x1="1200.0" y1="155.0" x2="1060.0" y2="155.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1130.0" y="169.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">inGemeinde</text>
+<line x1="940.0" y1="155.0" x2="790.0" y2="155.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="865.0" y="169.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">inKreis</text>
+<line x1="670.0" y1="155.0" x2="520.0" y2="155.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="595.0" y="169.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">inBundesland</text>
+<line x1="400.0" y1="155.0" x2="250.0" y2="155.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="325.0" y="169.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">inLand</text>
+<text x="60" y="272" font-family="Fira Sans" font-size="14.5" fill="#2c2c2a">Each of the four levels can additionally carry up to five external identifiers:</text>
+<polygon points="114.5,338.0 92.0,351.0 69.5,338.0 69.5,312.0 92.0,299.0 114.5,312.0" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="92.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">QID</text>
+<text x="92.0" y="368" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">Wikidata</text>
+<polygon points="264.5,338.0 242.0,351.0 219.5,338.0 219.5,312.0 242.0,299.0 264.5,312.0" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="242.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">GN</text>
+<text x="242.0" y="368" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">GeoNames</text>
+<polygon points="414.5,338.0 392.0,351.0 369.5,338.0 369.5,312.0 392.0,299.0 414.5,312.0" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="392.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">TGN</text>
+<text x="392.0" y="368" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">Getty TGN</text>
+<polygon points="564.5,338.0 542.0,351.0 519.5,338.0 519.5,312.0 542.0,299.0 564.5,312.0" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="542.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">iDAI</text>
+<text x="542.0" y="368" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">iDAI.gazetteer</text>
+<polygon points="714.5,338.0 692.0,351.0 669.5,338.0 669.5,312.0 692.0,299.0 714.5,312.0" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="692.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">OSM</text>
+<text x="692.0" y="368" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">OSM relation</text>
+<rect x="60.0" y="420.0" width="790.0" height="490.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="76.0" y="446.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Rule 5: one property for all — bb5kbc:hasExternalIdentifier</text>
+<text x="88.0" y="494.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#2c2c2a">data:land_3c2f8b8c</text>
+<text x="88.0" y="524.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#2c2c2a">    a bb5kbc:Land ;</text>
+<text x="88.0" y="554.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#2c2c2a">    rdfs:label „Deutschland“@de ;</text>
+<text x="88.0" y="584.0" font-family="Fira Sans" font-size="14" font-weight="600" fill="#9c2860">    bb5kbc:hasExternalIdentifier</text>
+<text x="88.0" y="614.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#5f5e5a">        &lt;...tgn/7000084&gt; ,</text>
+<text x="88.0" y="644.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#5f5e5a">        &lt;...gazetteer/2044274&gt; ,</text>
+<text x="88.0" y="674.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#5f5e5a">        &lt;...openstreetmap.org/relation/51477&gt; ,</text>
+<text x="88.0" y="704.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#5f5e5a">        &lt;...wikidata.org/entity/Q183&gt; .</text>
+<line x1="82.0" y1="746.0" x2="828.0" y2="746.0" stroke="#dedcd4" stroke-width="1"/>
+<text x="88.0" y="778.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">Whichever of QID, GeoNames, TGN, iDAI or OSM: a single property.</text>
+<text x="88.0" y="802.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">3 audit columns (match label, score, matchReason) stay CSV-only —</text>
+<text x="88.0" y="826.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">they do NOT go into the RDF, only into fst_standortanalysen_ref_report.csv.</text>
+<rect x="890.0" y="420.0" width="800.0" height="490.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="906.0" y="446.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Georeferenzierung carries the location&apos;s certainty grade (Tab. 5)</text>
+<rect x="916.0" y="494.0" width="200.0" height="64.0" rx="8" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<text x="1016.0" y="526.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">genauigkeit_m = 0</text>
+<rect x="1136.0" y="494.0" width="160.0" height="64.0" rx="8" fill="#f5f0d8" stroke="#8a7420" stroke-width="1.4"/>
+<text x="1216.0" y="518.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">fslwb:Q23</text>
+<text x="1216.0" y="538.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">high</text>
+<text x="1318.0" y="528.0" dominant-baseline="central" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">direct database take-over</text>
+<rect x="916.0" y="584.0" width="200.0" height="64.0" rx="8" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<text x="1016.0" y="616.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">50–500 m</text>
+<rect x="1136.0" y="584.0" width="160.0" height="64.0" rx="8" fill="#f5f0d8" stroke="#8a7420" stroke-width="1.4"/>
+<text x="1216.0" y="608.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">fslwb:Q15</text>
+<text x="1216.0" y="628.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">medium</text>
+<text x="1318.0" y="618.0" dominant-baseline="central" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">assignable to a Flur/Gemeindeteil</text>
+<rect x="916.0" y="674.0" width="200.0" height="64.0" rx="8" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<text x="1016.0" y="706.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">800–5000 m</text>
+<rect x="1136.0" y="674.0" width="160.0" height="64.0" rx="8" fill="#f5f0d8" stroke="#8a7420" stroke-width="1.4"/>
+<text x="1216.0" y="698.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">fslwb:Q24</text>
+<text x="1216.0" y="718.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">low</text>
+<text x="1318.0" y="708.0" dominant-baseline="central" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">Gemeinde level only (centroid)</text>
+<rect x="916.0" y="764.0" width="200.0" height="64.0" rx="8" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<text x="1016.0" y="796.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">x = y = 0</text>
+<rect x="1136.0" y="764.0" width="160.0" height="64.0" rx="8" fill="#f5f0d8" stroke="#8a7420" stroke-width="1.4"/>
+<text x="1216.0" y="788.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">fslwb:Q113</text>
+<text x="1216.0" y="808.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">dubious</text>
+<text x="1318.0" y="798.0" dominant-baseline="central" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">coordinate error, no sf:Point</text>
+</svg>

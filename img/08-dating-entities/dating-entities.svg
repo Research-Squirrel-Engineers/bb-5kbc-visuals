@@ -1,0 +1,58 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>One shared Kulturgruppe, three individual per-site Datierung nodes</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<circle cx="1030.0" cy="480.0" r="82.0" fill="#eef0d6" stroke="#6b7a1f" stroke-width="2"/>
+<circle cx="1030.0" cy="480.0" r="76.0" fill="none" stroke="#6b7a1f" stroke-width="1" opacity="0.55"/>
+<text x="1030.0" y="476.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#2c2c2a">„FBG“</text>
+<text x="1030.0" y="494.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" fill="#2c2c2a" opacity="0.75">kultur_a1b2c3d4 · shared</text>
+<line x1="1030.0" y1="398.0" x2="1030.0" y2="355.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<polygon points="1053.4,341.5 1030.0,355.0 1006.6,341.5 1006.6,314.5 1030.0,301.0 1053.4,314.5" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="1030.0" y="328.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">wd</text>
+<text x="1030.0" y="290.0" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">1 Wikidata QID for all</text>
+<text x="1030.0" y="306.0" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">FBG sites</text>
+<rect x="90.0" y="148.0" width="190.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
+<text x="185.0" y="172.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">Fundstelle A</text>
+<text x="185.0" y="192.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_12</text>
+<line x1="280.0" y1="180.0" x2="380.0" y2="180.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="380.0" y="148.0" width="220.0" height="64.0" rx="10" fill="#ece4f2" stroke="#5b3fa0" stroke-width="1.4"/>
+<text x="490.0" y="172.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">KulturelleZuordnung</text>
+<text x="490.0" y="192.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_12_culture</text>
+<line x1="600.0" y1="172.0" x2="960.3" y2="367.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="600.0" y1="192.0" x2="1220.0" y2="192.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1220.0" y="132.0" width="320.0" height="96.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="1242.0" y="160.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">Datierung · site_12</text>
+<text x="1242.0" y="188.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">datierungStart = −4550</text>
+<text x="1242.0" y="210.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">datierungEnd = −3900</text>
+<rect x="90.0" y="448.0" width="190.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
+<text x="185.0" y="472.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">Fundstelle B</text>
+<text x="185.0" y="492.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_57</text>
+<line x1="280.0" y1="480.0" x2="380.0" y2="480.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="380.0" y="448.0" width="220.0" height="64.0" rx="10" fill="#ece4f2" stroke="#5b3fa0" stroke-width="1.4"/>
+<text x="490.0" y="472.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">KulturelleZuordnung</text>
+<text x="490.0" y="492.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_57_culture</text>
+<line x1="600.0" y1="472.0" x2="960.3" y2="472.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="600.0" y1="492.0" x2="1220.0" y2="492.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1220.0" y="432.0" width="320.0" height="96.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="1242.0" y="460.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">Datierung · site_57</text>
+<text x="1242.0" y="488.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">datierungStart = −4300</text>
+<text x="1242.0" y="510.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">datierungEnd = −3800</text>
+<rect x="90.0" y="748.0" width="190.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
+<text x="185.0" y="772.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">Fundstelle C</text>
+<text x="185.0" y="792.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_101</text>
+<line x1="280.0" y1="780.0" x2="380.0" y2="780.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="380.0" y="748.0" width="220.0" height="64.0" rx="10" fill="#ece4f2" stroke="#5b3fa0" stroke-width="1.4"/>
+<text x="490.0" y="772.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">KulturelleZuordnung</text>
+<text x="490.0" y="792.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_101_culture</text>
+<line x1="600.0" y1="772.0" x2="960.3" y2="577.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="600.0" y1="792.0" x2="1220.0" y2="792.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1220.0" y="732.0" width="320.0" height="96.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="1242.0" y="760.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">Datierung · site_101</text>
+<text x="1242.0" y="788.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">datierungStart = −4600</text>
+<text x="1242.0" y="810.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">datierungEnd = −4100</text>
+<rect x="60.0" y="900.0" width="16" height="16" rx="3" fill="#eef0d6" stroke="#6b7a1f" stroke-width="1.4"/>
+<text x="84.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">double ring = shared (fan-in): 1 Kulturgruppe for all three sites</text>
+<rect x="880.0" y="900.0" width="16" height="16" rx="3" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="904.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">box = own node per Fundstelle (fan-out): 3 individual Datierung nodes</text>
+</svg>
