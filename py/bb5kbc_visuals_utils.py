@@ -148,6 +148,82 @@ LINE_NEUTRAL = "#888780"
 
 
 # --------------------------------------------------------------------------- #
+# Bilingual support (revision 2026-09-10c). Every figure is built once per
+# language into ``<name>.de.svg`` / ``<name>.en.svg`` (+ .png). Class and
+# property names are the real bb5kbc: identifiers in the German version
+# (Fundstelle, hatFundstellenart, ...) -- unchanged, because that IS the
+# ontology's actual vocabulary. For the English version we translate them,
+# on the working assumption (confirmed by Florian) that we treat the
+# ontology's labelling as if it were bilingual (rdfs:label @de / @en),
+# which mirrors how the real ontology already handles some terms via
+# skos:altLabel. CSV data values (culture names, site types: "SBK", "FBG",
+# "Grab", "Siedlung", ...) are never translated in either language -- they
+# are archaeological source data, not our label choice.
+# --------------------------------------------------------------------------- #
+def t(lang: str, de: str, en: str) -> str:
+    """Pick the German or English string. The one place every step calls
+    into rather than writing its own ``if lang == "de"`` each time."""
+    return de if lang == "de" else en
+
+
+# Class-name glossary: bb5kbc: identifier (German, as in the ontology) ->
+# English gloss used only in the English-language figures.
+CLASS_EN: dict[str, str] = {
+    "Fundstelle": "Site",
+    "Land": "Country",
+    "Bundesland": "Federal state",
+    "Kreis": "District",
+    "Gemeinde": "Municipality",
+    "Kulturgruppe": "Culture group",
+    "Datierung": "Dating",
+    "Entdeckung": "Discovery",
+    "KulturelleZuordnung": "Cultural assignment",
+    "GeoreferenzierungsAktivitaet": "Georeferencing activity",
+    "Publikation": "Publication",
+    "Scherbe": "Sherd",
+    "FundstellenartType": "Site type",
+    "EntdeckungsartType": "Discovery type",
+    "DatierungsMethodeType": "Dating-method type",
+}
+
+# Property-name glossary, same idea. hasExternalIdentifier is already
+# English in the real ontology and is therefore not in this table -- it is
+# identical in both languages.
+PROP_EN: dict[str, str] = {
+    "inLand": "inCountry",
+    "inBundesland": "inFederalState",
+    "inKreis": "inDistrict",
+    "inGemeinde": "inMunicipality",
+    "hatFundstellenart": "hasSiteType",
+    "wurdeEntdecktDurch": "wasDiscoveredBy",
+    "hatKulturelleZuordnung": "hasCulturalAssignment",
+    "wurdeGeoreferenziertDurch": "wasGeoreferencedBy",
+    "hatPublikation": "hasPublication",
+    "hatScherbe": "hasSherd",
+    "hatKulturgruppe": "hasCultureGroup",
+    "hatDatierung": "hasDating",
+    "hatEntdeckungsart": "hasDiscoveryType",
+    "datierungMethode": "datingMethod",
+    "datierungStart": "datingStart",
+    "datierungEnd": "datingEnd",
+    "datierungSicherheitStart": "datingCertaintyStart",
+    "datierungSicherheitEnd": "datingCertaintyEnd",
+    "datierungSicherheitRange": "datingCertaintyRange",
+    "hatFID": "hasFID",
+}
+
+
+def cls(name: str, lang: str) -> str:
+    """A bb5kbc: class name, translated for English figures."""
+    return CLASS_EN.get(name, name) if lang == "en" else name
+
+
+def prop(name: str, lang: str) -> str:
+    """A bb5kbc: property name, translated for English figures."""
+    return PROP_EN.get(name, name) if lang == "en" else name
+
+
+# --------------------------------------------------------------------------- #
 # Deterministic writers
 # --------------------------------------------------------------------------- #
 def content_fingerprint(data: bytes) -> str:
@@ -246,32 +322,52 @@ def svg_box(x: float, y: float, w: float, h: float, title: str, subtitle: str = 
             stereotype: str = "") -> str:
     """A class/entity box. Optional ``stereotype`` renders a small
     <<crm:E27_Site>>-style line above the title, mirroring the UML
-    convention already used in Abb. 3 of the working paper."""
+    convention already used in Abb. 3 of the working paper.
+
+    Title and subtitle font sizes auto-shrink (down to a floor) if the
+    text would otherwise overflow the box width -- layouts are tuned by
+    hand for one language's word lengths, and this keeps a translated
+    label (English vs. German box widths differ) from overflowing the
+    box outline instead of silently looking wrong.
+    """
+    raw_title, raw_subtitle = title, subtitle
     title, subtitle = xml_escape(title), xml_escape(subtitle)
     dash = ' stroke-dasharray="7 5"' if dashed else ""
     parts = [f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{rx}" '
              f'fill="{fill}" stroke="{stroke}" stroke-width="{stroke_width}"{dash}/>']
     cx = x + w / 2
+    avail = w - 24
+
+    def fit_size(text: str, base: float, floor: float) -> float:
+        size = base
+        while size > floor and text_width(text, size) > avail:
+            size -= 0.5
+        return size
+
     n_lines = 1 + bool(subtitle) + bool(stereotype)
     if stereotype:
         st = xml_escape(stereotype)
+        st_size = fit_size(stereotype, 10.5, 8.5)
         parts.append(f'<text x="{cx:.1f}" y="{y + h/2 - 18:.1f}" text-anchor="middle" '
-                      f'font-family="Fira Sans" font-size="10.5" font-style="italic" '
+                      f'font-family="Fira Sans" font-size="{st_size:.1f}" font-style="italic" '
                       f'fill="{text_color}" opacity="0.72">\u00ab{st}\u00bb</text>')
     if subtitle:
         ty = y + h / 2 - 3 if stereotype else y + h / 2 - 8
+        title_size = fit_size(raw_title, 14, 11)
         parts.append(f'<text x="{cx:.1f}" y="{ty:.1f}" text-anchor="middle" '
-                      f'font-family="Fira Sans" font-weight="500" font-size="14" '
+                      f'font-family="Fira Sans" font-weight="500" font-size="{title_size:.1f}" '
                       f'fill="{text_color}">{title}</text>')
+        sub_size = fit_size(raw_subtitle, 11.5, 9)
         parts.append(f'<text x="{cx:.1f}" y="{ty + 20:.1f}" text-anchor="middle" '
-                      f'font-family="Fira Sans" font-size="11.5" fill="{text_color}" '
+                      f'font-family="Fira Sans" font-size="{sub_size:.1f}" fill="{text_color}" '
                       f'opacity="0.75">{subtitle}</text>')
     else:
         ty = y + h/2 + 10 if stereotype else y + h / 2
         base = "central" if not stereotype else "auto"
+        title_size = fit_size(raw_title, 14, 10.5)
         parts.append(f'<text x="{cx:.1f}" y="{ty:.1f}" text-anchor="middle" '
                       f'dominant-baseline="{base}" font-family="Fira Sans" '
-                      f'font-weight="500" font-size="14" fill="{text_color}">{title}</text>')
+                      f'font-weight="500" font-size="{title_size:.1f}" fill="{text_color}">{title}</text>')
     return "\n".join(parts)
 
 
@@ -281,25 +377,65 @@ def svg_hash_node(cx: float, cy: float, r: float, title: str, subtitle: str = ""
     """A shared/deduplicated concept node (Regel 2/3: one node per distinct
     value, e.g. a Gemeinde or a Kulturgruppe). Drawn as a double-ring circle
     -- deliberately distinct from a plain entity box, to make "this node is
-    shared across many Fundstelle rows" visible at a glance."""
+    shared across many Fundstelle rows" visible at a glance.
+
+    Title and subtitle are auto-fit to the circle's usable chord width:
+    font size shrinks first (down to a floor), and the subtitle wraps to a
+    second line if it still doesn't fit even at the floor size -- fixes the
+    text overflowing the stroke on longer labels (e.g. "shared ·
+    bundesland_{hash}"), which a fixed font size cannot cover for every
+    language/label-length combination.
+    """
+    raw_title, raw_subtitle = title, subtitle
     title, subtitle = xml_escape(title), xml_escape(subtitle)
+    avail = 2 * (r - 14)
     parts = [
         f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="{fill}" '
         f'stroke="{stroke}" stroke-width="2"/>',
         f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r - 6:.1f}" fill="none" '
         f'stroke="{stroke}" stroke-width="1" opacity="0.55"/>',
     ]
+
+    def fit_size(text: str, base: float, floor: float) -> float:
+        size = base
+        while size > floor and text_width(text, size) > avail:
+            size -= 0.5
+        return size
+
     if subtitle:
+        title_size = fit_size(raw_title, 13, 11)
         parts.append(f'<text x="{cx:.1f}" y="{cy - 4:.1f}" text-anchor="middle" '
-                      f'font-family="Fira Sans" font-weight="500" font-size="13" '
+                      f'font-family="Fira Sans" font-weight="500" font-size="{title_size:.1f}" '
                       f'fill="{text_color}">{title}</text>')
-        parts.append(f'<text x="{cx:.1f}" y="{cy + 14:.1f}" text-anchor="middle" '
-                      f'font-family="Fira Sans" font-size="10.5" fill="{text_color}" '
-                      f'opacity="0.75">{subtitle}</text>')
+        sub_size = fit_size(raw_subtitle, 10.5, 8)
+        if text_width(raw_subtitle, sub_size) <= avail or " " not in raw_subtitle:
+            parts.append(f'<text x="{cx:.1f}" y="{cy + 14:.1f}" text-anchor="middle" '
+                          f'font-family="Fira Sans" font-size="{sub_size:.1f}" fill="{text_color}" '
+                          f'opacity="0.75">{subtitle}</text>')
+        else:
+            # still too wide even at the floor size -- wrap at the space
+            # closest to the middle of the string so both halves balance
+            words = raw_subtitle.split(" ")
+            best_i, best_diff = 1, float("inf")
+            for i in range(1, len(words)):
+                left, right = " ".join(words[:i]), " ".join(words[i:])
+                diff = abs(text_width(left, sub_size) - text_width(right, sub_size))
+                if diff < best_diff:
+                    best_i, best_diff = i, diff
+            line1, line2 = " ".join(words[:best_i]), " ".join(words[best_i:])
+            line1_size = fit_size(line1, sub_size, 7.5)
+            line2_size = fit_size(line2, sub_size, 7.5)
+            parts.append(f'<text x="{cx:.1f}" y="{cy + 11:.1f}" text-anchor="middle" '
+                          f'font-family="Fira Sans" font-size="{line1_size:.1f}" fill="{text_color}" '
+                          f'opacity="0.75">{xml_escape(line1)}</text>')
+            parts.append(f'<text x="{cx:.1f}" y="{cy + 25:.1f}" text-anchor="middle" '
+                          f'font-family="Fira Sans" font-size="{line2_size:.1f}" fill="{text_color}" '
+                          f'opacity="0.75">{xml_escape(line2)}</text>')
     else:
+        title_size = fit_size(raw_title, 13, 10)
         parts.append(f'<text x="{cx:.1f}" y="{cy:.1f}" text-anchor="middle" '
                       f'dominant-baseline="central" font-family="Fira Sans" '
-                      f'font-weight="500" font-size="13" fill="{text_color}">{title}</text>')
+                      f'font-weight="500" font-size="{title_size:.1f}" fill="{text_color}">{title}</text>')
     return "\n".join(parts)
 
 

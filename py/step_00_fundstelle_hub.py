@@ -14,11 +14,14 @@ relationship spokes radiate out, and the visual language introduced here
 that exists once per Fundstelle/FID) is reused throughout the rest of the
 set (07-geo-entities, 08-dating-entities, 09-kulturen).
 
-Class and property names (Fundstelle, Gemeinde, hatKulturelleZuordnung, ...)
-are the actual bb5kbc: identifiers and are kept in German, as in the
-ontology; all explanatory text is English.
+Bilingual (revision 2026-09-10c): built once per language. In the German
+figure, class/property names are the real bb5kbc: identifiers (Fundstelle,
+Gemeinde, hatKulturelleZuordnung, ...), unchanged. In the English figure
+they are translated via ``vu.cls()``/``vu.prop()`` -- see the glossary and
+its rationale in ``bb5kbc_visuals_utils.py``. CSV data values (Siedlung,
+Grab) are never translated.
 
-Writes: fundstelle-hub.svg / .png
+Writes: fundstelle-hub.de.svg/.png, fundstelle-hub.en.svg/.png
 Run standalone: ``python py/step_00_fundstelle_hub.py``
 """
 
@@ -37,14 +40,20 @@ ACTIVITY = vu.WORLD_COLORS["prov"]
 ZUORDNUNG = vu.WORLD_COLORS["lado"]
 
 
-def build() -> list[str]:
+def build(lang: str = "en") -> list[str]:
+    c = lambda n: vu.cls(n, lang)
+    p = lambda n: vu.prop(n, lang)
+    tt = lambda de, en: vu.t(lang, de, en)
+    shared = tt("geteilt", "shared")
+    per_site = tt("pro Fundstelle", "per site")
+
     parts = [vu.svg_open("Fundstelle as the hub -- the bb5kbc mental model on one diagram")]
 
     # -- Fundstelle, centred ------------------------------------------------
     fw, fh = 280, 110
     fcx, fcy = 875, 500
     fx, fy = fcx - fw / 2, fcy - fh / 2
-    parts.append(vu.svg_box(fx, fy, fw, fh, "Fundstelle", "crm:E27_Site \u00b7 site_{FID}",
+    parts.append(vu.svg_box(fx, fy, fw, fh, c("Fundstelle"), f"crm:E27_Site \u00b7 site_{{FID}}",
                              fill=vu.SITE["fill"], stroke=vu.SITE["stroke"], stroke_width=2.2))
 
     # -- admin hierarchy: Gemeinde -> Kreis -> Bundesland -> Land ------------
@@ -55,80 +64,86 @@ def build() -> list[str]:
     land = (fcx - 660, gy)
     r = 58
     for (cx, cy), label, sub in [
-        (gemeinde, "Gemeinde", "shared \u00b7 gemeinde_{hash}"),
-        (kreis, "Kreis", "shared \u00b7 kreis_{hash}"),
-        (bundesland, "Bundesland", "shared \u00b7 bundesland_{hash}"),
-        (land, "Land", "shared \u00b7 land_{hash}"),
+        (gemeinde, c("Gemeinde"), f"{shared} \u00b7 gemeinde_{{hash}}"),
+        (kreis, c("Kreis"), f"{shared} \u00b7 kreis_{{hash}}"),
+        (bundesland, c("Bundesland"), f"{shared} \u00b7 bundesland_{{hash}}"),
+        (land, c("Land"), f"{shared} \u00b7 land_{{hash}}"),
     ]:
         parts.append(vu.svg_hash_node(cx, cy, r, label, sub, fill=vu.GEO["fill"], stroke=vu.GEO["stroke"]))
-    parts.append(vu.svg_arrow_labeled(gemeinde[0] - r, gemeinde[1], kreis[0] + r, kreis[1], "inKreis"))
-    parts.append(vu.svg_arrow_labeled(kreis[0] - r, kreis[1], bundesland[0] + r, bundesland[1], "inBundesland"))
-    parts.append(vu.svg_arrow_labeled(bundesland[0] - r, bundesland[1], land[0] + r, land[1], "inLand"))
-    parts.append(vu.svg_arrow_labeled(fcx, fy, gemeinde[0], gemeinde[1] + r, "inGemeinde", above=False))
+    parts.append(vu.svg_arrow_labeled(gemeinde[0] - r, gemeinde[1], kreis[0] + r, kreis[1], p("inKreis")))
+    parts.append(vu.svg_arrow_labeled(kreis[0] - r, kreis[1], bundesland[0] + r, bundesland[1], p("inBundesland")))
+    parts.append(vu.svg_arrow_labeled(bundesland[0] - r, bundesland[1], land[0] + r, land[1], p("inLand")))
+    parts.append(vu.svg_arrow_labeled(fcx, fy, gemeinde[0], gemeinde[1] + r, p("inGemeinde"), above=False))
 
     # -- KulturelleZuordnung -> Kulturgruppe (shared) + Datierung (per site) -
     kz_x, kz_y, kz_w, kz_h = 265, 465, 235, 84
     kz_cx, kz_cy = kz_x + kz_w / 2, kz_y + kz_h / 2
-    parts.append(vu.svg_box(kz_x, kz_y, kz_w, kz_h, "KulturelleZuordnung", "per site \u00b7 crm:E92",
+    parts.append(vu.svg_box(kz_x, kz_y, kz_w, kz_h, c("KulturelleZuordnung"), f"{per_site} \u00b7 crm:E92",
                              fill=ZUORDNUNG["fill"], stroke=ZUORDNUNG["stroke"]))
-    parts.append(vu.svg_arrow_labeled(fx, fcy - 8, kz_x + kz_w, kz_cy - 8, "hatKulturelleZuordnung"))
+    parts.append(vu.svg_arrow_labeled(fx, fcy - 8, kz_x + kz_w, kz_cy - 8, p("hatKulturelleZuordnung")))
 
     kg_cx, kg_cy, kg_r = 135, 285, 68
-    parts.append(vu.svg_hash_node(kg_cx, kg_cy, kg_r, "Kulturgruppe", "shared \u00b7 kultur_{hash}",
+    parts.append(vu.svg_hash_node(kg_cx, kg_cy, kg_r, c("Kulturgruppe"), f"{shared} \u00b7 kultur_{{hash}}",
                                    fill=CULTURE["fill"], stroke=CULTURE["stroke"]))
-    parts.append(vu.svg_arrow_labeled(kz_x + 15, kz_y, kg_cx + 10, kg_cy + kg_r, "hatKulturgruppe", above=False))
+    parts.append(vu.svg_arrow_labeled(kz_x + 15, kz_y, kg_cx + 10, kg_cy + kg_r, p("hatKulturgruppe"), above=False))
 
     dat_x, dat_y, dat_w, dat_h = 85, 700, 220, 90
-    parts.append(vu.svg_box(dat_x, dat_y, dat_w, dat_h, "Datierung", "per site \u00b7 crm:E52 + time:Interval",
+    parts.append(vu.svg_box(dat_x, dat_y, dat_w, dat_h, c("Datierung"), f"{per_site} \u00b7 crm:E52 + time:Interval",
                              fill=DATING["fill"], stroke=DATING["stroke"]))
-    parts.append(vu.svg_arrow_labeled(kz_x + 15, kz_y + kz_h, dat_x + dat_w - 20, dat_y, "hatDatierung"))
+    parts.append(vu.svg_arrow_labeled(kz_x + 15, kz_y + kz_h, dat_x + dat_w - 20, dat_y, p("hatDatierung")))
 
     # -- Fundstellenart (shared) ---------------------------------------------
     fa_cx, fa_cy, fa_r = 1500, 210, 78
-    parts.append(vu.svg_hash_node(fa_cx, fa_cy, fa_r, "Fundstellenart", "shared \u00b7 e.g. Siedlung, Grab",
+    parts.append(vu.svg_hash_node(fa_cx, fa_cy, fa_r, c("FundstellenartType"),
+                                   f"{shared} \u00b7 {tt('z. B. Siedlung, Grab', 'e.g. Siedlung, Grab')}",
                                    fill=TYPE["fill"], stroke=TYPE["stroke"]))
     parts.append(vu.svg_arrow_labeled(fx + fw, fy + 15, fa_cx - fa_r * 0.8, fa_cy + fa_r * 0.7,
-                                       "hatFundstellenart"))
+                                       p("hatFundstellenart")))
 
     # -- Entdeckung (shared, incl. Entdeckungsart as subtitle) --------------
     ed_cx, ed_cy, ed_r = 1620, fcy, 80
-    parts.append(vu.svg_hash_node(ed_cx, ed_cy, ed_r, "Entdeckung", "shared \u00b7 incl. Entdeckungsart",
+    parts.append(vu.svg_hash_node(ed_cx, ed_cy, ed_r, c("Entdeckung"),
+                                   f"{shared} \u00b7 {tt('inkl. Entdeckungsart', 'incl. discovery type')}",
                                    fill=EVENT["fill"], stroke=EVENT["stroke"]))
-    parts.append(vu.svg_arrow_labeled(fx + fw, fcy, ed_cx - ed_r, ed_cy, "wurdeEntdecktDurch"))
+    parts.append(vu.svg_arrow_labeled(fx + fw, fcy, ed_cx - ed_r, ed_cy, p("wurdeEntdecktDurch")))
 
     # -- Publikation (shared) -------------------------------------------------
     pub_cx, pub_cy, pub_r = 1500, 800, 72
-    parts.append(vu.svg_hash_node(pub_cx, pub_cy, pub_r, "Publikation", "shared \u00b7 pub_{hash}",
+    parts.append(vu.svg_hash_node(pub_cx, pub_cy, pub_r, c("Publikation"), f"{shared} \u00b7 pub_{{hash}}",
                                    fill=DOC["fill"], stroke=DOC["stroke"]))
     parts.append(vu.svg_arrow_labeled(fx + fw - 10, fy + fh, pub_cx - pub_r * 0.7, pub_cy - pub_r * 0.7,
-                                       "hatPublikation", above=False))
+                                       p("hatPublikation"), above=False))
 
     # -- Scherbe (1..n, shared per QID) --------------------------------------
     sh_cx, sh_cy, sh_r = 1140, 850, 66
-    parts.append(vu.svg_hash_node(sh_cx, sh_cy, sh_r, "Scherbe", "1..n \u00b7 shared per QID",
+    parts.append(vu.svg_hash_node(sh_cx, sh_cy, sh_r, c("Scherbe"),
+                                   tt("1..n \u00b7 geteilt pro QID", "1..n \u00b7 shared per QID"),
                                    fill=DOC["fill"], stroke=DOC["stroke"]))
-    parts.append(vu.svg_arrow_labeled(fcx + 20, fy + fh, sh_cx, sh_cy - sh_r, "hatScherbe", above=False))
+    parts.append(vu.svg_arrow_labeled(fcx + 20, fy + fh, sh_cx, sh_cy - sh_r, p("hatScherbe"), above=False))
 
     # -- Georeferenzierung + Punkt (per site) --------------------------------
     geo_x, geo_y, geo_w, geo_h = 470, 800, 290, 100
-    parts.append(vu.svg_box(geo_x, geo_y, geo_w, geo_h, "GeoreferenzierungsAktivitaet",
-                             "per site \u00b7 point (WGS84) + activity",
+    parts.append(vu.svg_box(geo_x, geo_y, geo_w, geo_h, c("GeoreferenzierungsAktivitaet"),
+                             tt(f"{per_site} \u00b7 Punkt (WGS84) + Aktivit\u00e4t",
+                                f"{per_site} \u00b7 point (WGS84) + activity"),
                              fill=ACTIVITY["fill"], stroke=ACTIVITY["stroke"]))
     parts.append(vu.svg_arrow_labeled(fx + 20, fy + fh, geo_x + geo_w - 30, geo_y,
-                                       "wurdeGeoreferenziertDurch", above=False))
+                                       p("wurdeGeoreferenziertDurch"), above=False))
 
     # -- legend ---------------------------------------------------------------
     parts.append(vu.svg_legend(60, 924, [
-        ("double ring = shared concept node, deduplicated", vu.GEO),
-        ("box = own node per Fundstelle (FID-based)", vu.SITE),
+        (tt("Doppelring = geteilter Konzeptknoten, dedupliziert",
+            "double ring = shared concept node, deduplicated"), vu.GEO),
+        (tt("Kasten = eigener Knoten pro Fundstelle (FID-basiert)",
+            f"box = own node per {c('Fundstelle')} (FID-based)"), vu.SITE),
     ], columns=2, col_w=760))
 
     parts.append(vu.svg_close())
-    return vu.write_figure(OUT, "fundstelle-hub", "\n".join(parts), zoom=1.5)
+    return vu.write_figure(OUT, f"fundstelle-hub.{lang}", "\n".join(parts), zoom=1.5)
 
 
 def main() -> list[str]:
-    return build()
+    return build("de") + build("en")
 
 
 if __name__ == "__main__":

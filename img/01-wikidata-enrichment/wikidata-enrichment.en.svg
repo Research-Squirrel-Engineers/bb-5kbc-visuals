@@ -1,0 +1,71 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Wikidata as the linking hub -- the four-stage geo-matching pipeline</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="265.0" y="70.0" width="260.0" height="96.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="395.0" y="110.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">1 Build index</text>
+<text x="395.0" y="130.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">SPARQL per level</text>
+<rect x="585.0" y="70.0" width="260.0" height="96.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="715.0" y="110.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">2 Normalise</text>
+<text x="715.0" y="130.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">prefix strip + alias</text>
+<rect x="905.0" y="70.0" width="260.0" height="96.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="1035.0" y="110.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">3 Override layer</text>
+<text x="1035.0" y="130.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">manually verified</text>
+<rect x="1225.0" y="70.0" width="260.0" height="96.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="1355.0" y="110.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">4 Fuzzy match</text>
+<text x="1355.0" y="130.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">rapidfuzz, staged — see next figure</text>
+<line x1="525.0" y1="118.0" x2="585.0" y2="118.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="845.0" y1="118.0" x2="905.0" y2="118.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1165.0" y1="118.0" x2="1225.0" y2="118.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="265.0" y="192.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">Country/Federal state: global, once.</text>
+<text x="265.0" y="210.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">District: scoped per Federal state.</text>
+<text x="585.0" y="192.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">„Landkreis X“ → X.</text>
+<text x="585.0" y="210.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">Alias lists deliberately small (1/2/2).</text>
+<text x="905.0" y="192.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">Ambiguous / outdated names.</text>
+<text x="905.0" y="210.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">1 / 33 / 62 entries (BL/KR/GE).</text>
+<text x="1225.0" y="192.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">token_sort_ratio, staged thresholds.</text>
+<text x="1225.0" y="210.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">matchReason: exact/fuzzy/override/transitive.</text>
+<rect x="60.0" y="300.0" width="790.0" height="610.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="76.0" y="326.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Stage 1: index building per level</text>
+<rect x="90.0" y="366.0" width="200.0" height="56.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="190.0" y="394.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13.5" fill="#2c2c2a">Country / Federal state</text>
+<text x="310.0" y="382.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Global, one-off SPARQL fetch over the whole class (wdt:P31</text>
+<text x="310.0" y="401.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">souverainer Staat / Land in Deutschland / polnische</text>
+<text x="310.0" y="420.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Woiwodschaft).</text>
+<rect x="90.0" y="516.0" width="200.0" height="56.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="190.0" y="544.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">District</text>
+<text x="310.0" y="532.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Scoped per Federal state (wdt:P131 direct, not transitive) —</text>
+<text x="310.0" y="551.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">a single global fetch would push the SPARQL response past the</text>
+<text x="310.0" y="570.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">endpoint&apos;s timeout.</text>
+<rect x="90.0" y="666.0" width="200.0" height="56.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="190.0" y="694.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Municipality</text>
+<text x="310.0" y="682.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Scoped per District; see the two-stage fallback for Ortsteile</text>
+<text x="310.0" y="701.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">that hang off an intermediate Municipality instead of the</text>
+<text x="310.0" y="720.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">District directly.</text>
+<rect x="90.0" y="826.0" width="700.0" height="68.0" rx="10" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<text x="440.0" y="852.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Two guards applied to every index fetch</text>
+<text x="440.0" y="872.0" text-anchor="middle" font-family="Fira Sans" font-size="10.0" fill="#2c2c2a" opacity="0.75">MINUS {{ ?item wdt:P582 [] }} excludes dissolved units — FILTER(STRLEN(?label) &gt; 3) drops vehicle-plate skos:altLabels</text>
+<rect x="900.0" y="300.0" width="790.0" height="610.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="916.0" y="326.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Municipality level: two-stage SPARQL fallback</text>
+<rect x="970.0" y="366.0" width="650.0" height="58.0" rx="10" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<text x="1295.0" y="387.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">CSV value, e.g. „Babekuhl“</text>
+<text x="1295.0" y="407.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">Municipality Putlitz, Landkreis Prignitz</text>
+<line x1="1295.0" y1="424.0" x2="1295.0" y2="470.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="970.0" y="470.0" width="650.0" height="68.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="1295.0" y="496.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Phase 1</text>
+<text x="1295.0" y="516.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">P131 direct, index scoped to the District QID</text>
+<line x1="1295.0" y1="538.0" x2="1295.0" y2="592.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1499.9" y="565.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">no match (Ortsteil hangs off an intermediate Municipality)</text>
+<rect x="970.0" y="592.0" width="650.0" height="68.0" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
+<text x="1295.0" y="618.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Phase 2 (fallback)</text>
+<text x="1295.0" y="638.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">P131+ transitive + exact label filter, 90 s timeout</text>
+<rect x="970.0" y="710.0" width="305.0" height="68.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="1122.5" y="736.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Match</text>
+<text x="1122.5" y="756.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">matchReason=transitive, matchScore logged</text>
+<rect x="1315.0" y="710.0" width="305.0" height="68.0" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
+<text x="1467.5" y="736.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Timeout → no match</text>
+<text x="1467.5" y="756.0" text-anchor="middle" font-family="Fira Sans" font-size="10.0" fill="#2c2c2a" opacity="0.75">run continues, matchReason=timeout, triage report</text>
+<line x1="1152.0" y1="660.0" x2="1122.5" y2="710.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1438.0" y1="660.0" x2="1467.5" y2="710.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+</svg>

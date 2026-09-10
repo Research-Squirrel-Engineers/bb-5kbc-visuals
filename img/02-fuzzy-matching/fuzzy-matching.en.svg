@@ -1,0 +1,77 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>How rapidfuzz.token_sort_ratio decides a Wikidata match, with real scores</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="126.0" y="60.0" width="340.0" height="74.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="296.0" y="89.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">1 Tokenise</text>
+<text x="296.0" y="109.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">split the string on whitespace</text>
+<rect x="512.0" y="60.0" width="340.0" height="74.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="682.0" y="89.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">2 Sort tokens</text>
+<text x="682.0" y="109.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">alphabetical order — word order stops mattering</text>
+<rect x="898.0" y="60.0" width="340.0" height="74.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="1068.0" y="89.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">3 Rejoin</text>
+<text x="1068.0" y="109.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">compare the two sorted strings</text>
+<rect x="1284.0" y="60.0" width="340.0" height="74.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="1454.0" y="89.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">4 Score</text>
+<text x="1454.0" y="109.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">Levenshtein-based ratio, 0–100</text>
+<line x1="466.0" y1="97.0" x2="512.0" y2="97.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="852.0" y1="97.0" x2="898.0" y2="97.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1238.0" y1="97.0" x2="1284.0" y2="97.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="60" y="208.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">CSV „Kreis Ostprignitz-Ruppin“</text>
+<text x="60" y="230.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">vs. Wikidata label „Ostprignitz-Ruppin“</text>
+<rect x="60" y="244.0" width="86.0" height="24" rx="12" fill="#ece9e2" stroke="#888780" stroke-width="1"/>
+<text x="103.0" y="256.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-size="11" fill="#2c2c2a">DISTRICT</text>
+<rect x="470.0" y="210.0" width="560.0" height="26.0" rx="6" fill="#f1efe8" stroke="#888780" stroke-width="1"/>
+<rect x="470.0" y="210.0" width="480.0" height="26.0" rx="6" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<line x1="890.0" y1="204.0" x2="890.0" y2="242.0" stroke="#2c2c2a" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="890.0" y="198.0" text-anchor="middle" font-family="Fira Sans" font-size="11" fill="#2c2c2a">threshold 75</text>
+<text x="1044.0" y="223.0" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="15" fill="#3c763d">85.71</text>
+<rect x="1150.0" y="200.0" width="86.0" height="30" rx="15" fill="#d9ead3" stroke="#3c763d" stroke-width="1.6"/>
+<text x="1193.0" y="215.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13" fill="#3c763d">PASS</text>
+<text x="1300" y="206.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">A short prefix on a long name barely moves the</text>
+<text x="1300" y="225.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">score — fuzzy tolerance alone is enough.</text>
+<text x="60" y="386.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">CSV „Landkreis Havelland“</text>
+<text x="60" y="408.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">vs. Wikidata label „Havelland“</text>
+<rect x="60" y="422.0" width="86.0" height="24" rx="12" fill="#ece9e2" stroke="#888780" stroke-width="1"/>
+<text x="103.0" y="434.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-size="11" fill="#2c2c2a">DISTRICT</text>
+<rect x="470.0" y="388.0" width="560.0" height="26.0" rx="6" fill="#f1efe8" stroke="#888780" stroke-width="1"/>
+<rect x="470.0" y="388.0" width="360.0" height="26.0" rx="6" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<line x1="890.0" y1="382.0" x2="890.0" y2="420.0" stroke="#2c2c2a" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="890.0" y="376.0" text-anchor="middle" font-family="Fira Sans" font-size="11" fill="#2c2c2a">threshold 75</text>
+<text x="1044.0" y="401.0" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="15" fill="#a03030">64.29</text>
+<rect x="1150.0" y="378.0" width="86.0" height="30" rx="15" fill="#f5dede" stroke="#a03030" stroke-width="1.6"/>
+<text x="1193.0" y="393.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13" fill="#a03030">FAIL</text>
+<text x="1300" y="384.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">The same kind of prefix on a short name drags the</text>
+<text x="1300" y="403.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">score under threshold — needs the prefix-strip</text>
+<text x="1300" y="422.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">step first (stripped: „Havelland“ → 100.00).</text>
+<text x="60" y="564.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">CSV „sommerda“</text>
+<text x="60" y="586.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">vs. Wikidata label „Sömmerda“</text>
+<rect x="60" y="600.0" width="97.9" height="24" rx="12" fill="#ece9e2" stroke="#888780" stroke-width="1"/>
+<text x="109.0" y="612.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-size="11" fill="#2c2c2a">MUNICIPALITY</text>
+<rect x="470.0" y="566.0" width="560.0" height="26.0" rx="6" fill="#f1efe8" stroke="#888780" stroke-width="1"/>
+<rect x="470.0" y="566.0" width="420.0" height="26.0" rx="6" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<line x1="929.2" y1="560.0" x2="929.2" y2="598.0" stroke="#2c2c2a" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="929.2" y="554.0" text-anchor="middle" font-family="Fira Sans" font-size="11" fill="#2c2c2a">threshold 82</text>
+<text x="1044.0" y="579.0" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="15" fill="#a03030">75.00</text>
+<rect x="1150.0" y="556.0" width="86.0" height="30" rx="15" fill="#f5dede" stroke="#a03030" stroke-width="1.6"/>
+<text x="1193.0" y="571.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13" fill="#a03030">FAIL</text>
+<text x="1300" y="562.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">A transliteration typo just misses the</text>
+<text x="1300" y="581.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Municipality threshold — resolved via the alias</text>
+<text x="1300" y="600.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">list (paper §3.2), not by loosening the</text>
+<text x="1300" y="619.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">threshold.</text>
+<text x="60" y="742.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">CSV „MVP“</text>
+<text x="60" y="764.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">vs. Wikidata label „Mecklenburg-Vorpommern“</text>
+<rect x="60" y="778.0" width="104.1" height="24" rx="12" fill="#ece9e2" stroke="#888780" stroke-width="1"/>
+<text x="112.0" y="790.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-size="11" fill="#2c2c2a">FEDERAL STATE</text>
+<rect x="470.0" y="744.0" width="560.0" height="26.0" rx="6" fill="#f1efe8" stroke="#888780" stroke-width="1"/>
+<rect x="470.0" y="744.0" width="89.6" height="26.0" rx="6" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<line x1="946.0" y1="738.0" x2="946.0" y2="776.0" stroke="#2c2c2a" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="946.0" y="732.0" text-anchor="middle" font-family="Fira Sans" font-size="11" fill="#2c2c2a">threshold 85</text>
+<text x="1044.0" y="757.0" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="15" fill="#a03030">16.00</text>
+<rect x="1150.0" y="734.0" width="86.0" height="30" rx="15" fill="#f5dede" stroke="#a03030" stroke-width="1.6"/>
+<text x="1193.0" y="749.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13" fill="#a03030">FAIL</text>
+<text x="1300" y="740.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">An acronym shares almost no characters with the</text>
+<text x="1300" y="759.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">full name — fuzzy matching cannot help at all;</text>
+<text x="1300" y="778.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">the alias list is the only fix.</text>
+</svg>

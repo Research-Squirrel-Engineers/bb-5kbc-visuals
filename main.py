@@ -6,13 +6,15 @@ main.py -- bb5kbc-visuals orchestrator
 
 The single entry point of this repository. Every step draws one diagram
 (7:4, 1750x1000, no title header and no source footer baked in -- see
-PRIMER.md A4) as SVG (versioned, in ``img/<step>/``) and rasterises it to
-PNG via resvg-py, in-process, with the vendored Fira Sans -- no Mermaid
-CLI, no Node, no system fonts required. Same house pattern as the sibling
-repo ``crossy-visuals`` (see there for the reasoning behind each
-convention); adapted here for general-purpose diagram assets rather than
-a banner/badge/detail split, since every figure in this repo is meant to
-be dropped into whatever needs it -- a slide, a paper figure, a poster.
+PRIMER.md A4) once per language (German and English -- see PRIMER.md A4
+"Bilingual") as SVG (versioned, in ``img/<step>/<name>.<lang>.svg``) and
+rasterises each to PNG via resvg-py, in-process, with the vendored Fira
+Sans -- no Mermaid CLI, no Node, no system fonts required. Same house
+pattern as the sibling repo ``crossy-visuals`` (see there for the
+reasoning behind each convention); adapted here for general-purpose
+diagram assets rather than a banner/badge/detail split, since every
+figure in this repo is meant to be dropped into whatever needs it -- a
+slide, a paper figure, a poster.
 
 Usage (from the repository root)::
 

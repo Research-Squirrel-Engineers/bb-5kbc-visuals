@@ -1,0 +1,57 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Absolute dating: numeric start/end plus free-text tolerance, not structured</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="90.0" y="50.0" width="650.0" height="470.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.8"/>
+<text x="415.0" y="82.0" text-anchor="middle" font-family="Fira Sans" font-size="12" font-style="italic" fill="#2c2c2a" opacity="0.75">«crm:E52_Time-Span»</text>
+<text x="415.0" y="99.0" text-anchor="middle" font-family="Fira Sans" font-size="12" font-style="italic" fill="#2c2c2a" opacity="0.75">«time:Interval»</text>
+<text x="415.0" y="128.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="21" fill="#2c2c2a">Dating</text>
+<text x="415.0" y="150.0" text-anchor="middle" font-family="Fira Sans" font-size="13" fill="#5f5e5a">site_{FID}_dating</text>
+<line x1="90.0" y1="168.0" x2="740.0" y2="168.0" stroke="#3d7a2a" stroke-width="1.2"/>
+<text x="120.0" y="208.0" font-family="Fira Sans" font-size="15" font-weight="500" fill="#2c2c2a">datingStart</text>
+<text x="120.0" y="228.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">xsd:integer = −4550</text>
+<text x="120.0" y="276.0" font-family="Fira Sans" font-size="15" font-weight="500" fill="#2c2c2a">datingEnd</text>
+<text x="120.0" y="296.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">xsd:integer = −3900</text>
+<text x="120.0" y="344.0" font-family="Fira Sans" font-size="15" font-weight="500" fill="#a03030">datingCertaintyStart</text>
+<text x="120.0" y="364.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">xsd:string = „± 100 Jahre“</text>
+<text x="120.0" y="412.0" font-family="Fira Sans" font-size="15" font-weight="500" fill="#a03030">datingCertaintyEnd</text>
+<text x="120.0" y="432.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">xsd:string = „unsicher“</text>
+<text x="120.0" y="480.0" font-family="Fira Sans" font-size="15" font-weight="500" fill="#a03030">datingCertaintyRange</text>
+<text x="120.0" y="500.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">xsd:string = „grob“</text>
+<rect x="860.0" y="70.0" width="320.0" height="64.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1020.0" y="94.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E52_Time-Span</text>
+<text x="1020.0" y="114.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">CRM-conformant time span</text>
+<line x1="740.0" y1="160.0" x2="860.0" y2="102.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="860.0" y="190.0" width="320.0" height="64.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="1020.0" y="214.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">time:Interval</text>
+<text x="1020.0" y="234.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">owl-time:TemporalEntity</text>
+<line x1="740.0" y1="310.0" x2="860.0" y2="222.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="860.0" y="284.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">→ opens Allen relations: „Phase A ends</text>
+<text x="860.0" y="302.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">before Phase B begins“</text>
+<rect x="860.0" y="350.0" width="780.0" height="170.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="876.0" y="376.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Why 1:1 per Site, not shared?</text>
+<text x="886.0" y="404.0" font-family="Fira Sans" font-size="13" fill="#2c2c2a">If Dating were deduplicated per Culture group (v0.10), all ~200 SBK sites would</text>
+<text x="886.0" y="425.0" font-family="Fira Sans" font-size="13" fill="#2c2c2a">converge on one shared node — individual start/end values would blend into an</text>
+<text x="886.0" y="446.0" font-family="Fira Sans" font-size="13" fill="#2c2c2a">unrecoverable multi-set. The bug only surfaced under end-to-end validation</text>
+<text x="886.0" y="467.0" font-family="Fira Sans" font-size="13" fill="#2c2c2a">(validate_lod.py); from v0.11 the assignment is site-specific.</text>
+<rect x="60.0" y="570.0" width="1630.0" height="330.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="76.0" y="596.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Numeric uncertainty tolerance stays free text — no xsd:duration, no structured field</text>
+<rect x="100.0" y="636.0" width="139.9" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="170.0" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„± 100 Jahre“</text>
+<rect x="263.9" y="636.0" width="85.0" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="306.4" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„grob“</text>
+<rect x="373.0" y="636.0" width="116.4" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="431.2" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„unsicher“</text>
+<rect x="513.4" y="636.0" width="116.4" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="571.6" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„ca. 50 a“</text>
+<rect x="653.8" y="636.0" width="108.6" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="708.0" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„unclear“</text>
+<rect x="786.3" y="636.0" width="147.8" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="860.2" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„+/- 50 years“</text>
+<rect x="958.1" y="636.0" width="124.2" height="48.0" rx="24" fill="#f5dede" stroke="#a03030" stroke-width="1.4"/>
+<text x="1020.2" y="660.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„Schätzung“</text>
+<text x="100" y="720.0" font-family="Fira Sans" font-size="14" fill="#2c2c2a">Values are heterogeneous (German/English, with typo variants) and are stored 1:1 as xsd:string.</text>
+<text x="100" y="746.0" font-family="Fira Sans" font-size="14" fill="#2c2c2a">Anyone filtering for „tolerance &lt; 50 years“ has to parse these strings themselves first.</text>
+<text x="100" y="786.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">A deliberately accepted limitation — see modelling-rules.md, „Was die Modellierung nicht kann“</text>
+</svg>

@@ -50,6 +50,17 @@ Commit-Messages -- auf British English.
    verwalteten) Repo sollen als Patch-ZIP kommen, nicht als kompletter
    Ersatz-Export -- siehe A4.
 
+**Befund 2026-09-10e (S16-Patch angewendet, neuer Fehler):** `main.py`-Log
+zeigt Schritte 00--04, 06, 07 mit je "2 file(s)" (nicht 4) und Schritte
+05, 08, 09 mit `AttributeError: module 'bb5kbc_visuals_utils' has no
+attribute 't'`. Daraus folgt zweifelsfrei: Florians Repo enthielt zum
+Zeitpunkt des S16-Patches noch die einsprachige `bb5kbc_visuals_utils.py`
+und einsprachige Versionen von 00--04/06/07 -- die vollständige bilinguale
+Lieferung aus S15 war nie (oder nicht vollständig) angekommen. Der
+S16-Patch hat das nicht bemerkt und drei Schritt-Dateien isoliert
+ausgetauscht, was das Repo in einen inkonsistenten Zustand brachte. Siehe
+S17.
+
 ### A2 Zielbild
 
 ```
@@ -154,6 +165,7 @@ Entfällt -- dieses Repo publiziert kein eigenes RDF.
 | S14 | Bugfix: Auto-Fit-Schriftgröße (Text-Overflow in Kreisen/Kästen) | `bb5kbc_visuals_utils.py` | S11 | erledigt 2026-09-10c |
 | S15 | Bilingual: alle 10 Grafiken DE + EN | alle `step_*.py` + Utils | S14 | erledigt 2026-09-10c |
 | S16 | Bugfix: Python-3.10-Kompatibilität (f-string-Backslash) | `step_05/08/09_*.py` | S15 | erledigt 2026-09-10d |
+| S17 | Bugfix: S16-Patch war unvollständig (utils.py fehlte) | `bb5kbc_visuals_utils.py` + alle `step_*.py` + `main.py` | S16 | erledigt 2026-09-10e |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -352,6 +364,35 @@ verändert, nur die Syntax.
 `SyntaxError` durch (von ihm zu bestätigen -- siehe PATCH-README.md
 "Verified here" für die Grenzen der hiesigen Prüfung).
 
+### S17 -- Bugfix: Patch S16 war unvollständig (utils.py fehlte)
+
+**Ziel:** den Folgefehler beheben, den der S16-Patch verursacht hat:
+`module 'bb5kbc_visuals_utils' has no attribute 't'` in den Schritten 05,
+08, 09.
+
+**Ursache:** S16 lieferte nur `step_05/08/09_*.py` aus, in der Annahme,
+Florians Repo enthalte bereits die bilinguale `bb5kbc_visuals_utils.py`
+(mit `t()`/`cls()`/`prop()`/Glossaren). Das war falsch -- sein Repo stand
+tatsächlich noch auf dem allerersten, einsprachigen Stand (Schritte
+00--04, 06, 07 liefen deshalb weiter mit "2 file(s)" statt der erwarteten
+4, ohne Fehler, weil ihr `build()` kein `lang`-Argument braucht). Der
+S16-Patch hat drei Schritt-Dateien durch bilinguale Versionen ersetzt,
+die `vu.t()` aufrufen -- ohne die dafür nötige Utils-Version mitzuliefern.
+Ergebnis: ein inkonsistentes Repo, in dem 7 Schritte einsprachig und 3
+Schritte (kaputt) bilingual waren.
+
+**Substanz:** dieses Mal das vollständige, konsistente Quell-Set liefern:
+`bb5kbc_visuals_utils.py` (mit `t()`/`cls()`/`prop()`/`CLASS_EN`/`PROP_EN`
+und dem Auto-Fit-Fix aus S14) plus alle zehn `step_*.py` plus `main.py`
+plus `README.md` -- nicht nur die zuletzt kaputten Dateien. Lehre für
+künftige Patches an diesem Repo: vor dem Zusammenstellen eines Patches
+den tatsächlichen Stand des Zielrepos erfragen oder zumindest nicht
+stillschweigend voraussetzen, dass frühere Lieferungen vollständig
+angekommen sind.
+
+**Abnahme:** `python main.py` auf Florians Maschine liefert 10 × 4 = 40
+Dateien ohne Fehler.
+
 ## Teil D -- Offene Punkte
 
 - **Pipeline-Architektur neu im Hausstil.** `architecture.mmd` (Paper
@@ -371,5 +412,5 @@ verändert, nur die Syntax.
   Wojewodschaften -- noch nicht visualisiert. (Das wäre der richtige Ort
   für eine Statistik-Grafik, falls gewünscht -- nicht mehr 09-kulturen.)
 
-Wenn einer dieser Punkte zum nächsten Schritt wird: nach S16 einsortieren
-(S17, S18, …), hier streichen, in Teil B eintragen.
+Wenn einer dieser Punkte zum nächsten Schritt wird: nach S17 einsortieren
+(S18, S19, …), hier streichen, in Teil B eintragen.

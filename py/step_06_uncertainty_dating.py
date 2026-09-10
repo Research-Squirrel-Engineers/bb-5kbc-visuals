@@ -10,7 +10,13 @@ Datierung is per-site, not deduplicated -- the v0.10 data-loss lesson) and
 "Numerische Unsicherheits-Toleranz" under "Was die Modellierung nicht
 kann" (the free-text limitation, not invented for the figure).
 
-Writes: uncertainty-dating.svg / .png
+Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
+translation convention. The example free-text tolerance values ("grob",
+"unclear", "+/- 50 years", ...) are real heterogeneous CSV values and are
+never translated -- their very heterogeneity (German/English mixed) is
+the point of the figure.
+
+Writes: uncertainty-dating.de.svg/.png, uncertainty-dating.en.svg/.png
 Run standalone: ``python py/step_06_uncertainty_dating.py``
 """
 
@@ -52,54 +58,73 @@ def _uml_box(x, y, w, h, stereotypes, title, subtitle, rows):
     return "\n".join(parts)
 
 
-def build() -> list[str]:
+def build(lang: str = "en") -> list[str]:
+    c = lambda n: vu.cls(n, lang)
+    p = lambda n: vu.prop(n, lang)
+    tt = lambda de, en: vu.t(lang, de, en)
+
     parts = [vu.svg_open("Absolute dating: numeric start/end plus free-text tolerance, not structured")]
 
     # -- left: UML attribute box ----------------------------------------------
     ux, uy, uw, uh = 90, 50, 650, 470
     rows = [
-        ("datierungStart", "xsd:integer", "\u22124550", False),
-        ("datierungEnd", "xsd:integer", "\u22123900", False),
-        ("datierungSicherheitStart", "xsd:string", "\u201e\u00b1 100 Jahre\u201c", True),
-        ("datierungSicherheitEnd", "xsd:string", "\u201eunsicher\u201c", True),
-        ("datierungSicherheitRange", "xsd:string", "\u201egrob\u201c", True),
+        (p("datierungStart"), "xsd:integer", "\u22124550", False),
+        (p("datierungEnd"), "xsd:integer", "\u22123900", False),
+        (p("datierungSicherheitStart"), "xsd:string", "\u201e\u00b1 100 Jahre\u201c", True),
+        (p("datierungSicherheitEnd"), "xsd:string", "\u201eunsicher\u201c", True),
+        (p("datierungSicherheitRange"), "xsd:string", "\u201egrob\u201c", True),
     ]
     parts.append(_uml_box(ux, uy, uw, uh, ["crm:E52_Time-Span", "time:Interval"],
-                           "Datierung", "site_{FID}_dating", rows))
+                           c("Datierung"), "site_{FID}_dating", rows))
 
     # -- top-right: double CRM/OWL-Time anchor --------------------------------
     cx1 = 860
     cw1, ch1 = 320, 64
     cy1, cy2 = 70, 190
-    parts.append(vu.svg_box(cx1, cy1, cw1, ch1, "crm:E52_Time-Span", "CRM-conformant time span",
+    parts.append(vu.svg_box(cx1, cy1, cw1, ch1, "crm:E52_Time-Span",
+                             tt("CRM-konforme Zeitspanne", "CRM-conformant time span"),
                              fill=CRM["fill"], stroke=CRM["stroke"]))
     parts.append(vu.svg_arrow(ux + uw, uy + 110, cx1, cy1 + ch1 / 2))
 
     parts.append(vu.svg_box(cx1, cy2, cw1, ch1, "time:Interval", "owl-time:TemporalEntity",
                              fill=DATING["fill"], stroke=DATING["stroke"]))
     parts.append(vu.svg_arrow(ux + uw, uy + 260, cx1, cy2 + ch1 / 2))
+    allen1 = tt("\u2192 \u00f6ffnet Allen-Relationen: \u201ePhase A endet,",
+                "\u2192 opens Allen relations: \u201ePhase A ends")
+    allen2 = tt("bevor Phase B beginnt\u201c", "before Phase B begins\u201c")
     parts.append(f'<text x="{cx1:.1f}" y="{cy2 + ch1 + 30:.1f}" font-family="Fira Sans" font-size="13" '
-                 f'fill="{vu.TEXT_MUTED}">\u2192 opens Allen relations: \u201ePhase A ends</text>')
+                 f'fill="{vu.TEXT_MUTED}">{allen1}</text>')
     parts.append(f'<text x="{cx1:.1f}" y="{cy2 + ch1 + 48:.1f}" font-family="Fira Sans" font-size="13" '
-                 f'fill="{vu.TEXT_MUTED}">before Phase B begins\u201c</text>')
+                 f'fill="{vu.TEXT_MUTED}">{allen2}</text>')
 
     # -- "why per Fundstelle?" callout ----------------------------------------
     wx, wy, ww, wh = 860, 350, 780, 170
-    parts.append(vu.svg_dashed_container(wx, wy, ww, wh, "Why 1:1 per Fundstelle, not shared?"))
-    lines = [
-        "If Datierung were deduplicated per Kulturgruppe (v0.10), all ~200 SBK sites would",
+    parts.append(vu.svg_dashed_container(wx, wy, ww, wh,
+                                          tt(f"Warum 1:1 zur {c('Fundstelle')}, nicht geteilt?",
+                                             f"Why 1:1 per {c('Fundstelle')}, not shared?")))
+    lines_de = [
+        f"W\u00e4re {c('Datierung')} pro {c('Kulturgruppe')} dedupliziert (v0.10), l\u00e4gen alle ~200 SBK-",
+        f"{c('Fundstelle')}n an einem gemeinsamen Knoten \u2014 individuelle Start/End-Werte w\u00fcrden sich zu",
+        "einem nicht mehr aufl\u00f6sbaren Multi-Set vermischen. Der Fehler zeigte sich erst bei",
+        "End-to-End-Validierung (validate_lod.py); ab v0.11 ist die Zuordnung site-spezifisch.",
+    ]
+    lines_en = [
+        f"If {c('Datierung')} were deduplicated per {c('Kulturgruppe')} (v0.10), all ~200 SBK sites would",
         "converge on one shared node \u2014 individual start/end values would blend into an",
         "unrecoverable multi-set. The bug only surfaced under end-to-end validation",
         "(validate_lod.py); from v0.11 the assignment is site-specific.",
     ]
-    for i, line in enumerate(lines):
+    for i, line in enumerate(tt(lines_de, lines_en)):
         parts.append(f'<text x="{wx + 26:.1f}" y="{wy + 54 + i * 21:.1f}" font-family="Fira Sans" '
                      f'font-size="13" fill="{vu.TEXT_DARK}">{vu.xml_escape(line)}</text>')
 
     # -- bottom: free-text tolerance -------------------------------------------
     by, bh = 570, 330
     parts.append(vu.svg_dashed_container(60, by, 1630, bh,
-                                          "Numeric uncertainty tolerance stays free text \u2014 no xsd:duration, no structured field"))
+                                          tt("Numerische Unsicherheits-Toleranz bleibt Freitext \u2014 kein "
+                                             "xsd:duration, kein strukturiertes Feld",
+                                             "Numeric uncertainty tolerance stays free text \u2014 no xsd:duration, "
+                                             "no structured field")))
     chips = ["\u201e\u00b1 100 Jahre\u201c", "\u201egrob\u201c", "\u201eunsicher\u201c", "\u201eca. 50 a\u201c",
              "\u201eunclear\u201c", "\u201e+/- 50 years\u201c", "\u201eSch\u00e4tzung\u201c"]
     cx = 100
@@ -108,22 +133,26 @@ def build() -> list[str]:
         w = vu.text_width(chip, 14) + 38
         parts.append(vu.svg_box(cx, cy_chip, w, 48, chip, fill=U_FILL, stroke=U_STROKE, rx=24))
         cx += w + 24
-    note1 = "Values are heterogeneous (German/English, with typo variants) and are stored 1:1 as xsd:string."
-    note2 = "Anyone filtering for \u201etolerance < 50 years\u201c has to parse these strings themselves first."
+    note1 = tt("Werte sind heterogen (Deutsch/Englisch, mit Tippvarianten) und werden 1:1 als xsd:string abgelegt.",
+               "Values are heterogeneous (German/English, with typo variants) and are stored 1:1 as xsd:string.")
+    note2 = tt("Wer nach \u201eToleranz < 50 Jahre\u201c filtern will, muss diese Strings zuerst selbst parsen.",
+               "Anyone filtering for \u201etolerance < 50 years\u201c has to parse these strings themselves first.")
     parts.append(f'<text x="100" y="{by + 150:.1f}" font-family="Fira Sans" font-size="14" '
                  f'fill="{vu.TEXT_DARK}">{vu.xml_escape(note1)}</text>')
     parts.append(f'<text x="100" y="{by + 176:.1f}" font-family="Fira Sans" font-size="14" '
                  f'fill="{vu.TEXT_DARK}">{vu.xml_escape(note2)}</text>')
+    limitation_note = tt("Eine bewusst akzeptierte Limitation \u2014 siehe modelling-rules.md,",
+                          "A deliberately accepted limitation \u2014 see modelling-rules.md,")
     parts.append(f'<text x="100" y="{by + 216:.1f}" font-family="Fira Sans" font-size="12" '
-                 f'fill="{vu.TEXT_MUTED}">A deliberately accepted limitation \u2014 see modelling-rules.md, '
+                 f'fill="{vu.TEXT_MUTED}">{limitation_note} '
                  f'\u201eWas die Modellierung nicht kann\u201c</text>')
 
     parts.append(vu.svg_close())
-    return vu.write_figure(OUT, "uncertainty-dating", "\n".join(parts), zoom=1.5)
+    return vu.write_figure(OUT, f"uncertainty-dating.{lang}", "\n".join(parts), zoom=1.5)
 
 
 def main() -> list[str]:
-    return build()
+    return build("de") + build("en")
 
 
 if __name__ == "__main__":
