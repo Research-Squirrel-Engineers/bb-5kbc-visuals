@@ -12,7 +12,10 @@ Kulturgruppe but each carry their own start/end dates -- the exact
 scenario the paper's v0.10 bug report was about (see step_06's callout
 for that story; this figure stays with the structural contrast itself).
 
-Writes: dating-entities.svg / .png
+Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
+translation convention. "FBG" is a real culture value, never translated.
+
+Writes: dating-entities.de.svg/.png, dating-entities.en.svg/.png
 Run standalone: ``python py/step_08_dating_entities.py``
 """
 
@@ -28,13 +31,18 @@ DATING = vu.WORLD_COLORS["time"]
 AUTH = vu.WORLD_COLORS["authority"]
 
 
-def build() -> list[str]:
+def build(lang: str = "en") -> list[str]:
+    c = lambda n: vu.cls(n, lang)
+    p = lambda n: vu.prop(n, lang)
+    tt = lambda de, en: vu.t(lang, de, en)
+    shared = tt("geteilt", "shared")
+
     parts = [vu.svg_open("One shared Kulturgruppe, three individual per-site Datierung nodes")]
 
     rows_data = [
-        ("Fundstelle A", "site_12", "site_12_culture", "site_12_dating", "\u22124550", "\u22123900"),
-        ("Fundstelle B", "site_57", "site_57_culture", "site_57_dating", "\u22124300", "\u22123800"),
-        ("Fundstelle C", "site_101", "site_101_culture", "site_101_dating", "\u22124600", "\u22124100"),
+        (f"{c('Fundstelle')} A", "site_12", "site_12_culture", "\u22124550", "\u22123900"),
+        (f"{c('Fundstelle')} B", "site_57", "site_57_culture", "\u22124300", "\u22123800"),
+        (f"{c('Fundstelle')} C", "site_101", "site_101_culture", "\u22124600", "\u22124100"),
     ]
     row_centers = [180, 480, 780]
     fw, fh = 190, 64
@@ -46,23 +54,24 @@ def build() -> list[str]:
     kg_r = 82
 
     # shared Kulturgruppe node, drawn first so arrows sit on top
-    parts.append(vu.svg_hash_node(kgcx, kg_cy, kg_r, "\u201eFBG\u201c", "kultur_a1b2c3d4 \u00b7 shared",
+    parts.append(vu.svg_hash_node(kgcx, kg_cy, kg_r, "\u201eFBG\u201c", f"kultur_a1b2c3d4 \u00b7 {shared}",
                                    fill=CULTURE["fill"], stroke=CULTURE["stroke"]))
     qx, qy = kgcx, kg_cy - kg_r - 70
     parts.append(vu.svg_arrow(kgcx, kg_cy - kg_r, qx, qy + 27))
     parts.append(vu.svg_authority_badge(qx, qy, "wd", r=27, fill=AUTH["fill"], stroke=AUTH["stroke"]))
+    qid_all_label = tt("1 Wikidata-QID f\u00fcr alle", "1 Wikidata QID for all")
     parts.append(f'<text x="{qx:.1f}" y="{qy - 38:.1f}" text-anchor="middle" font-family="Fira Sans" '
-                 f'font-size="12" fill="{vu.TEXT_MUTED}">1 Wikidata QID for all</text>')
+                 f'font-size="12" fill="{vu.TEXT_MUTED}">{qid_all_label}</text>')
     parts.append(f'<text x="{qx:.1f}" y="{qy - 22:.1f}" text-anchor="middle" font-family="Fira Sans" '
-                 f'font-size="12" fill="{vu.TEXT_MUTED}">FBG sites</text>')
+                 f'font-size="12" fill="{vu.TEXT_MUTED}">{tt("FBG-Fundstellen", "FBG sites")}</text>')
 
-    for (title, sub, kzsub, dsub, start, end), cy in zip(rows_data, row_centers):
+    for (title, sub, kzsub, start, end), cy in zip(rows_data, row_centers):
         fy = cy - fh / 2
         kzy = cy - kzh / 2
         dy = cy - dh / 2
         parts.append(vu.svg_box(fx, fy, fw, fh, title, sub, fill=SITE["fill"], stroke=SITE["stroke"]))
         parts.append(vu.svg_arrow(fx + fw, cy, kzx, cy))
-        parts.append(vu.svg_box(kzx, kzy, kzw, kzh, "KulturelleZuordnung", kzsub,
+        parts.append(vu.svg_box(kzx, kzy, kzw, kzh, c("KulturelleZuordnung"), kzsub,
                                  fill=ZUORDNUNG["fill"], stroke=ZUORDNUNG["stroke"]))
         # branch to shared Kulturgruppe
         parts.append(vu.svg_arrow(kzx + kzw, cy - 8, kgcx - kg_r * 0.85, kg_cy - (kg_cy - cy) * 0.35 - 8))
@@ -71,23 +80,25 @@ def build() -> list[str]:
         parts.append(f'<rect x="{dx:.1f}" y="{dy:.1f}" width="{dw:.1f}" height="{dh:.1f}" rx="10" '
                      f'fill="{DATING["fill"]}" stroke="{DATING["stroke"]}" stroke-width="1.4"/>')
         parts.append(f'<text x="{dx + 22:.1f}" y="{dy + 28:.1f}" font-family="Fira Sans" font-weight="500" '
-                     f'font-size="14.5" fill="{vu.TEXT_DARK}">Datierung \u00b7 {sub}</text>')
+                     f'font-size="14.5" fill="{vu.TEXT_DARK}">{c("Datierung")} \u00b7 {sub}</text>')
         parts.append(f'<text x="{dx + 22:.1f}" y="{dy + 56:.1f}" font-family="Fira Sans" font-size="13.5" '
-                     f'fill="{vu.TEXT_DARK}">datierungStart = {start}</text>')
+                     f'fill="{vu.TEXT_DARK}">{p("datierungStart")} = {start}</text>')
         parts.append(f'<text x="{dx + 22:.1f}" y="{dy + 78:.1f}" font-family="Fira Sans" font-size="13.5" '
-                     f'fill="{vu.TEXT_DARK}">datierungEnd = {end}</text>')
+                     f'fill="{vu.TEXT_DARK}">{p("datierungEnd")} = {end}</text>')
 
     parts.append(vu.svg_legend(60, 900, [
-        ("double ring = shared (fan-in): 1 Kulturgruppe for all three sites", CULTURE),
-        ("box = own node per Fundstelle (fan-out): 3 individual Datierung nodes", DATING),
+        (tt(f"Doppelring = geteilt (Fan-in): 1 {c('Kulturgruppe')} f\u00fcr alle drei Fundstellen",
+            f"double ring = shared (fan-in): 1 {c('Kulturgruppe')} for all three sites"), CULTURE),
+        (tt(f"Kasten = eigener Knoten pro {c('Fundstelle')} (Fan-out): 3 individuelle {c('Datierung')}-Knoten",
+            f"box = own node per {c('Fundstelle')} (fan-out): 3 individual {c('Datierung')} nodes"), DATING),
     ], columns=2, col_w=820))
 
     parts.append(vu.svg_close())
-    return vu.write_figure(OUT, "dating-entities", "\n".join(parts), zoom=1.5)
+    return vu.write_figure(OUT, f"dating-entities.{lang}", "\n".join(parts), zoom=1.5)
 
 
 def main() -> list[str]:
-    return build()
+    return build("de") + build("en")
 
 
 if __name__ == "__main__":

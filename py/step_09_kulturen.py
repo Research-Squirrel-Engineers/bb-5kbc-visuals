@@ -12,7 +12,11 @@ structural/modelling figure, not a statistics chart: the one real number
 it carries (9 distinct values across the 540-row CSV) is a single
 grounding fact, not the figure's subject.
 
-Writes: kulturen.svg / .png
+Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
+translation convention. "FBG"/"SBK"/"SBK?" are real culture values,
+never translated.
+
+Writes: kulturen.de.svg/.png, kulturen.en.svg/.png
 Run standalone: ``python py/step_09_kulturen.py``
 """
 
@@ -28,7 +32,7 @@ U_STROKE = vu.UNCERTAIN_STROKE
 U_FILL = vu.UNCERTAIN_FILL
 
 
-def _uml_box(x, y, w, h):
+def _uml_box(x, y, w, h, title, subtitle):
     parts = [f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="10" '
              f'fill="{CULTURE["fill"]}" stroke="{CULTURE["stroke"]}" stroke-width="1.8"/>']
     cx = x + w / 2
@@ -38,9 +42,9 @@ def _uml_box(x, y, w, h):
                  f'\u00abcrm:E4_Period\u00bb</text>')
     ty = sy + 30
     parts.append(f'<text x="{cx:.1f}" y="{ty:.1f}" text-anchor="middle" font-family="Fira Sans" '
-                 f'font-weight="500" font-size="22" fill="{vu.TEXT_DARK}">Kulturgruppe</text>')
+                 f'font-weight="500" font-size="22" fill="{vu.TEXT_DARK}">{vu.xml_escape(title)}</text>')
     parts.append(f'<text x="{cx:.1f}" y="{ty + 23:.1f}" text-anchor="middle" font-family="Fira Sans" '
-                 f'font-size="13.5" fill="{vu.TEXT_MUTED}">kultur_{{hash}} \u00b7 shared / deduplicated (Regel 3)</text>')
+                 f'font-size="13.5" fill="{vu.TEXT_MUTED}">{vu.xml_escape(subtitle)}</text>')
     divider_y = ty + 42
     parts.append(f'<line x1="{x:.1f}" y1="{divider_y:.1f}" x2="{x + w:.1f}" y2="{divider_y:.1f}" '
                  f'stroke="{CULTURE["stroke"]}" stroke-width="1.2"/>')
@@ -58,22 +62,32 @@ def _uml_box(x, y, w, h):
     return "\n".join(parts)
 
 
-def build() -> list[str]:
+def build(lang: str = "en") -> list[str]:
+    c = lambda n: vu.cls(n, lang)
+    tt = lambda de, en: vu.t(lang, de, en)
+    shared = tt("geteilt", "shared")
+
     parts = [vu.svg_open("How Kulturgruppe itself is modelled: a shared crm:E4_Period concept node")]
 
     # -- left: UML attribute box -----------------------------------------------
     ux, uy, uw, uh = 90, 60, 580, 380
-    parts.append(_uml_box(ux, uy, uw, uh))
+    parts.append(_uml_box(ux, uy, uw, uh, c("Kulturgruppe"),
+                           f"kultur_{{hash}} \u00b7 {shared} / {tt('dedupliziert', 'deduplicated')} (Regel 3)"))
 
     # -- right: how the node comes to exist -------------------------------------
     nx, ny, nw, nh = 710, 60, 880, 380
-    parts.append(vu.svg_dashed_container(nx, ny, nw, nh, "How a Kulturgruppe node is created"))
-    para1 = [
-        "Regel 2/3: every distinct string in the CSV's kultur column becomes exactly",
-        "one node. The URI's hash is the first 8 characters of an MD5 digest over the",
-        "value (UTF-8) \u2014 deterministic, so the same string always resolves to the",
-        "same node, and umlauts never collide.",
-    ]
+    parts.append(vu.svg_dashed_container(nx, ny, nw, nh,
+                                          tt(f"Wie ein {c('Kulturgruppe')}-Knoten entsteht",
+                                             f"How a {c('Kulturgruppe')} node is created")))
+    para1 = tt(
+        ["Regel 2/3: jeder distinkte String in der kultur-Spalte der CSV wird zu",
+         "genau einem Knoten. Der Hash in der URI sind die ersten 8 Zeichen eines",
+         "MD5-Digests \u00fcber den Wert (UTF-8) \u2014 deterministisch, derselbe String",
+         "f\u00fchrt immer zum selben Knoten, Umlaute kollidieren nie."],
+        ["Regel 2/3: every distinct string in the CSV's kultur column becomes exactly",
+         "one node. The URI's hash is the first 8 characters of an MD5 digest over the",
+         "value (UTF-8) \u2014 deterministic, so the same string always resolves to the",
+         "same node, and umlauts never collide."])
     ty = ny + 54
     for line in para1:
         parts.append(f'<text x="{nx + 26:.1f}" y="{ty:.1f}" font-family="Fira Sans" font-size="13.5" '
@@ -83,12 +97,15 @@ def build() -> list[str]:
     parts.append(f'<line x1="{nx + 20:.1f}" y1="{ty:.1f}" x2="{nx + nw - 20:.1f}" y2="{ty:.1f}" '
                  f'stroke="#dedcd4" stroke-width="1"/>')
     ty += 34
-    para2 = [
-        "Grounded in the real data: across the 540-row fst_wgs84.csv, the kultur",
-        "column takes 9 distinct values \u2014 9 Kulturgruppe nodes carry all 540",
-        "Fundstelle-to-culture assignments (verified by Counter() over the column,",
-        "not estimated).",
-    ]
+    para2 = tt(
+        ["Mit echten Daten unterlegt: in der 540-zeiligen fst_wgs84.csv nimmt die",
+         f"kultur-Spalte 9 distinkte Werte an \u2014 9 {c('Kulturgruppe')}-Knoten tragen alle 540",
+         f"{c('Fundstelle')}-zu-Kultur-Zuordnungen (per Counter() \u00fcber die Spalte verifiziert,",
+         "nicht gesch\u00e4tzt)."],
+        ["Grounded in the real data: across the 540-row fst_wgs84.csv, the kultur",
+         f"column takes 9 distinct values \u2014 9 {c('Kulturgruppe')} nodes carry all 540",
+         f"{c('Fundstelle')}-to-culture assignments (verified by Counter() over the column,",
+         "not estimated)."])
     for line in para2:
         parts.append(f'<text x="{nx + 26:.1f}" y="{ty:.1f}" font-family="Fira Sans" font-size="13.5" '
                      f'fill="{vu.TEXT_DARK}">{vu.xml_escape(line)}</text>')
@@ -104,27 +121,34 @@ def build() -> list[str]:
     labels = ["site_12", "site_57", "site_101", "site_205"]
     for cy, lbl in zip(centers, labels):
         cy0 = cy - chip_h / 2
-        parts.append(vu.svg_box(90, cy0, chip_w, chip_h, "Fundstelle", lbl,
+        parts.append(vu.svg_box(90, cy0, chip_w, chip_h, c("Fundstelle"), lbl,
                                  fill=SITE["fill"], stroke=SITE["stroke"]))
         parts.append(vu.svg_arrow(90 + chip_w, cy, kgcx - kg_r * 0.9, kg_cy - (kg_cy - cy) * 0.5))
+    intro1 = tt(f"Jede {c('Fundstelle')} mit dieser Kultur h\u00e4ngt \u00fcber eine eigene",
+                f"Every {c('Fundstelle')} with this culture links in via its own")
+    intro2 = tt(f"{c('KulturelleZuordnung')} (08) daran \u2014 alle laufen in diesem einen geteilten Knoten zusammen.",
+                f"{c('KulturelleZuordnung')} (08) \u2014 all of them fan in to this one shared node.")
     parts.append(f'<text x="90" y="{centers[0] - 70:.1f}" font-family="Fira Sans" font-size="13" '
-                 f'fill="{vu.TEXT_MUTED}">Every Fundstelle with this culture links in via its own '
-                 f'KulturelleZuordnung (08) \u2014</text>')
+                 f'fill="{vu.TEXT_MUTED}">{intro1}</text>')
     parts.append(f'<text x="90" y="{centers[0] - 50:.1f}" font-family="Fira Sans" font-size="13" '
-                 f'fill="{vu.TEXT_MUTED}">all of them fan in to this one shared node.</text>')
+                 f'fill="{vu.TEXT_MUTED}">{intro2}</text>')
 
     bx, by = kgcx + kg_r + 90, kg_cy
     parts.append(vu.svg_arrow(kgcx + kg_r, kg_cy, bx - 30, by))
     parts.append(vu.svg_authority_badge(bx, by, "wd", r=30, fill=AUTH["fill"], stroke=AUTH["stroke"]))
+    one_qid_label = tt("eine Wikidata-QID", "one Wikidata QID")
+    per_site_label = tt("f\u00fcr jede FBG-Fundstelle", "for every FBG site")
     parts.append(f'<text x="{bx:.1f}" y="{by + 60:.1f}" text-anchor="middle" font-family="Fira Sans" '
-                 f'font-size="12.5" fill="{vu.TEXT_MUTED}">one Wikidata QID</text>')
+                 f'font-size="12.5" fill="{vu.TEXT_MUTED}">{one_qid_label}</text>')
     parts.append(f'<text x="{bx:.1f}" y="{by + 78:.1f}" text-anchor="middle" font-family="Fira Sans" '
-                 f'font-size="12.5" fill="{vu.TEXT_MUTED}">for every FBG site</text>')
+                 f'font-size="12.5" fill="{vu.TEXT_MUTED}">{per_site_label}</text>')
 
     # -- bottom-right: "?" variant reminder --------------------------------------
     rx, ry_, rw, rh = 1050, 480, 580, 420
     parts.append(vu.svg_dashed_container(rx, ry_, rw, rh,
-                                          "Reminder \u2014 the \u201c?\u201d variant is a separate node, same QID"))
+                                          tt("Erinnerung \u2014 die \u201e?\u201c-Variante ist ein eigener Knoten, "
+                                             "dieselbe QID",
+                                             "Reminder \u2014 the \u201c?\u201d variant is a separate node, same QID")))
     n1cx, n1cy, nr = rx + 130, ry_ + 100, 55
     n2cx, n2cy = rx + 130, ry_ + 280
     parts.append(vu.svg_hash_node(n1cx, n1cy, nr, "\u201eSBK\u201c", "",
@@ -135,17 +159,19 @@ def build() -> list[str]:
     parts.append(vu.svg_arrow(n1cx + nr, n1cy, bqx - 28, bqy - 6))
     parts.append(vu.svg_arrow(n2cx + nr, n2cy, bqx - 28, bqy + 6))
     parts.append(vu.svg_authority_badge(bqx, bqy, "wd", r=28, fill=AUTH["fill"], stroke=AUTH["stroke"]))
+    same_qid_note = tt("Dieselbe QID, eigener Knoten \u2014 ausf\u00fchrliche Details zur Ankerstelle in",
+                        "Same QID, separate node \u2014 full anchor-point detail in")
     parts.append(f'<text x="{rx + 26:.1f}" y="{ry_ + 360:.1f}" font-family="Fira Sans" font-size="12.5" '
-                 f'fill="{vu.TEXT_MUTED}">Same QID, separate node \u2014 full anchor-point detail in </text>')
+                 f'fill="{vu.TEXT_MUTED}">{same_qid_note} </text>')
     parts.append(f'<text x="{rx + 26:.1f}" y="{ry_ + 382:.1f}" font-family="Fira Sans" font-weight="500" '
                  f'font-size="12.5" fill="{vu.TEXT_DARK}">05-uncertainty-markers.</text>')
 
     parts.append(vu.svg_close())
-    return vu.write_figure(OUT, "kulturen", "\n".join(parts), zoom=1.5)
+    return vu.write_figure(OUT, f"kulturen.{lang}", "\n".join(parts), zoom=1.5)
 
 
 def main() -> list[str]:
-    return build()
+    return build("de") + build("en")
 
 
 if __name__ == "__main__":
