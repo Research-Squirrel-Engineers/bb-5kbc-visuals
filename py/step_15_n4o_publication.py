@@ -44,7 +44,6 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_box(mx, bundle_y, mw, 90, "bb5kbc-bundle.ttl", tt("einmal geholt, hier archiviert",
                                                                             "fetched once, archived here"),
                              fill=INPUT["fill"], stroke=INPUT["stroke"]))
-
     # -- middle: the generated build (n4o-kg-profile @v1) ------------------------
     px, pw = 460, 380
     parts.append(vu.svg_dashed_container(px - 20, 60, pw + 40, 780,
@@ -58,10 +57,16 @@ def build(lang: str = "en") -> list[str]:
                                         "rdfs:subClassOf to CIDOC CRM, loadable alone")),
     ]
     oy = 100
+    rail_x = mx + mw + 60
     for name, desc in outs:
         parts.append(vu.svg_box(px, oy, pw, 76, name, desc, fill=LOD["fill"], stroke=LOD["stroke"]))
-        parts.append(vu.svg_arrow(mx + mw, my + mh / 2 - 20, px, oy + 38))
+        parts.append(vu.svg_arrow_elbow_v(mx + mw, my + mh / 2, px, oy + 38, rail_x))
         oy += 100
+
+    # bb5kbc-bundle.ttl feeds the same build -- lands on the first output
+    # row (dist/n4o-collection.ttl), on the same rail so it reads as part
+    # of the same bus rather than a second, crossing fan.
+    parts.append(vu.svg_arrow_elbow_v(mx + mw, bundle_y + 45, px, 100 + 38, rail_x + 20))
 
     docs_y = oy + 10
     parts.append(vu.svg_box(px, docs_y, pw, 76, "docs/", tt("GitHub Pages: Landing-Page, Query-Seite, .rq-Dateien",

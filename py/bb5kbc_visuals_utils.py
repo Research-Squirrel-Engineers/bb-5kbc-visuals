@@ -472,6 +472,43 @@ def svg_arrow(x1: float, y1: float, x2: float, y2: float, *, stroke: str = ARROW
             f'stroke="{stroke}" stroke-width="1.6"{dash} marker-end="url(#{marker})"/>')
 
 
+def svg_arrow_elbow(x1: float, y1: float, x2: float, y2: float, rail_y: float,
+                     *, stroke: str = ARROW_STROKE, dashed: bool = False,
+                     marker: str = "arrow", label: str = "", label_color: str = TEXT_DARK,
+                     font_size: int = 11) -> str:
+    """Right-angle routed connector: down/up from the source to a shared
+    horizontal ``rail_y``, across, then down/up into the target. For
+    long-distance connections that would otherwise cut diagonally through
+    unrelated boxes -- give each such connection its own ``rail_y`` so
+    parallel long-haul lines stack as distinct horizontal tracks instead
+    of crossing. An optional ``label`` sits centred on the horizontal
+    (rail) segment, the part of the path with the most free space."""
+    dash = ' stroke-dasharray="6 4"' if dashed else ""
+    path = (f'M {x1:.1f} {y1:.1f} L {x1:.1f} {rail_y:.1f} '
+            f'L {x2:.1f} {rail_y:.1f} L {x2:.1f} {y2:.1f}')
+    parts = [f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="1.6"{dash} '
+             f'marker-end="url(#{marker})"/>']
+    if label:
+        lx = (x1 + x2) / 2
+        parts.append(f'<text x="{lx:.1f}" y="{rail_y - 8:.1f}" text-anchor="middle" '
+                     f'font-family="Fira Sans" font-weight="500" font-size="{font_size}" '
+                     f'fill="{label_color}">{xml_escape(label)}</text>')
+    return "\n".join(parts)
+
+
+def svg_arrow_elbow_v(x1: float, y1: float, x2: float, y2: float, rail_x: float,
+                       *, stroke: str = ARROW_STROKE, dashed: bool = False,
+                       marker: str = "arrow") -> str:
+    """Like :func:`svg_arrow_elbow` but routed via a shared *vertical*
+    rail (horizontal, then vertical, then horizontal) -- for skirting
+    around the side of a container instead of under a whole diagram."""
+    dash = ' stroke-dasharray="6 4"' if dashed else ""
+    path = (f'M {x1:.1f} {y1:.1f} L {rail_x:.1f} {y1:.1f} '
+            f'L {rail_x:.1f} {y2:.1f} L {x2:.1f} {y2:.1f}')
+    return (f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="1.6"{dash} '
+            f'marker-end="url(#{marker})"/>')
+
+
 def svg_arrow_labeled(x1: float, y1: float, x2: float, y2: float, label: str,
                        *, stroke: str = ARROW_STROKE, label_color: str = TEXT_DARK,
                        above: bool = True, offset: float | None = None,

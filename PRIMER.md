@@ -151,6 +151,11 @@ Eigenschaften, an denen sich ein fertiges Diagramm messen lassen muss:
 | **Karte: schematischer Scatterplot, keine projizierte Karte** | **Revision 2026-09-10f:** ohne Basiskarten-/Grenzdaten im Repo wäre eine "echte" Karte (mit Küstenlinien, Grenzen) Fabrikation. Stattdessen: echte WGS84-Koordinaten aller 540 Fundstellen, äquirechteckig mit cos(mittlere Breite)-Korrektur geplottet, explizit als schematisch beschriftet | 2026-09-10f |
 | **Statistik-Infografik: echte Datenwerte statt Paper-Prosa** | **Revision 2026-09-10f:** regionale Verteilung aus `fst_wgs84.csv` direkt berechnet (nicht aus dem Paper-Fließtext übernommen) -- ergab 362/178 statt 350/178 (Land-Spalte hat 12 leere Zellen, die erst beim LOD-Build auf Deutschland zurückfallen) und 10 statt 9 polnische Wojewodschaften (Woj. Pomorskie, 3 Fundstellen, real vorhanden). Beide Diskrepanzen zum Paper-Text in der Grafik selbst benannt, nicht still "korrigiert" | 2026-09-10f |
 
+| **Rechtwinklige Linienführung für weite Verbindungen** | **Revision 2026-09-11:** neue Utils-Funktionen `svg_arrow_elbow` (horizontale Schiene) und `svg_arrow_elbow_v` (vertikale Schiene) -- für Verbindungen, die sonst diagonal durch fremde Boxen/Container liefen. Erste Anwendung in 10 (zwei Verbindungen) und 15 (Fan-out von metadata.yaml als "Bus" statt Diagonalen-Fächer) | 2026-09-11 |
+| **Redundante Pfeile durch Text ersetzen statt umrouten** | **Revision 2026-09-11:** in 12 erzeugte eine gestrichelte `wasDerivedFrom`-Linie eine Kreuzung, obwohl der Fakt bereits als Text ("beide: wasDerivedFrom → fst_wgs84.csv") vorhanden war -- Linie ersatzlos gestrichen statt umgeroutet. Nicht jede Beziehung braucht einen gezeichneten Pfeil, wenn ein Satz genügt und das Zeichnen nur Unordnung erzeugt | 2026-09-11 |
+| **18: echter Baselayer aus Natural-Earth-Daten** | **Revision 2026-09-11:** drei neue Dateien (`admin_boundaries.json`, `country_boundaries.json`, `major_cities.csv`), einmalig von `raw.githubusercontent.com/nvkelso/natural-earth-vector` geladen, gefiltert auf den relevanten Ausschnitt, eingecheckt. Zweite dokumentierte Ausnahme vom "kein Runtime-Parsing"-Prinzip (neben `site_coordinates.csv`) -- aus demselben Grund: echte Grenz-/Stadtgeometrie lässt sich nicht von Hand als SVG-Boxen nachbauen | 2026-09-11 |
+| **Kein Hillshade** | **Revision 2026-09-11:** bewusst nicht umgesetzt. Echtes Relief-Shading braucht ein Höhenmodell (SRTM/GMTED) und eine Raster-Rendering-Pipeline, die dieses Repo nicht hat; Natural Earths eigene Shaded-Relief-Raster sind selbst bei grober Auflösung zu groß (zig bis hunderte MB), um sie hier sinnvoll einzubinden. Ein erfundenes Relief ohne echte Höhendaten wäre Fabrikation -- die Grafik sagt das stattdessen direkt und verweist auf ein echtes GIS-Tool für diesen speziellen Layer | 2026-09-11 |
+
 ### A5 Was in welchem Chat hochgeladen wird
 
 ```
@@ -163,6 +168,21 @@ Nicht hochladen: `fonts/*.ttf`, `__pycache__/`, `.git/`.
 ### A6 IRI-Landkarte
 
 Entfällt -- dieses Repo publiziert kein eigenes RDF.
+
+**Befund 2026-09-11 (Florian: committed, erste Feinjustierung):** "erstmal
+gut ein paar design buggs sind überall drin, aber dazu später" -- generelles
+Signal zurückgestellt (keine Einzelpunkte genannt, also nichts vorsorglich
+geändert), aber zwei konkrete Punkte sofort adressiert: (1) in 10/12/15
+laufen Linien "durcheinander" -- diagonale Verbindungen kreuzen durch
+fremde Boxen/Container; (2) 18 (Karte) braucht dringend einen "Baselayer",
+konkret genannt: Landesgrenzen, Großstädte, Hillshade. Für (2) wurden
+reale Natural-Earth-Daten (public domain) über GitHub geladen (Grenzen,
+Großstädte); Hillshade wurde bewusst NICHT nachgebaut, da dafür ein
+echtes Geländemodell (SRTM/GMTED) und eine Raster-Rendering-Pipeline
+nötig wären, die dieses SVG-basierte Repo nicht hat -- ein erfundenes
+Relief wäre genau die Art von vorgetäuschter kartografischer Präzision,
+die dieses Projekt sonst vermeidet. Stattdessen ein ehrlicher Hinweis
+direkt in der Grafik.
 
 ## Teil B -- Schrittübersicht
 
@@ -196,6 +216,9 @@ Entfällt -- dieses Repo publiziert kein eigenes RDF.
 | S25 | 17 Statistik-Infografik (echte Zahlen) | `step_17_stats_infographic.py` | S17 | erledigt 2026-09-10f |
 | S26 | 18 Karte (echte WGS84-Koordinaten) | `step_18_site_map.py` | S17 | erledigt 2026-09-10f |
 | S27 | Bugfix: Python-3.10-Backslash erneut in S23 gefunden | `step_15_n4o_publication.py` | S18--S26 | erledigt 2026-09-10f |
+| S28 | Linienführung in 10/12/15 überarbeitet | `bb5kbc_visuals_utils.py`, `step_10/12/15_*.py` | S27 | erledigt 2026-09-11 |
+| S29 | 18: echter Baselayer (Grenzen, Großstädte); kein Hillshade | `step_18_site_map.py` + 3 neue Geodaten-Dateien | S28 | erledigt 2026-09-11 |
+| S30 | Bugfix: Python-3.10-Backslash erneut in S29 gefunden | `step_18_site_map.py` | S29 | erledigt 2026-09-11 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -542,12 +565,129 @@ print(hits or 'OK: keine Backslashes in f-string-Ausdruecken')
 **Abnahme:** `python main.py` läuft auf Python 3.10 durch (von Florian zu
 bestätigen).
 
+### S28 -- Linienführung in 10/12/15 überarbeitet
+
+**Ziel:** Florians Rückmeldung umsetzen, dass in den Grafiken 10, 12, 15
+Linien "durcheinanderlaufen".
+
+**Substanz:** zwei neue generische Verbinder in den Utils:
+`svg_arrow_elbow(x1,y1,x2,y2,rail_y)` routet rechtwinklig über eine
+gemeinsame horizontale Schiene (runter/rauf -- quer -- rauf/runter),
+`svg_arrow_elbow_v` dasselbe über eine vertikale Schiene. Beide nehmen
+optional ein Label, das auf dem geraden (Schienen-)Teilstück sitzt, wo am
+meisten Platz ist.
+
+**10 (Pipeline-Architektur):** zwei Verbindungen liefen komplett diagonal
+durch fremde Container: `bb5kbc-ontology.ttl → bb5kbc_lod_pipeline.py`
+schnitt quer durch die CSV-Anreicherungs-Box, `csv-mapping.md →
+validate_lod.py` querte praktisch die gesamte Grafik einschließlich der
+LOD-Transformation-Box. Beide auf Elbow-Routing umgestellt: die
+Ontologie-Verbindung nutzt eine vertikale Schiene knapp links vom
+LOD-Container (verläuft dadurch durch die Lücke zwischen den
+Anreicherungs-Stages, nicht durch eine Box); die csv-mapping.md-Verbindung
+nutzt eine horizontale Schiene unterhalb aller Boxen (dort ist durchgehend
+freier Raum bis zur Legende).
+
+**12 (PROV-Verkettung):** hier war die Ursache keine fehlende
+Routing-Logik, sondern eine schlicht überflüssige Linie: die gestrichelte
+`wasDerivedFrom`-Verbindung von den Output-Dateien zurück zu "Eingaben"
+kreuzte die `wasInformedBy`-Linie und die `wasGeneratedBy`-Pfeile, obwohl
+derselbe Fakt bereits als Text unter den Boxen stand ("beide:
+wasDerivedFrom → fst_wgs84.csv"). Linie ersatzlos entfernt, Text um einen
+Hinweis ergänzt, warum kein Pfeil gezeichnet ist.
+
+**15 (N4O-Publikation):** vier Diagonalen von `metadata.yaml` zu den
+`dist/*`-Zieldateien liefen als Fächer zusammen -- nicht falsch, aber
+unruhig. Auf `svg_arrow_elbow_v` mit gemeinsamer Schiene umgestellt (ein
+klarer "Bus" statt vier einzelner Diagonalen). Dabei auch bemerkt:
+`bb5kbc-bundle.ttl` hatte bisher gar keine Verbindung zum Build-Prozess --
+eine echte inhaltliche Lücke, nicht nur ein Linien-Problem. Ergänzt, auf
+einer eigenen, parallel liegenden Schiene, damit sie nicht mit dem
+metadata.yaml-Bus verschmilzt.
+
+**Abnahme:** alle drei Grafiken (DE+EN) neu gerendert und visuell
+geprüft -- keine Linie kreuzt mehr eine fremde Box; verbleibende
+Kreuzungen sind Linie-mit-Linie an höchstens einem Punkt, nicht
+Linie-durch-Box.
+
+### S29 -- 18: echter Baselayer; kein Hillshade
+
+**Ziel:** Florians Rückmeldung umsetzen: "18 benötigt dringend einen
+'Baselayer' vllt eine Kombination aus Landesgrenzen, großen Städten und
+Hillshade?"
+
+**Substanz:** drei neue Datendateien, alle public domain (Natural Earth),
+einmalig von `raw.githubusercontent.com/nvkelso/natural-earth-vector`
+geladen (siehe `data/raw/README.md` für Details und Herkunfts-Commit):
+
+- `admin_boundaries.json` -- Brandenburg + 4 Nachbar-Bundesländer, 10
+  polnische Wojewodschaften (aus `ne_10m_admin_1_states_provinces`,
+  gefiltert auf die Regionen, die im Datensatz tatsächlich vorkommen,
+  Koordinaten auf 3 Nachkommastellen gerundet).
+- `country_boundaries.json` -- Deutschland, Polen + 3 Nachbarländer für
+  Kontext (aus `ne_50m_admin_0_countries`).
+- `major_cities.csv` -- 23 Großstädte im Kartenausschnitt (aus
+  `ne_10m_populated_places`, nach Bevölkerung sortiert, nah beieinander
+  liegende Ballungsraum-Duplikate unterdrückt; Potsdam von Hand wieder
+  ergänzt, da Brandenburgs eigene Hauptstadt trotz Nähe zu Berlin
+  inhaltlich relevant für diesen Datensatz ist).
+
+`step_18_site_map.py` liest jetzt vier Dateien zur Baubuildzeit
+(`site_coordinates.csv` + die drei neuen) -- zweite dokumentierte
+Ausnahme vom "kein Runtime-Parsing"-Prinzip, siehe A4.
+
+**Kein Hillshade.** Bewusste Entscheidung, nicht umgesetzt: echtes
+Relief-Shading braucht ein Höhenmodell (SRTM/GMTED oder ähnlich) und eine
+Raster-Rendering-Pipeline; beides existiert in diesem SVG-basierten Repo
+nicht. Eine Suche nach einer leichtgewichtigen Elevation-Quelle auf
+GitHub blieb erfolglos -- verfügbare Optionen sind entweder Raster-Dateien
+(GeoTIFF, zu groß für dieses Repo) oder API-Dienste außerhalb der
+erlaubten Netzwerk-Domains. Ein erfundenes Relief ohne echte Höhendaten
+wäre exakt die Art von vorgetäuschter kartografischer Präzision, die
+dieses Projekt sonst konsequent vermeidet -- die Grafik benennt die
+Lücke stattdessen direkt in ihrem eigenen Text.
+
+**Erledigt 2026-09-11:** zwei Layout-Korrekturen nach dem ersten Rendern:
+(1) ein Datenpunkt lag exakt auf der Nordpfeil-Position (Zufall der realen
+Daten, nicht geplant) -- Nordpfeil in die leere obere linke Ecke verschoben;
+(2) das Potsdam-Label überlappte das Berlin-Label (die Städte liegen real
+nur ~25 km auseinander) -- Potsdam bekommt als einzige Stadt eine
+Sonderbehandlung (Label unten-links statt rechts vom Punkt).
+
+**Abnahme:** `python main.py --only 18`, 4 Dateien; DE+EN visuell
+geprüft -- erkennbare Grenzlinien, lesbare Stadt-Labels, keine
+Überlappungen, Ausdehnungs- und Quellenangabe vorhanden.
+
+### S30 -- Bugfix: Python-3.10-Backslash erneut gefunden (in S29)
+
+**Ziel:** wie S27, diesmal in der neuen `step_18_site_map.py`.
+
+**Substanz:** derselbe Scan wie in S27 (siehe dortiger Einzeiler) über
+alle Dateien laufen lassen -- Fund: eine Stelle
+(`{tt("Gro\u00dfstadt", "major city")}` direkt im f-string-Ausdruck).
+Gleiches Muster, gleicher Fix: Ausdruck vorher in `city_label` gezogen.
+
+**Erledigt 2026-09-11:** nach dem Fix erneuter Scan über alle 19+1
+Dateien -- 0 Treffer. Diese Art Fehler ist jetzt dreimal aufgetreten
+(S16, S27, S30), immer in neu hinzugekommenem Code, nie in Code, der
+schon einmal gescannt wurde. Das spricht dafür, den Scan tatsächlich als
+letzten Schritt jeder Session einzubauen, nicht nur als Reaktion auf
+einen Fehlerbericht -- siehe Teil D, falls das nicht zuverlässig genug
+passiert.
+
+**Abnahme:** `python main.py`, alle 19 Schritte, keine Fehler; zweimal
+hintereinander → `git status` sauber.
+
 ## Teil D -- Offene Punkte
 
-Aktuell leer -- alle Punkte aus der letzten Revision sind mit S18--S26
-umgesetzt (siehe Teil B/C). Kandidaten für eine künftige Session kommen
-erst wieder durch ein neues Gespräch mit Florian; nichts wird hier
-vorsorglich ergänzt, ohne dass er danach gefragt hat.
+- **AST-Scan nicht automatisiert.** Dreimal (S16, S27, S30) denselben
+  Python-3.10-Fehlertyp gefunden, jedes Mal von Hand nachgetragen statt
+  automatisch geprüft. Ein `pre-commit`-Hook oder ein Schritt in
+  `main.py --strict` wäre der nächste sinnvolle Schritt, ist aber noch
+  nicht umgesetzt.
+- **"Ein paar Design-Bugs sind überall drin"** (Florians eigene Worte,
+  2026-09-11) -- ohne Einzelpunkte genannt. Nichts vorsorglich geändert;
+  wartet auf konkrete Rückmeldung, welche Grafiken/Stellen gemeint sind.
 
-Wenn ein neuer Punkt ansteht: nach S27 einsortieren (S28, S29, …), hier
+Wenn ein neuer Punkt ansteht: nach S30 einsortieren (S31, S32, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

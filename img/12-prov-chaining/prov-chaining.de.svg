@@ -43,6 +43,5 @@
 <line x1="860.0" y1="525.0" x2="820.0" y2="660.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <text x="890.9" y="607.6" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">wasGeneratedBy</text>
 <line x1="1080.0" y1="525.0" x2="1250.0" y2="660.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="820.0" y1="660.0" x2="820.0" y2="208.0" stroke="#5f5e5a" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
-<text x="630.0" y="766.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">beide: wasDerivedFrom → fst_wgs84.csv</text>
+<text x="630.0" y="766.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">beide: wasDerivedFrom → fst_wgs84.csv (Pfeil weggelassen, um Kreuzungen zu vermeiden)</text>
 </svg>

@@ -87,8 +87,8 @@ def build(lang: str = "en") -> list[str]:
     parts.append(box(*shapes, dw, sh, tt("SHACL-Shapes-Generierung", "SHACL shape generation"),
                       tt("aus der Ontologie", "from the ontology"), "lod"))
     parts.append(box(*shacl_val, dw, sh, "pyshacl.validate()", "", "lod"))
-    parts.append(vu.svg_arrow(csv_final[0] + cw, csv_final[1] + csh / 2, dx, build_[1] + sh / 2))
-    parts.append(vu.svg_arrow(onto[0] + aw, onto[1] + ah / 2, dx, build_[1] + sh + 20))
+    parts.append(vu.svg_arrow(csv_final[0] + cw, csv_final[1] + csh / 2 - 10, dx, build_[1] + sh / 2 - 10))
+    parts.append(vu.svg_arrow_elbow_v(onto[0] + aw, onto[1] + ah / 2, dx, build_[1] + sh / 2 + 10, 950))
     parts.append(vu.svg_arrow(prov_enrich[0] + (cw + 20), prov_enrich[1] + 28, dx, build_[1] + sh + 40,
                                dashed=True, stroke=P["prov"]["stroke"]))
     parts.append(vu.svg_arrow(build_[0] + dw / 2, build_[1] + sh, shapes[0] + dw / 2, shapes[1]))
@@ -122,7 +122,7 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_arrow(bundle_ttl[0] + ew, bundle_ttl[1] + eh / 2, fx, val[1] + 35))
     parts.append(vu.svg_arrow(shacl_rep[0] + ew, shacl_rep[1] + eh / 2, fx, val[1] + 55))
     parts.append(vu.svg_arrow(csv_final[0] + cw, csv_final[1] + csh / 2 + 10, fx, val[1] + 75))
-    parts.append(vu.svg_arrow(map_md[0] + aw, map_md[1] + ah / 2, fx - 40, val[1] + vh + 10))
+    parts.append(vu.svg_arrow_elbow(map_md[0] + aw / 2, map_md[1] + ah, fx + 40, val[1] + vh, 808))
     parts.append(vu.svg_arrow(val[0] + fw / 2, val[1] + vh, report[0] + fw / 2, report[1]))
 
     # -- legend -----------------------------------------------------------------

@@ -120,9 +120,8 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_arrow_labeled(ax + 100, ay + ah, data_ttl[0] + dw2 / 2, data_ttl[1],
                                        "wasGeneratedBy", font_size=11))
     parts.append(vu.svg_arrow(ax + aw - 100, ay + ah, bundle_ttl[0] + dw2 / 2, bundle_ttl[1]))
-    parts.append(vu.svg_arrow(data_ttl[0] + dw2 / 2, data_ttl[1], inputs_box[0] + 60, inputs_box[1] + 78,
-                               dashed=True, stroke=vu.TEXT_MUTED))
-    derived_note = tt("beide: wasDerivedFrom \u2192 fst_wgs84.csv", "both: wasDerivedFrom \u2192 fst_wgs84.csv")
+    derived_note = tt("beide: wasDerivedFrom \u2192 fst_wgs84.csv (Pfeil weggelassen, um Kreuzungen zu vermeiden)",
+                       "both: wasDerivedFrom \u2192 fst_wgs84.csv (arrow omitted to avoid crossing other lines)")
     parts.append(f'<text x="{data_ttl[0]:.1f}" y="{660 + 78 + 28:.1f}" font-family="Fira Sans" font-size="11.5" '
                  f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(derived_note)}</text>')
 
