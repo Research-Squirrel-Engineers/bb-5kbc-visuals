@@ -45,6 +45,15 @@ Each row below is built as four files: `<name>.de.svg`, `<name>.de.png`,
 | 07 | Geo-entities | Admin hierarchy, deduplication, the five external identifiers, location certainty |
 | 08 | Dating-entities | One shared Kulturgruppe, per-site KulturelleZuordnung + Datierung |
 | 09 | Kulturen / Culture groups | How Kulturgruppe itself is modelled (`crm:E4_Period`, dedup, external ID) |
+| 10 | Pipeline architecture | The full pipeline (paper Fig. 4), redrawn in house style |
+| 11 | Literature enrichment | Modus A: the code dictionary as source of truth, four-case logic |
+| 12 | PROV-O chaining | One Activity per run, linked across two pipeline stages |
+| 13 | Validation layers | `validate_lod.py`'s 4+1 sections; one hard SHACL rule vs. warnings |
+| 14 | Inheritance trees | Full CRM/CRMsci chains, 2 to 8 hops deep, compared side by side |
+| 15 | N4O publication | From hand-maintained `metadata.yaml` to the NFDI4Objects Knowledge Graph |
+| 16 | Persistent URIs | What a `w3id.org/bb5kbc` URI resolves to: ontology term vs. data resource |
+| 17 | Stats infographic | 540 sites: dataset scale and the real regional distribution |
+| 18 | Site map | All 540 sites plotted from their real WGS84 coordinates (schematic, not a projected map) |
 
 ## Running it
 
@@ -52,8 +61,8 @@ Each row below is built as four files: `<name>.de.svg`, `<name>.de.png`,
 pip install -r requirements.txt
 python main.py                # all figures, into img/<NN-topic>/*.<lang>.svg + *.<lang>.png
 python main.py --list         # print the step table
-python main.py --only 04      # one figure (both languages)
-python main.py --from 05      # this figure and everything after
+python main.py --only 10      # one figure (both languages)
+python main.py --from 15      # this figure and everything after
 python main.py --dry-run      # print the plan, run nothing
 ```
 

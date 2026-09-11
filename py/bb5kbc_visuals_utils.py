@@ -69,6 +69,15 @@ OUT_DIRS = {
     "07-geo-entities": IMG / "07-geo-entities",
     "08-dating-entities": IMG / "08-dating-entities",
     "09-kulturen": IMG / "09-kulturen",
+    "10-pipeline-architecture": IMG / "10-pipeline-architecture",
+    "11-literature-enrichment": IMG / "11-literature-enrichment",
+    "12-prov-chaining": IMG / "12-prov-chaining",
+    "13-validation-layers": IMG / "13-validation-layers",
+    "14-inheritance-trees": IMG / "14-inheritance-trees",
+    "15-n4o-publication": IMG / "15-n4o-publication",
+    "16-persistent-uris": IMG / "16-persistent-uris",
+    "17-stats-infographic": IMG / "17-stats-infographic",
+    "18-site-map": IMG / "18-site-map",
 }
 
 # --------------------------------------------------------------------------- #

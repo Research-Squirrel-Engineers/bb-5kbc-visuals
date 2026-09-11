@@ -1,0 +1,58 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>From hand-maintained metadata.yaml to the NFDI4Objects Knowledge Graph</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="90.0" y="380.0" width="260.0" height="100.0" rx="10" fill="#e8e8e8" stroke="#666666" stroke-width="2.0"/>
+<text x="220.0" y="422.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">metadata.yaml</text>
+<text x="220.0" y="442.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">einzige Handarbeit</text>
+<rect x="90.0" y="220.0" width="260.0" height="90.0" rx="10" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="220.0" y="257.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc-bundle.ttl</text>
+<text x="220.0" y="277.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">einmal geholt, hier archiviert</text>
+<rect x="440.0" y="60.0" width="420.0" height="780.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="456.0" y="86.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">n4o-kg-profile @v1 (generiert bei jedem Push)</text>
+<rect x="460.0" y="100.0" width="380.0" height="76.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="650.0" y="130.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">dist/n4o-collection.ttl</text>
+<text x="650.0" y="150.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">Registrierungsdatensatz für N4O</text>
+<line x1="350.0" y1="410.0" x2="460.0" y2="138.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="460.0" y="200.0" width="380.0" height="76.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="650.0" y="230.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">dist/metadata.ttl</text>
+<text x="650.0" y="250.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">DCAT + VoID-Statistik + CRM-Alignment</text>
+<line x1="350.0" y1="410.0" x2="460.0" y2="238.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="460.0" y="300.0" width="380.0" height="76.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="650.0" y="330.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">dist/metadata.jsonld</text>
+<text x="650.0" y="350.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">dasselbe als JSON-LD</text>
+<line x1="350.0" y1="410.0" x2="460.0" y2="338.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="460.0" y="400.0" width="380.0" height="76.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="650.0" y="430.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">dist/crm-alignment.ttl</text>
+<text x="650.0" y="450.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">rdfs:subClassOf zu CIDOC CRM, einzeln ladbar</text>
+<line x1="350.0" y1="410.0" x2="460.0" y2="438.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="460.0" y="510.0" width="380.0" height="76.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="650.0" y="540.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">docs/</text>
+<text x="650.0" y="560.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">GitHub Pages: Landing-Page, Query-Seite, .rq-Dateien</text>
+<rect x="460.0" y="620.0" width="380.0" height="160" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
+<text x="650.0" y="648.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14" fill="#2c2c2a">Was der Build prüft</text>
+<text x="480.0" y="674.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">• SHACL: Titel, Publikations-URL, Wikidata-Item, Lizenz + NCMDP</text>
+<text x="480.0" y="701.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">• Jede der 12 Beispiel-Queries liefert Zeilen (0 Zeilen = Build-Fehler)</text>
+<text x="480.0" y="728.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">• Byte-Reproduzierbarkeit: zweiter Lauf = identische Dateien</text>
+<text x="480.0" y="755.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">• SHA-256 je Distribution in dist/metadata.ttl</text>
+<rect x="940.0" y="100" width="350.0" height="150" rx="10" fill="#ffffff" stroke="#000000" stroke-width="2.0"/>
+<text x="1115.0" y="135" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="15" fill="#5f5e5a">Der Graph, in Zahlen</text>
+<text x="1115.0" y="168.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="17" fill="#2c2c2a">28 531 Tripel</text>
+<text x="1115.0" y="196.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="17" fill="#2c2c2a">33 Klassen</text>
+<text x="1115.0" y="224.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="17" fill="#2c2c2a">81 Properties</text>
+<text x="940.0" y="270.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">CRM-Alignment verankert 16 von 21</text>
+<text x="940.0" y="290.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">Domain-Klassen — gemessen aus dem Bundle,</text>
+<text x="940.0" y="310.0" font-family="Fira Sans" font-size="12.5" fill="#5f5e5a">nicht in metadata.yaml restatiert.</text>
+<rect x="940.0" y="370.0" width="350.0" height="160.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="956.0" y="396.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Freshness-Check</text>
+<text x="956.0" y="410.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">SHA-256-Prüfsumme des Bundles warnt,</text>
+<text x="956.0" y="432.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">wenn sich das Bundle ändert, aber</text>
+<text x="956.0" y="454.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">modified:/version: in metadata.yaml</text>
+<text x="956.0" y="476.0" font-family="Fira Sans" font-size="12" fill="#2c2c2a">nicht mitgezogen wurde.</text>
+<rect x="940.0" y="660.0" width="350.0" height="100.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="2.0"/>
+<text x="1115.0" y="702.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">NFDI4Objects Knowledge Graph</text>
+<text x="1115.0" y="722.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">graph.nfdi4objects.net</text>
+<line x1="840.0" y1="690.0" x2="940.0" y2="710.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1115.0" y1="530.0" x2="1115.0" y2="660.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+</svg>

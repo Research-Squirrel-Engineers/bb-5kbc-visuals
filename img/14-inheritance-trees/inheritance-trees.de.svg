@@ -1,0 +1,91 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Four full inheritance chains: from 2 hops (Datierung) to 8 (Entdeckung)</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<text x="60" y="45" font-family="Fira Sans" font-size="13.5" fill="#5f5e5a">Nur die primäre CRM/CRMsci-Kette — die weiteren Eltern (FSL, LADO, PROV-O, OWL-Time) zeigt 04-crm-crosswalk.</text>
+<rect x="90.0" y="824.0" width="300.0" height="56.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="2.2"/>
+<text x="240.0" y="852.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Fundstelle</text>
+<rect x="90.0" y="746.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="240.0" y="774.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E27_Site</text>
+<line x1="240.0" y1="824.0" x2="240.0" y2="802.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="90.0" y="668.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="240.0" y="696.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E26_Physical_Feature</text>
+<line x1="240.0" y1="746.0" x2="240.0" y2="724.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="90.0" y="590.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="240.0" y="618.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E18_Physical_Thing</text>
+<line x1="240.0" y1="668.0" x2="240.0" y2="646.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="90.0" y="512.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="240.0" y="540.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E72_Legal_Object</text>
+<line x1="240.0" y1="590.0" x2="240.0" y2="568.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="90.0" y="434.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="240.0" y="462.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E70_Thing</text>
+<line x1="240.0" y1="512.0" x2="240.0" y2="490.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="90.0" y="356.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="240.0" y="384.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E1_CRM_Entity</text>
+<line x1="240.0" y1="434.0" x2="240.0" y2="412.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="523.0" y="824.0" width="300.0" height="56.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="2.2"/>
+<text x="673.0" y="852.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">GeoreferenzierungsAktivitaet</text>
+<rect x="523.0" y="746.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="673.0" y="774.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E13_Attribute_Assignment</text>
+<line x1="673.0" y1="824.0" x2="673.0" y2="802.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="523.0" y="668.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="673.0" y="696.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E7_Activity</text>
+<line x1="673.0" y1="746.0" x2="673.0" y2="724.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="523.0" y="590.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="673.0" y="618.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E5_Event</text>
+<line x1="673.0" y1="668.0" x2="673.0" y2="646.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="523.0" y="512.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="673.0" y="540.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E4_Period</text>
+<line x1="673.0" y1="590.0" x2="673.0" y2="568.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="523.0" y="434.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="673.0" y="462.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E2_Temporal_Entity</text>
+<line x1="673.0" y1="512.0" x2="673.0" y2="490.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="523.0" y="356.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="673.0" y="384.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E1_CRM_Entity</text>
+<line x1="673.0" y1="434.0" x2="673.0" y2="412.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="824.0" width="300.0" height="56.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="2.2"/>
+<text x="1106.0" y="852.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Entdeckung</text>
+<rect x="956.0" y="746.0" width="300.0" height="56.0" rx="10" fill="#dbeeea" stroke="#1f7a68" stroke-width="1.4"/>
+<text x="1106.0" y="774.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crmsci:S19_Encounter_Event</text>
+<line x1="1106.0" y1="824.0" x2="1106.0" y2="802.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="668.0" width="300.0" height="56.0" rx="10" fill="#dbeeea" stroke="#1f7a68" stroke-width="1.4"/>
+<text x="1106.0" y="696.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crmsci:S4_Observation</text>
+<line x1="1106.0" y1="746.0" x2="1106.0" y2="724.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="590.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1106.0" y="618.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E13_Attribute_Assignment</text>
+<line x1="1106.0" y1="668.0" x2="1106.0" y2="646.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="512.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1106.0" y="540.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E7_Activity</text>
+<line x1="1106.0" y1="590.0" x2="1106.0" y2="568.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="434.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1106.0" y="462.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E5_Event</text>
+<line x1="1106.0" y1="512.0" x2="1106.0" y2="490.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="356.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1106.0" y="384.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E4_Period</text>
+<line x1="1106.0" y1="434.0" x2="1106.0" y2="412.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="278.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1106.0" y="306.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E2_Temporal_Entity</text>
+<line x1="1106.0" y1="356.0" x2="1106.0" y2="334.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="956.0" y="200.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1106.0" y="228.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E1_CRM_Entity</text>
+<line x1="1106.0" y1="278.0" x2="1106.0" y2="256.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1389.0" y="824.0" width="300.0" height="56.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="2.2"/>
+<text x="1539.0" y="852.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Datierung</text>
+<rect x="1389.0" y="746.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1539.0" y="774.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E52_Time-Span</text>
+<line x1="1539.0" y1="824.0" x2="1539.0" y2="802.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1389.0" y="668.0" width="300.0" height="56.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="1539.0" y="696.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E1_CRM_Entity</text>
+<line x1="1539.0" y1="746.0" x2="1539.0" y2="724.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="240.0" y="338.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#9c2860">6 Hops</text>
+<text x="673.0" y="338.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#9c2860">6 Hops</text>
+<text x="1106.0" y="182.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#9c2860">8 Hops</text>
+<text x="1539.0" y="650.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13" fill="#9c2860">2 Hops</text>
+<rect x="60.0" y="924.0" width="16" height="16" rx="3" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
+<text x="84.0" y="932.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">bb5kbc: Klasse (Wurzel)</text>
+<rect x="480.0" y="924.0" width="16" height="16" rx="3" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
+<text x="504.0" y="932.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">CIDOC CRM</text>
+<rect x="900.0" y="924.0" width="16" height="16" rx="3" fill="#dbeeea" stroke="#1f7a68" stroke-width="1.4"/>
+<text x="924.0" y="932.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">CRMsci</text>
+</svg>

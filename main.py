@@ -55,6 +55,15 @@ STEPS: list[tuple[str, str, str]] = [
     ("07", "step_07_geo_entities", "Geo-entities -- admin hierarchy, dedup, five external identifiers"),
     ("08", "step_08_dating_entities", "Dating-entities -- KulturelleZuordnung, shared culture vs. per-site dating"),
     ("09", "step_09_kulturen", "Kulturen -- how Kulturgruppe itself is modelled (crm:E4_Period, dedup)"),
+    ("10", "step_10_pipeline_architecture", "Full pipeline architecture (paper Fig. 4), redrawn in house style"),
+    ("11", "step_11_literature_enrichment", "Literature enrichment -- Modus A, the four-case dictionary logic"),
+    ("12", "step_12_prov_chaining", "PROV-O chaining -- one Activity per run, linked across two stages"),
+    ("13", "step_13_validation_layers", "validate_lod.py -- the 4+1 validation sections, hard vs. soft SHACL"),
+    ("14", "step_14_inheritance_trees", "Full inheritance chains -- 2 to 8 hops, CRM/CRMsci depth compared"),
+    ("15", "step_15_n4o_publication", "From metadata.yaml to the NFDI4Objects Knowledge Graph"),
+    ("16", "step_16_persistent_uris", "w3id.org URI dereferencing -- ontology terms vs. data resources"),
+    ("17", "step_17_stats_infographic", "540 sites: dataset scale and real regional distribution"),
+    ("18", "step_18_site_map", "All 540 sites plotted from their real WGS84 coordinates"),
 ]
 STEP_IDS = [s[0] for s in STEPS]
 

@@ -1,0 +1,93 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>The full BB-5KBC pipeline: enrichment, LOD transformation, validation</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="90.0" y="70.0" width="220.0" height="78.0" rx="10" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="200.0" y="101.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">fst_wgs84_comma.csv</text>
+<text x="200.0" y="121.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">540 rows × 32 cols</text>
+<rect x="90.0" y="290.0" width="220.0" height="78.0" rx="10" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="200.0" y="321.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">fst_standortanalysen</text>
+<text x="200.0" y="341.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">_ref.csv</text>
+<rect x="90.0" y="510.0" width="220.0" height="78.0" rx="10" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="200.0" y="541.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc-ontology.ttl</text>
+<text x="200.0" y="561.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">15 classes</text>
+<rect x="90.0" y="730.0" width="220.0" height="78.0" rx="10" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="200.0" y="761.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">csv-mapping.md</text>
+<text x="200.0" y="781.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">(ancestor table)</text>
+<rect x="380.0" y="55.0" width="290.0" height="660.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="396.0" y="81.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">CSV enrichment (§3)</text>
+<rect x="400.0" y="140.0" width="250.0" height="78.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="525.0" y="171.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Stage 1: enrich_qids.py</text>
+<text x="525.0" y="191.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">literature mappings (46+34 QIDs)</text>
+<rect x="400.0" y="580.0" width="250.0" height="78.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="525.0" y="611.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Stage 2: wikidata_map.py</text>
+<text x="525.0" y="631.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">SPARQL fuzzy match LAND/BL/KR/GE</text>
+<rect x="400.0" y="360.0" width="250.0" height="78.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="525.0" y="391.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Stage 3: enrich_fst.py</text>
+<text x="525.0" y="411.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">merge on FID</text>
+<line x1="310.0" y1="109.0" x2="400.0" y2="179.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="310.0" y1="329.0" x2="400.0" y2="619.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="525.0" y1="218.0" x2="495.0" y2="360.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="525.0" y1="580.0" x2="555.0" y2="438.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="720.0" y="360.0" width="190.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+<text x="815.0" y="391.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">fst_wgs84.csv</text>
+<text x="815.0" y="411.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">540 × 65 cols</text>
+<line x1="650.0" y1="399.0" x2="720.0" y2="399.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="710.0" y="560.0" width="210.0" height="56.0" rx="10" fill="#fce5cd" stroke="#a86028" stroke-width="1.4"/>
+<text x="815.0" y="588.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">csv_enrichment_run.ttl</text>
+<line x1="815.0" y1="438.0" x2="815.0" y2="560.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<rect x="970.0" y="55.0" width="290.0" height="660.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="986.0" y="81.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">LOD transformation (§6)</text>
+<rect x="990.0" y="300.0" width="250.0" height="78.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="1115.0" y="331.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc_lod_pipeline.py</text>
+<text x="1115.0" y="351.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">12 builders × 540 rows</text>
+<rect x="990.0" y="460.0" width="250.0" height="78.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="1115.0" y="491.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">SHACL shape generation</text>
+<text x="1115.0" y="511.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">from the ontology</text>
+<rect x="990.0" y="620.0" width="250.0" height="78.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="1115.0" y="659.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">pyshacl.validate()</text>
+<line x1="910.0" y1="399.0" x2="990.0" y2="339.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="310.0" y1="549.0" x2="990.0" y2="398.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="920.0" y1="588.0" x2="990.0" y2="418.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<line x1="1115.0" y1="378.0" x2="1115.0" y2="460.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1115.0" y1="538.0" x2="1115.0" y2="620.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1280.0" y="70.0" width="210.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+<text x="1385.0" y="101.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc-data.ttl</text>
+<text x="1385.0" y="121.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">~21 700 triples</text>
+<rect x="1280.0" y="220.0" width="210.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+<text x="1385.0" y="251.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc-bundle.ttl</text>
+<text x="1385.0" y="271.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">~22 400 triples</text>
+<rect x="1280.0" y="480.0" width="210.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+<text x="1385.0" y="511.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">shacl-report.ttl</text>
+<text x="1385.0" y="531.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">+ shacl-report-bundle.ttl</text>
+<rect x="1280.0" y="630.0" width="210.0" height="56.0" rx="10" fill="#fce5cd" stroke="#a86028" stroke-width="1.4"/>
+<text x="1385.0" y="658.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">csv_to_lod_run.ttl</text>
+<line x1="1240.0" y1="333.0" x2="1280.0" y2="138.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1240.0" y1="345.0" x2="1280.0" y2="259.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1240.0" y1="359.0" x2="1280.0" y2="640.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<line x1="1240.0" y1="659.0" x2="1280.0" y2="519.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="1560.0" y="400.0" width="150.0" height="96.0" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
+<text x="1635.0" y="440.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">validate_lod.py</text>
+<text x="1635.0" y="460.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">4 + 1 sections</text>
+<rect x="1560.0" y="620.0" width="150.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+<text x="1635.0" y="659.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11.0" fill="#2c2c2a">validation_report.md</text>
+<line x1="1490.0" y1="109.0" x2="1560.0" y2="415.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1490.0" y1="259.0" x2="1560.0" y2="435.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1490.0" y1="519.0" x2="1560.0" y2="455.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="910.0" y1="409.0" x2="1560.0" y2="475.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="310.0" y1="769.0" x2="1520.0" y2="506.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<line x1="1635.0" y1="496.0" x2="1635.0" y2="620.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="60.0" y="900.0" width="16" height="16" rx="3" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
+<text x="84.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">input</text>
+<rect x="330.0" y="900.0" width="16" height="16" rx="3" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
+<text x="354.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">enrichment</text>
+<rect x="600.0" y="900.0" width="16" height="16" rx="3" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
+<text x="624.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">LOD transformation</text>
+<rect x="870.0" y="900.0" width="16" height="16" rx="3" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
+<text x="894.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">validation</text>
+<rect x="1140.0" y="900.0" width="16" height="16" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
+<text x="1164.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">artefact</text>
+<rect x="1410.0" y="900.0" width="16" height="16" rx="3" fill="#fce5cd" stroke="#a86028" stroke-width="1.4"/>
+<text x="1434.0" y="908.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">PROV (dashed)</text>
+</svg>

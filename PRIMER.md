@@ -50,6 +50,22 @@ Commit-Messages -- auf British English.
    verwalteten) Repo sollen als Patch-ZIP kommen, nicht als kompletter
    Ersatz-Export -- siehe A4.
 
+**Befund 2026-09-10f (neun weitere Grafiken angefragt):** Florian fragte
+nach weiteren Visualisierungsideen; auf die Konzeptliste (Pipeline-
+Architektur, literaturbezogene Anreicherung, PROV-O-Verkettung,
+Validierungsschichten, Vererbungsbäume, N4O-Publikationspipeline,
+persistente URIs, Statistik-Infografik, Karte) antwortete er "kannst du
+alles so umsetzen" und wünschte sich bei der Statistik/Karte explizit
+beides (Infografik UND Karte, nicht nur eins). Zusätzliche Quellen
+dafür in dieser Session herangezogen: `bb-5kbc-public/README.md` (frisch
+gefetcht, nicht aus dem Gedächtnis -- lieferte präzisere Zahlen als die
+früheren Notizen: 28 531 Tripel, CRM-Alignment 16/21 Domainklassen, die
+Time-Slice-Beispielzahlen); `data/fst_wgs84.csv` direkt ausgewertet für
+17 (regionale Verteilung) und 18 (echte WGS84-Koordinaten aller 540
+Fundstellen) -- dabei eine echte Diskrepanz zum Paper-Text gefunden (10
+Wojewodschaften in den Daten, nicht 9 wie im Fließtext) und dokumentiert
+statt stillschweigend "korrigiert".
+
 **Befund 2026-09-10e (S16-Patch angewendet, neuer Fehler):** `main.py`-Log
 zeigt Schritte 00--04, 06, 07 mit je "2 file(s)" (nicht 4) und Schritte
 05, 08, 09 mit `AttributeError: module 'bb5kbc_visuals_utils' has no
@@ -130,6 +146,10 @@ Eigenschaften, an denen sich ein fertiges Diagramm messen lassen muss:
 | **Dateinamen** | `<name>.de.svg`/`.png` und `<name>.en.svg`/`.png` statt einer sprachneutralen Datei -- jeder Schritt liefert jetzt 4 statt 2 Dateien | 2026-09-10c |
 | **Python-3.10-Kompatibilität: kein Backslash in f-string-Ausdrücken** | **Revision 2026-09-10d:** Florians Python ist 3.10; dort ist ein Backslash innerhalb der `{...}`-Ausdrucksklammer eines f-strings ein `SyntaxError` (erst PEP 701 / Python 3.12 erlaubt das, und die Sandbox hier lief unbemerkt auf 3.12). Jede Stelle mit `{tt("...\u...", "...\u...")}` direkt in einem f-string-Ausdruck refaktoriert: Übersetzung vorher in eine lokale Variable gezogen, im f-string nur noch `{variable}` referenziert. Mit einem AST-basierten Scanner (`ast.walk` + `ast.get_source_segment` auf jedem `JoinedStr`/`FormattedValue`) repo-weit nach Backslashes in f-string-Ausdrücken gesucht -- präziser als Grep, weil er tatsächlich den Ausdrucksteil isoliert statt nur Zeilen zu mustern | 2026-09-10d |
 | **Auslieferung künftiger Änderungen an diesem Repo: patch-zip-delivery** | **Revision 2026-09-10d:** Florian hat das komplette Repo von der letzten Antwort committed und mich darauf hingewiesen, dass ich für ein bereits existierendes, von ihm verwaltetes Repo den `patch-zip-delivery`-Skill hätte nutzen sollen statt eines vollständigen Ersatz-ZIPs. Ab jetzt gilt: Änderungen an diesem Repo gehen als Patch-ZIP (nur geänderte Quelldateien + `PATCH-README.md`), nicht als kompletter Repo-Export -- generierte Dateien (`img/*.svg`/`*.png`) reisen als Befehl (`python main.py`), nicht als Datei, weil Florian die Pipeline bereits lauffähig hat | 2026-09-10d |
+| **Umfang: neun weitere Grafiken (10--18)** | **Revision 2026-09-10f:** alle vier Teil-D-Punkte aus der vorigen Revision umgesetzt, plus Statistik-Infografik und Karte (Florian wollte explizit beides). Teil D ist nach dieser Revision leer -- neue Ideen kommen erst wieder durch ein neues Gespräch | 2026-09-10f |
+| **`site_coordinates.csv`: dokumentierte Ausnahme vom "kein Runtime-Parsing"-Prinzip** | **Revision 2026-09-10f:** 18-site-map ist der einzige Schritt, der eine Datei aus `data/raw/` zur Laufzeit einliest statt nur beim Autoring zu lesen -- 540 reale Koordinaten lassen sich nicht von Hand als Geometrie eintragen wie ein Dutzend Kästen. Die Datei ist einmalig aus `fst_wgs84.csv` extrahiert und eingecheckt, keine Live-Abhängigkeit von `bb-5kbc-sites` zur Laufzeit | 2026-09-10f |
+| **Karte: schematischer Scatterplot, keine projizierte Karte** | **Revision 2026-09-10f:** ohne Basiskarten-/Grenzdaten im Repo wäre eine "echte" Karte (mit Küstenlinien, Grenzen) Fabrikation. Stattdessen: echte WGS84-Koordinaten aller 540 Fundstellen, äquirechteckig mit cos(mittlere Breite)-Korrektur geplottet, explizit als schematisch beschriftet | 2026-09-10f |
+| **Statistik-Infografik: echte Datenwerte statt Paper-Prosa** | **Revision 2026-09-10f:** regionale Verteilung aus `fst_wgs84.csv` direkt berechnet (nicht aus dem Paper-Fließtext übernommen) -- ergab 362/178 statt 350/178 (Land-Spalte hat 12 leere Zellen, die erst beim LOD-Build auf Deutschland zurückfallen) und 10 statt 9 polnische Wojewodschaften (Woj. Pomorskie, 3 Fundstellen, real vorhanden). Beide Diskrepanzen zum Paper-Text in der Grafik selbst benannt, nicht still "korrigiert" | 2026-09-10f |
 
 ### A5 Was in welchem Chat hochgeladen wird
 
@@ -166,6 +186,16 @@ Entfällt -- dieses Repo publiziert kein eigenes RDF.
 | S15 | Bilingual: alle 10 Grafiken DE + EN | alle `step_*.py` + Utils | S14 | erledigt 2026-09-10c |
 | S16 | Bugfix: Python-3.10-Kompatibilität (f-string-Backslash) | `step_05/08/09_*.py` | S15 | erledigt 2026-09-10d |
 | S17 | Bugfix: S16-Patch war unvollständig (utils.py fehlte) | `bb5kbc_visuals_utils.py` + alle `step_*.py` + `main.py` | S16 | erledigt 2026-09-10e |
+| S18 | 10 Pipeline-Architektur (Fig. 4 neu gezeichnet) | `step_10_pipeline_architecture.py` | S17 | erledigt 2026-09-10f |
+| S19 | 11 Literaturbezogene Anreicherung (Modus A) | `step_11_literature_enrichment.py` | S17 | erledigt 2026-09-10f |
+| S20 | 12 PROV-O-Verkettung über zwei Stufen | `step_12_prov_chaining.py` | S17 | erledigt 2026-09-10f |
+| S21 | 13 Vierschichtige Validierung (4+1 Sektionen) | `step_13_validation_layers.py` | S17 | erledigt 2026-09-10f |
+| S22 | 14 Vererbungsketten als Bäume | `step_14_inheritance_trees.py` | S17 | erledigt 2026-09-10f |
+| S23 | 15 N4O-KG-Publikationspipeline | `step_15_n4o_publication.py` | S17 | erledigt 2026-09-10f |
+| S24 | 16 Persistente URIs (w3id.org) | `step_16_persistent_uris.py` | S17 | erledigt 2026-09-10f |
+| S25 | 17 Statistik-Infografik (echte Zahlen) | `step_17_stats_infographic.py` | S17 | erledigt 2026-09-10f |
+| S26 | 18 Karte (echte WGS84-Koordinaten) | `step_18_site_map.py` | S17 | erledigt 2026-09-10f |
+| S27 | Bugfix: Python-3.10-Backslash erneut in S23 gefunden | `step_15_n4o_publication.py` | S18--S26 | erledigt 2026-09-10f |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -393,24 +423,131 @@ angekommen sind.
 **Abnahme:** `python main.py` auf Florians Maschine liefert 10 × 4 = 40
 Dateien ohne Fehler.
 
+### S18-S26 -- neun weitere Grafiken (10--18)
+
+Florian fragte nach weiteren Visualisierungsideen; die Antwort listete neun
+Konzepte in fünf Themenblöcken (Pipeline & Anreicherung, Validierung &
+Qualität, Modellierung, Publikation & FAIR-Infrastruktur, Kontext).
+Florian: "Klingt alles gut ... kannst du alles so umsetzen" -- bei Punkt E
+(Kontext) explizit beide Unterpunkte (Infografik *und* Karte).
+
+**Gemeinsame Substanz aller neun:** exakt dasselbe bilinguale Muster wie
+00--09 (`build(lang="en")`, `vu.t()`/`vu.cls()`/`vu.prop()`, kein
+Header/Footer, Auto-Fit-Schriftgröße). Jede Grafik einzeln geplant, gebaut,
+gerendert, visuell geprüft, Fehler sofort behoben -- siehe die einzelnen
+Befunde unten.
+
+**10 Pipeline-Architektur.** 1:1 aus `architecture.mmd` (18 Knoten, ~20
+Kanten). Erster Entwurf zu kompakt (~40 % des Canvas leer, viele
+Linien liefen quer durch fremde Kästen) -- Y-Koordinaten neu verteilt,
+zweiter Durchlauf deutlich lesbarer.
+
+**11 Literaturbezogene Anreicherung.** Die *andere* Hälfte der
+Anreicherung (01/02 zeigen nur die geografische) -- Modus A,
+Vier-Fälle-Tabelle (Tab. 2), Beispiel für den Fall "overwritten". Zwei
+Kollisionen gefunden und behoben: das "Modus A"-Label saß auf den
+kreuzenden Pfeilen; der Fußtext im Beispielblock überlappte die untere
+Box.
+
+**12 PROV-O-Verkettung.** Namespace-Grenze als zwei nebeneinanderliegende
+gestrichelte Container dargestellt, mit der zentralen LOD-Activity als
+Hub. Zwei Overflow-Bugs: die "Agents"-Box lief zunächst weit über den
+rechten Rand hinaus (falsch berechnetes `acx`), nach der ersten Korrektur
+überlappte sie stattdessen die Activity-Box selbst -- erst beim dritten
+Anlauf mit festen statt abgeleiteten Koordinaten sauber.
+
+**13 Vierschichtige Validierung.** Tab. 8 als Tabelle (Sektionen 1--4b)
+plus ein Panel zur harten SHACL-Regel (`hatFID`) vs. Warnings. Keine
+Layoutfehler beim ersten Rendern.
+
+**14 Vererbungsketten als Bäume.** Ursprünglich als volle Drei-Welten-Bäume
+geplant (CRM-Kette + Seiten-Chips für FSL/LADO/PROV/OWL-Time je Klasse) --
+erster Entwurf hatte gravierende Fehler: Seiten-Chips liefen bei der
+letzten Spalte weit über den Canvas-Rand hinaus, und `svg_box`s
+Stereotyp-Text überlappte den Titel, weil die Boxen für zwei Textzeilen
+zu niedrig waren. Statt einzeln zu flicken: Umfang bewusst verkleinert
+auf die reine CRM/CRMsci-Kette (die Seiten-Äste zeigt bereits 04) -- damit
+verschwanden beide Fehlerursachen zugleich, und die eigentliche Aussage
+(Kettentiefe variiert von 2 bis 8 Hops) kommt klarer heraus als im
+ursprünglich überladenen Entwurf.
+
+**15 N4O-KG-Publikationspipeline.** `bb-5kbc-public/README.md` frisch
+gefetcht (nicht aus dem Gedächtnis) für die genauen Zahlen und den
+Freshness-Check-Mechanismus. Zwei Kollisionen: sowohl die
+"Der Graph, in Zahlen"-Box als auch die "Was der Build prüft"-Box nutzten
+`svg_box`s automatisch zentrierten Titel *und* zusätzlich manuell
+platzierten Text an nahezu derselben Position -- in beiden Fällen auf
+reine `<rect>` + manuelles Text-Layout umgestellt. Dabei auch eine
+funktionslose Pfeil-Anweisung mit vertauschten Koordinaten entfernt.
+
+**16 Persistente URIs.** Zwei-Regel-`.htaccess` (Ontologie-Begriffe vs.
+Daten-Ressourcen), beide über 303 See Other. Keine Layoutfehler.
+
+**17 Statistik-Infografik.** `fst_wgs84.csv` direkt mit `Counter()`
+ausgewertet statt Paper-Prosa zu übernehmen -- siehe A1/A4 für die dabei
+gefundene Diskrepanz (362 statt 350 Fundstellen in Deutschland, 10 statt 9
+Wojewodschaften). Keine Layoutfehler.
+
+**18 Karte.** Bewusste Ausnahme vom Repo-Prinzip "kein Runtime-Parsing"
+(siehe A4): `site_coordinates.csv` wird zur Baubuildzeit eingelesen, weil
+540 reale Koordinaten nicht von Hand platzierbar sind. Schematischer
+äquirechteckiger Scatterplot (Longitude × cos(mittlere Breite)), explizit
+nicht als projizierte Karte ausgegeben, da keine Basiskarten-/Grenzdaten
+im Repo liegen. Zwei kleine Korrekturen: ein Datenpunkt lag exakt am
+oberen Rand der Plot-Fläche (20px Padding ergänzt, damit Extrempunkte
+nicht die Rahmenlinie durchstoßen); der Nordpfeil saß zunächst zufällig
+über einem echten Datenpunkt (in die leere obere linke Ecke verschoben).
+
+**Abnahme (alle neun):** `python main.py`, Schritte 10--18 melden je
+"4 file(s) written"; zweimal hintereinander → `git status` sauber.
+
+### S27 -- Bugfix: Python-3.10-Backslash erneut gefunden (in S23)
+
+**Ziel:** denselben Fehlertyp wie in S16 systematisch ausschließen, nicht
+nur an den drei damals gemeldeten Stellen.
+
+**Substanz:** der AST-Scanner aus S16 (Suche nach Backslashes im
+Ausdrucksteil jedes `JoinedStr`/`FormattedValue`-Knotens) diesmal über
+*alle* 19 `step_*.py` plus `main.py` laufen lassen, nicht nur über die
+zuletzt geänderten Dateien. Fund: eine Stelle in
+`step_15_n4o_publication.py` (`{vu.xml_escape("\u2022 " + line)}` direkt
+im f-string-Ausdruck). Gleiches Muster wie zuvor: Ausdruck vorher in eine
+Variable gezogen (`bullet_line = vu.xml_escape(...)`), im f-string nur
+noch `{bullet_line}` referenziert.
+
+**Erledigt 2026-09-10f:** nach dem Fix erneuter Scan über alle 19+1
+Dateien -- 0 Treffer. Betroffene Grafik danach neu gerendert und mit der
+Vorher-Version verglichen: inhaltlich identisch, nur die Ausdrucksform im
+Python-Quelltext hat sich geändert.
+
+**Lehre für künftige Schritte:** den AST-Scan ab jetzt routinemäßig nach
+*jeder* Session laufen lassen, die neue oder geänderte `step_*.py`-Dateien
+enthält -- nicht erst, wenn ein Fehlerbericht kommt. Ein Einzeiler dafür:
+
+```
+python3 -c "
+import ast, glob
+def scan(p):
+    src = open(p, encoding='utf-8').read()
+    t = ast.parse(src, filename=p)
+    return [(p, v.lineno, ast.get_source_segment(src, v.value))
+            for n in ast.walk(t) if isinstance(n, ast.JoinedStr)
+            for v in n.values if isinstance(v, ast.FormattedValue)
+            and '\\\\' in (ast.get_source_segment(src, v.value) or '')]
+hits = [h for f in glob.glob('py/*.py') + ['main.py'] for h in scan(f)]
+print(hits or 'OK: keine Backslashes in f-string-Ausdruecken')
+"
+```
+
+**Abnahme:** `python main.py` läuft auf Python 3.10 durch (von Florian zu
+bestätigen).
+
 ## Teil D -- Offene Punkte
 
-- **Pipeline-Architektur neu im Hausstil.** `architecture.mmd` (Paper
-  Abb. 4) existiert bereits inhaltlich vollständig -- bräuchte nur die
-  `bb5kbc_visuals_utils`-Palette und das randlose 7:4-Format.
-- **N4O-KG-Publikationspipeline.** `bb-5kbc-public` ist geklont, aber noch
-  für keine Grafik verwendet: `metadata.yaml` → SHACL →
-  `n4o-collection.ttl`, mit den echten Zahlen 28 531 Tripel / 33 Klassen /
-  81 Properties aus dessen README.
-- **PROV-O-Verkettung über zwei Pipeline-Stufen.** Die Cross-Namespace
-  `wasInformedBy`-Verbindung zwischen `csv_enrichment_run.ttl` und
-  `csv_to_lod_run.ttl` (Paper Abschnitt 6).
-- **SHACL-Validierungs-Gate.** Warning- vs. die eine harte Violation-Regel.
-- **Mehrfachvererbung als Bäume neu gezeichnet.** Paper Abb. 2 (vier
-  Klassen als Baum) wäre eine Ergänzung zu 04, nicht redundant.
-- **Statistik-/Kartenfolie.** 540 Fundstellen, 350 DE + 178 PL über neun
-  Wojewodschaften -- noch nicht visualisiert. (Das wäre der richtige Ort
-  für eine Statistik-Grafik, falls gewünscht -- nicht mehr 09-kulturen.)
+Aktuell leer -- alle Punkte aus der letzten Revision sind mit S18--S26
+umgesetzt (siehe Teil B/C). Kandidaten für eine künftige Session kommen
+erst wieder durch ein neues Gespräch mit Florian; nichts wird hier
+vorsorglich ergänzt, ohne dass er danach gefragt hat.
 
-Wenn einer dieser Punkte zum nächsten Schritt wird: nach S17 einsortieren
-(S18, S19, …), hier streichen, in Teil B eintragen.
+Wenn ein neuer Punkt ansteht: nach S27 einsortieren (S28, S29, …), hier
+eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.
