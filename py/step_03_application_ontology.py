@@ -44,6 +44,17 @@ routed via ``svg_arrow_elbow_v`` with a short stub for the same
 "visibly clears the box before turning" look as the rest of the figure
 (PRIMER.md S37).
 
+**Revision 2026-09-15e:** the six fan-out labels used
+``svg_arrow_elbow_v``'s default placement (the rail's vertical
+midpoint), which put several of them next to the *wrong* box --
+hasCulturalAssignment's midpoint landed inside Entdeckung's row, for
+instance, because the six exit points cluster near Fundstelle while the
+six targets are spread across very different rows, so the midpoint of
+a long rail doesn't track which box it actually belongs to. Each label
+now sits on its own spoke's final approach, right next to the box it
+labels, where there's also room for the longer German labels without
+crowding (PRIMER.md S38).
+
 Writes: application-ontology.de.svg/.png, application-ontology.en.svg/.png
 Run standalone: ``python py/step_03_application_ontology.py``
 """
@@ -150,9 +161,23 @@ def build(lang: str = "en") -> list[str]:
         (pub, p("hatPublikation"), rail_mid),
         (sch, p("hatScherbe"), rail_near),
     ]
+    # Labels sit on each spoke's own final approach, right before it
+    # enters its target box -- not at the rail's vertical midpoint
+    # (svg_arrow_elbow_v's default) and not clustered at the stub either
+    # (six labels, some of them long, packed into the ~40px gap right by
+    # Fundstelle would just overlap each other and the rails). With exit
+    # points clustered near Fundstelle but targets spread across six very
+    # different rows, the rail midpoint can coincidentally land next to
+    # an unrelated box (e.g. hasCulturalAssignment's midpoint fell inside
+    # Entdeckung's row) -- exactly the "labels on the wrong line" Florian
+    # flagged. The final approach has the room six labels at the stub
+    # don't (each target row has its own clear ~130px gap) and sits
+    # immediately next to the box it actually labels.
     for i, ((bx, by), label, rail_x) in enumerate(spokes):
-        parts.append(vu.svg_arrow_elbow_v(fright, exit_ys[i], bx, by + T2H / 2, rail_x,
-                                           label=label, font_size=10.5))
+        target_y = by + T2H / 2
+        parts.append(vu.svg_arrow_elbow_v(fright, exit_ys[i], bx, target_y, rail_x, font_size=10.5))
+        parts.append(f'<text x="{rail_x + 10:.1f}" y="{target_y - 8:.1f}" font-family="Fira Sans" '
+                     f'font-weight="500" font-size="10.5" fill="{vu.TEXT_DARK}">{vu.xml_escape(label)}</text>')
 
     # tier 3 (aligned with tier-2 rows 0..2)
     kg = (T3_X, ROW[0])

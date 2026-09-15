@@ -262,6 +262,7 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S35 | 03 nach Florians Rückmeldung noch mal überarbeitet -- zwei Ursachen für "immer noch durcheinander" behoben | `step_03_application_ontology.py` | S34 | erledigt 2026-09-15 |
 | S36 | Systematischer bend=h/v-Fehler in `svg_arrow_L` gefunden und über 8 Grafiken hinweg behoben | `step_00/01/03/04/06/10/12/15_*.py` | S35 | erledigt 2026-09-15 |
 | S37 | Sichtbares "Herausragen" vor dem Knick ergänzt (00, 03) | `step_00_fundstelle_hub.py`, `step_03_application_ontology.py` | S36 | erledigt 2026-09-15 |
+| S38 | Label-Fehlplatzierung im Fundstelle-Fan-out behoben (03) | `step_03_application_ontology.py` | S37 | erledigt 2026-09-15 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -1073,22 +1074,66 @@ bereits bekannten "guten" Stellen (Fundstelle-Fan-out in 03, restliche
 Speichen in 00) verglichen -- jetzt einheitlich. `python main.py`
 komplett, zweimal hintereinander byte-identisch, 0 AST-Treffer.
 
+### S38 -- Label-Fehlplatzierung im Fundstelle-Fan-out behoben
+
+**Ziel:** Florian, nach dem Commit von S37: "hassherd" "haspublication"
+"has cultural assignment" "wasdicoveredby" sind auf jeden Fall
+verrutscht und müssen zu den korrekten Linien.
+
+**Befund:** ein neuer, dritter Fehlertyp in derselben Ecke der Grafik
+(nach Kreuzung in S33/S35 und Eintrittswinkel in S36) -- diesmal die
+Label-*Platzierung*. `svg_arrow_elbow_v` setzt sein Label standardmäßig
+auf den geometrischen Mittelpunkt der vertikalen Schiene. Das
+funktioniert, wenn Start- und Zielbereich ähnlich weit auseinander
+liegen -- bricht aber zusammen, wenn (wie hier) alle sechs Austrittspunkte
+dicht bei Fundstelle geclustert sind, während die sechs Zielzeilen über
+750px verteilt sind: der Mittelpunkt der Schiene landet dann nicht in
+der Nähe des Ziels, sondern irgendwo dazwischen -- und das kann
+zufällig genau auf Höhe einer **anderen** Box liegen.
+
+Konkret nachgerechnet: `hasCulturalAssignment`s Schienen-Mittelpunkt lag
+bei y≈244 -- innerhalb der Zeile von `Entdeckung` (200-270), nicht in
+der Nähe von `Cultural assignment` (50-120). `wasDiscoveredBy`s
+Mittelpunkt lag bei y≈330, nahe an `Site type`s Zeile. `hasPublication`
+und `hasSherd` waren ähnlich verschoben. Rein zufällige Artefakte der
+Mittelpunkt-Formel, kein Fehler in der Linienführung selbst (die Linien
+selbst waren korrekt, nur die Beschriftung schwamm).
+
+**Korrigiert:** jedes der sechs Labels sitzt jetzt auf dem *eigenen*
+finalen Annäherungssegment, direkt neben der Box, die es beschriftet --
+nicht auf der Schiene. Ein erster Versuch (Labels direkt am Stummel bei
+Fundstelle clustern) wurde verworfen, bevor er gerendert wurde: sechs
+Labels, manche davon lang ("wurdeGeoreferenziertDurch"), hätten sich in
+den knapp 40px Stummel-Bereich gegenseitig und die durchlaufenden
+Schienen überlappt. Die Zielzeilen haben dagegen reichlich Platz (je
+~130px eigener Zeilenabstand).
+
+**Abnahme:** DE+EN neu gerendert, jedes der sechs Labels visuell direkt
+neben seiner Box bestätigt (nicht nur "irgendwo auf der richtigen
+Linie", sondern eindeutig zuordenbar auch ohne der Linie zu folgen).
+Längere deutsche Labels (wurdeGeoreferenziertDurch) auf Kollision mit
+der Zielbox geprüft -- passt mit Rand. `python main.py` komplett,
+zweimal hintereinander byte-identisch, 0 AST-Treffer.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
   automatisch (siehe S16/S27/S30).
-- **Stil-Konsistenz "sichtbarer Stummel vor dem Knick" nicht
-  flächendeckend geprüft.** S37 hat die vier konkret gemeldeten Stellen
-  (00, 03) gefixt, aber nicht systematisch alle `svg_arrow_L`-Aufrufe in
-  allen 19 Grafiken auf denselben Stil-Unterschied durchsucht -- anders
-  als S36 (dort ging es um eine echte Winkel-Fehlfunktion, hier nur um
-  visuelle Konsistenz zum Rest der jeweiligen Grafik). Möglich, dass
-  andere Grafiken ähnliche "Knick ohne Stummel"-Stellen haben, die
-  bisher niemandem aufgefallen sind.
-- **`svg_arrow_L`s zwei Modi sind leicht zu verwechseln** (S36) --
-  weiterhin nur durch manuelle Prüfung abgesichert, keine robustere API.
+- **`svg_arrow_elbow_v`/`svg_arrow_elbow`s Default-Label-Platzierung
+  (Schienen-Mittelpunkt) ist nur sicher, wenn Start- und Zielbereich
+  ähnlich weit auseinanderliegen.** S38 hat das für 03s Fan-out lokal
+  gelöst (manuelles Label auf dem finalen Segment statt des Funktions-
+  Defaults), aber die Funktion selbst wurde nicht geändert -- andere
+  Stellen, die den Default nutzen (z. B. 10, 12, sowie 00s drei
+  S37-Verbindungen), könnten ein ähnliches Problem haben, wenn dort
+  je Start- und Zielbereich stark unterschiedlich weit auseinanderliegen.
+  Nicht systematisch nachgeprüft, da dort (Stand jetzt) niemand ein
+  verrutschtes Label gemeldet hat.
+- **Stil-Konsistenz "sichtbarer Stummel vor dem Knick"** (S37) und
+  **bend=h/v-Fehler** (S36) -- beide nur an den gemeldeten Stellen
+  gefixt, nicht flächendeckend über alle 19 Grafiken durchsucht.
 - **Datengrundlage: 11 vollständig geprüft (S34), 12 und 16 nur
   stichprobenartig.**
 
-Wenn ein neuer Punkt ansteht: nach S37 einsortieren (S38, S39, …), hier
+Wenn ein neuer Punkt ansteht: nach S38 einsortieren (S39, S40, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

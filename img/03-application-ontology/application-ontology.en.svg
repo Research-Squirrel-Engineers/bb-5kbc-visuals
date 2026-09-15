@@ -45,17 +45,17 @@
 <text x="915.0" y="817.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" font-style="italic" fill="#2c2c2a" opacity="0.72">«crm:E22_Human-Made_Object»</text>
 <text x="915.0" y="845.0" text-anchor="middle" dominant-baseline="auto" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Sherd</text>
 <path d="M 630.0 402.8 L 645.0 402.8 L 645.0 85.0 L 810.0 85.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="714.7" y="243.9" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasCulturalAssignment</text>
+<text x="655.0" y="77.0" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasCulturalAssignment</text>
 <path d="M 630.0 424.5 L 665.0 424.5 L 665.0 235.0 L 810.0 235.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="717.1" y="329.8" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">wasDiscoveredBy</text>
+<text x="675.0" y="227.0" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">wasDiscoveredBy</text>
 <path d="M 630.0 446.2 L 685.0 446.2 L 685.0 385.0 L 810.0 385.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="725.3" y="415.6" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasSiteType</text>
+<text x="695.0" y="377.0" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasSiteType</text>
 <path d="M 630.0 467.8 L 685.0 467.8 L 685.0 535.0 L 810.0 535.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="745.9" y="501.4" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">wasGeoreferencedBy</text>
+<text x="695.0" y="527.0" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">wasGeoreferencedBy</text>
 <path d="M 630.0 489.5 L 665.0 489.5 L 665.0 685.0 L 810.0 685.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="714.2" y="587.2" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasPublication</text>
+<text x="675.0" y="677.0" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasPublication</text>
 <path d="M 630.0 511.2 L 645.0 511.2 L 645.0 835.0 L 810.0 835.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="676.5" y="673.1" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasSherd</text>
+<text x="655.0" y="827.0" font-family="Fira Sans" font-weight="500" font-size="10.5" fill="#2c2c2a">hasSherd</text>
 <rect x="1160.0" y="50.0" width="210.0" height="70.0" rx="10" fill="#eef0d6" stroke="#6b7a1f" stroke-width="1.4"/>
 <text x="1265.0" y="67.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" font-style="italic" fill="#2c2c2a" opacity="0.72">«crm:E4_Period»</text>
 <text x="1265.0" y="95.0" text-anchor="middle" dominant-baseline="auto" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Culture group</text>
