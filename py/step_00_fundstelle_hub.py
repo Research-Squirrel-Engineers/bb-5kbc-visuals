@@ -31,6 +31,13 @@ they are translated via ``vu.cls()``/``vu.prop()`` -- see the glossary and
 its rationale in ``bb5kbc_visuals_utils.py``. CSV data values (Siedlung,
 Grab) are never translated.
 
+**Revision 2026-09-15c:** hasDating, hasSherd and wasGeoreferencedBy used
+to turn immediately at their source box's edge with no visible "lead-out"
+before the corner (unlike the fan-out spokes elsewhere in this figure,
+which all visibly clear their source box first); now routed via
+``svg_arrow_elbow`` so each one has a short stub before it turns,
+matching that same visual language (PRIMER.md S37).
+
 Writes: fundstelle-hub.de.svg/.png, fundstelle-hub.en.svg/.png
 Run standalone: ``python py/step_00_fundstelle_hub.py``
 """
@@ -107,8 +114,8 @@ def build(lang: str = "en") -> list[str]:
     dat_cx = dat_x + dat_w / 2
     parts.append(vu.svg_box(dat_x, dat_y, dat_w, dat_h, c("Datierung"), f"{per_site} \u00b7 crm:E52 + time:Interval",
                              fill=DATING["fill"], stroke=DATING["stroke"]))
-    parts.append(vu.svg_arrow_L(kz_x + 60, kz_cy + kz_h / 2, dat_cx, dat_y, bend="v",
-                                 label=p("hatDatierung"), font_size=11))
+    parts.append(vu.svg_arrow_elbow(kz_x + 60, kz_cy + kz_h / 2, dat_cx, dat_y, kz_cy + kz_h / 2 + 25,
+                                     label=p("hatDatierung"), font_size=11))
 
     # -- Fundstellenart (shared) ---------------------------------------------
     fa_cx, fa_cy, fa_r = 1500, 190, 78
@@ -138,8 +145,8 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_hash_node(sh_cx, sh_cy, sh_r, c("Scherbe"),
                                    tt("1..n \u00b7 geteilt pro QID", "1..n \u00b7 shared per QID"),
                                    fill=DOC["fill"], stroke=DOC["stroke"]))
-    parts.append(vu.svg_arrow_L(fcx + 60, fy + fh, sh_cx, sh_cy - sh_r, bend="v",
-                                 label=p("hatScherbe"), font_size=11))
+    parts.append(vu.svg_arrow_elbow(fcx + 60, fy + fh, sh_cx, sh_cy - sh_r, fy + fh + 25,
+                                     label=p("hatScherbe"), font_size=11))
 
     # -- Georeferenzierung + Punkt (per site) --------------------------------
     geo_x, geo_y, geo_w, geo_h = 470, 820, 290, 100
@@ -148,8 +155,8 @@ def build(lang: str = "en") -> list[str]:
                              tt(f"{per_site} \u00b7 Punkt (WGS84) + Aktivit\u00e4t",
                                 f"{per_site} \u00b7 point (WGS84) + activity"),
                              fill=ACTIVITY["fill"], stroke=ACTIVITY["stroke"]))
-    parts.append(vu.svg_arrow_L(fx + 40, fy + fh, geo_cx, geo_y, bend="v",
-                                 label=p("wurdeGeoreferenziertDurch"), font_size=11))
+    parts.append(vu.svg_arrow_elbow(fx + 40, fy + fh, geo_cx, geo_y, fy + fh + 25,
+                                     label=p("wurdeGeoreferenziertDurch"), font_size=11))
 
     # -- legend ---------------------------------------------------------------
     parts.append(vu.svg_legend(60, 950, [

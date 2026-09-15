@@ -19,9 +19,30 @@ translated, they are the standard's own vocabulary.
 
 **Revision 2026-09-15:** every Fundstelle-to-tier-2 connection, plus
 inGemeinde/hatDatierung/hatEntdeckungsart, used to be a diagonal; now
-orthogonal, with the six Fundstelle spokes exiting at six distinct
-points along its right edge so neither the lines nor their labels
-overlap (house rule, PRIMER.md A3).
+orthogonal (house rule, PRIMER.md A3).
+
+**Revision 2026-09-15b (Florian flagged this figure specifically as
+still tangled after the first pass):** two problems the first pass
+missed. (1) The six Fundstelle spokes' rails weren't ordered by how far
+each one travels, so short-hop connectors (fat, geo_akt) crossed the
+rails of long-hop ones (kz, ent, pub, sch) even though none of them
+crossed an actual box -- reassigned so the rail order matches travel
+distance (kz/sch, which each skip two boxes, get the outer rail; ent/pub,
+which each skip one, get the inner rail; fat/geo_akt skip none and go
+direct) and the fan-out is now provably crossing-free (see the inline
+comment for the reasoning). (2) hatDatierung/hatEntdeckungsart entered
+Datierung/EntdeckungsartType from the side at a height that happens to
+coincide with Entdeckung's own row -- reading, misleadingly, as if the
+line came out of Entdeckung rather than KulturelleZuordnung. Both now
+enter their target from above instead, which sidesteps the coincidence
+entirely.
+
+**Revision 2026-09-15d:** inGemeinde turned immediately at Fundstelle's
+own left edge with no visible lead-out (unlike the fan-out spokes,
+which all clear Fundstelle's edge with their own rail first); now
+routed via ``svg_arrow_elbow_v`` with a short stub for the same
+"visibly clears the box before turning" look as the rest of the figure
+(PRIMER.md S37).
 
 Writes: application-ontology.de.svg/.png, application-ontology.en.svg/.png
 Run standalone: ``python py/step_03_application_ontology.py``
@@ -86,8 +107,8 @@ def build(lang: str = "en") -> list[str]:
     fx, fy, fw = FUND_X, fcy - fh / 2, 230
     parts.append(vu.svg_box(fx, fy, fw, fh, c("Fundstelle"), stereotype="crm:E27_Site",
                              fill=SITE["fill"], stroke=SITE["stroke"], stroke_width=2.2))
-    parts.append(vu.svg_arrow_L(fx, fy + fh - 25, gemeinde[0] + AW, gemeinde[1] + AH / 2, bend="h",
-                                 label=p("inGemeinde"), font_size=11))
+    parts.append(vu.svg_arrow_elbow_v(fx, fy + fh - 25, gemeinde[0] + AW, gemeinde[1] + AH / 2, fx - 30,
+                                       label=p("inGemeinde"), font_size=11))
 
     # tier 2 -- direct Fundstelle neighbours
     kz = (T2_X, ROW[0])
@@ -103,22 +124,34 @@ def build(lang: str = "en") -> list[str]:
     parts.append(box(*pub, T2W, T2H, c("Publikation"), "crm:E32_Authority_Document", DOC))
     parts.append(box(*sch, T2W, T2H, c("Scherbe"), "crm:E22_Human-Made_Object", DOC))
 
-    fright, fmidy = fx + fw, fy + fh / 2
-    # fat and geo_akt sit immediately above/below Fundstelle's own height,
-    # so a direct corner doesn't cross any other tier-2 box; kz/ent/pub/sch
-    # each skip at least one box in the same column and need a rail routed
-    # through the gap instead (see svg_arrow_elbow_v docstring).
-    parts.append(vu.svg_arrow_L(fright, fmidy - 15, fat[0], fat[1] + T2H / 2, bend="h",
-                                 label=p("hatFundstellenart"), font_size=11))
-    parts.append(vu.svg_arrow_L(fright, fmidy + 15, geo_akt[0], geo_akt[1] + T2H / 2, bend="h",
-                                 label=p("wurdeGeoreferenziertDurch"), font_size=11))
-    for (bx, by), label, exit_dy, rail_x in [
-        (kz, p("hatKulturelleZuordnung"), -40, 665),
-        (ent, p("wurdeEntdecktDurch"), -25, 700),
-        (pub, p("hatPublikation"), 25, 700),
-        (sch, p("hatScherbe"), 40, 665),
-    ]:
-        parts.append(vu.svg_arrow_elbow_v(fright, fmidy + exit_dy, bx, by + T2H / 2, rail_x,
+    fright = fx + fw
+    # Six spokes fan out from Fundstelle to six stacked tier-2 boxes, all
+    # entered on their left edge -- every spoke therefore needs a
+    # *horizontal* final approach (svg_arrow_elbow_v, not a direct
+    # svg_arrow_L "bend=h", which would end on a vertical approach and
+    # visibly enter from above/below instead of from the side; that
+    # mismatch was the second bug Florian flagged after S35).
+    #
+    # Six rails, reused in two groups of three (kz/ent/fat above
+    # Fundstelle's height, geo_akt/pub/sch below) since the two groups'
+    # y-ranges never overlap. Within each group of three, the rail
+    # closest to Fundstelle goes to whichever spoke travels *farthest*
+    # (kz, sch), and the rail closest to the tier-2 column goes to
+    # whichever travels *least* (fat, geo_akt) -- verified pairwise
+    # (every "does this spoke's approach segment cross that spoke's
+    # rail segment" check) so none of the six cross each other.
+    rail_near, rail_mid, rail_far = 645, 665, 685
+    exit_ys = [fy + fh * (i + 0.5) / 6 for i in range(6)]
+    spokes = [
+        (kz, p("hatKulturelleZuordnung"), rail_near),
+        (ent, p("wurdeEntdecktDurch"), rail_mid),
+        (fat, p("hatFundstellenart"), rail_far),
+        (geo_akt, p("wurdeGeoreferenziertDurch"), rail_far),
+        (pub, p("hatPublikation"), rail_mid),
+        (sch, p("hatScherbe"), rail_near),
+    ]
+    for i, ((bx, by), label, rail_x) in enumerate(spokes):
+        parts.append(vu.svg_arrow_elbow_v(fright, exit_ys[i], bx, by + T2H / 2, rail_x,
                                            label=label, font_size=10.5))
 
     # tier 3 (aligned with tier-2 rows 0..2)
@@ -130,14 +163,20 @@ def build(lang: str = "en") -> list[str]:
     parts.append(box(*eat, T3W, T3H, c("EntdeckungsartType"), "crm:E55_Type", TYPE))
     parts.append(vu.svg_arrow_labeled(kz[0] + T2W, kz[1] + T2H / 2, kg[0], kg[1] + T3H / 2, p("hatKulturgruppe"),
                                        font_size=11))
-    # kz->dat and ent->eat both skip one row in the same crowded column,
-    # so a direct vertical run would cut through the box in between
-    # (ent, and fat, respectively) -- routed via a rail in the gap
-    # between the tier-2 and tier-3 columns instead.
-    parts.append(vu.svg_arrow_elbow_v(kz[0] + T2W, kz[1] + T2H * 0.8, dat[0], dat[1] + T3H / 2, 1090,
-                                       label=p("hatDatierung"), font_size=10.5))
-    parts.append(vu.svg_arrow_elbow_v(ent[0] + T2W, ent[1] + T2H / 2, eat[0], eat[1] + T3H / 2, 1115,
-                                       label=p("hatEntdeckungsart"), font_size=10.5))
+    # kz->dat and ent->eat both skip one row in the same crowded column
+    # (a direct side-entry would also coincidentally land at the same
+    # height as Entdeckung's own row, reading as if the line came out of
+    # that box instead of KulturelleZuordnung -- see PRIMER.md S35) --
+    # routed instead to enter dat/eat from above, via a rail in the gap
+    # between tier-2 and tier-3 rows.
+    kz_bottom = (kz[0] + T2W / 2, kz[1] + T2H)
+    dat_top = (dat[0] + T3W / 2, dat[1])
+    parts.append(vu.svg_arrow_elbow(kz_bottom[0], kz_bottom[1], dat_top[0], dat_top[1], 160,
+                                     label=p("hatDatierung"), font_size=10.5))
+    ent_bottom = (ent[0] + T2W / 2, ent[1] + T2H)
+    eat_top = (eat[0] + T3W / 2, eat[1])
+    parts.append(vu.svg_arrow_elbow(ent_bottom[0], ent_bottom[1], eat_top[0], eat_top[1], 310,
+                                     label=p("hatEntdeckungsart"), font_size=10.5))
 
     # tier 4 (aligned with tier-3 Datierung row)
     dmt = (T4_X, ROW[1])

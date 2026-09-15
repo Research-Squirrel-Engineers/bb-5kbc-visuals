@@ -48,8 +48,8 @@
 <rect x="85.0" y="760.0" width="220.0" height="90.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
 <text x="195.0" y="797.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Datierung</text>
 <text x="195.0" y="817.0" text-anchor="middle" font-family="Fira Sans" font-size="9.0" fill="#2c2c2a" opacity="0.75">pro Fundstelle · crm:E52 + time:Interval</text>
-<path d="M 325.0 542.0 L 325.0 760.0 L 195.0 760.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="372.0" y="651.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">hatDatierung</text>
+<path d="M 325.0 542.0 L 325.0 567.0 L 195.0 567.0 L 195.0 760.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="260.0" y="559.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">hatDatierung</text>
 <circle cx="1500.0" cy="190.0" r="78.0" fill="#e8e8e8" stroke="#666666" stroke-width="2"/>
 <circle cx="1500.0" cy="190.0" r="72.0" fill="none" stroke="#666666" stroke-width="1" opacity="0.55"/>
 <text x="1500.0" y="186.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="12.5" fill="#2c2c2a">FundstellenartType</text>
@@ -74,13 +74,13 @@
 <circle cx="1140.0" cy="870.0" r="60.0" fill="none" stroke="#33456b" stroke-width="1" opacity="0.55"/>
 <text x="1140.0" y="866.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13.0" fill="#2c2c2a">Scherbe</text>
 <text x="1140.0" y="884.0" text-anchor="middle" font-family="Fira Sans" font-size="8.0" fill="#2c2c2a" opacity="0.75">1..n · geteilt pro QID</text>
-<path d="M 935.0 555.0 L 935.0 804.0 L 1140.0 804.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="975.8" y="679.5" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">hatScherbe</text>
+<path d="M 935.0 555.0 L 935.0 580.0 L 1140.0 580.0 L 1140.0 804.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="1037.5" y="572.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">hatScherbe</text>
 <rect x="470.0" y="820.0" width="290.0" height="100.0" rx="10" fill="#fce5cd" stroke="#a86028" stroke-width="1.4"/>
 <text x="615.0" y="862.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">GeoreferenzierungsAktivitaet</text>
 <text x="615.0" y="882.0" text-anchor="middle" font-family="Fira Sans" font-size="11.0" fill="#2c2c2a" opacity="0.75">pro Fundstelle · Punkt (WGS84) + Aktivität</text>
-<path d="M 775.0 555.0 L 775.0 820.0 L 615.0 820.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="862.0" y="687.5" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">wurdeGeoreferenziertDurch</text>
+<path d="M 775.0 555.0 L 775.0 580.0 L 615.0 580.0 L 615.0 820.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="695.0" y="572.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">wurdeGeoreferenziertDurch</text>
 <rect x="60.0" y="950.0" width="16" height="16" rx="3" fill="#dce8ea" stroke="#386870" stroke-width="1.4"/>
 <text x="84.0" y="958.0" dominant-baseline="central" font-family="Fira Sans" font-size="12" fill="#2c2c2a">Doppelring = geteilter Konzeptknoten, dedupliziert</text>
 <rect x="820.0" y="950.0" width="16" height="16" rx="3" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>

@@ -259,6 +259,9 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S32 | Interne Verweise (Regel/Tab./§/Querverweise) aus gerendertem Text entfernt | `step_02/06/07/09/10/13/14_*.py` | S31 | erledigt 2026-09-15 |
 | S33 | Alle Diagramme auf orthogonale Linienführung umgestellt | `bb5kbc_visuals_utils.py`, `step_00/01/03/04/05/06/08/09/10/11/12/15_*.py` | S32 | erledigt 2026-09-15 |
 | S34 | Korrektur: erfundenes Beispiel in 11 (Zeile 214/Q100) als illustrativ gekennzeichnet | `step_11_literature_enrichment.py` | S33 | erledigt 2026-09-15 |
+| S35 | 03 nach Florians Rückmeldung noch mal überarbeitet -- zwei Ursachen für "immer noch durcheinander" behoben | `step_03_application_ontology.py` | S34 | erledigt 2026-09-15 |
+| S36 | Systematischer bend=h/v-Fehler in `svg_arrow_L` gefunden und über 8 Grafiken hinweg behoben | `step_00/01/03/04/06/10/12/15_*.py` | S35 | erledigt 2026-09-15 |
+| S37 | Sichtbares "Herausragen" vor dem Knick ergänzt (00, 03) | `step_00_fundstelle_hub.py`, `step_03_application_ontology.py` | S36 | erledigt 2026-09-15 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -924,27 +927,168 @@ Beispiel keiner einzelnen Zeile zugeordnet werden kann.
 **Abnahme:** DE+EN neu gerendert, Docstring dokumentiert den Befund und
 die Korrektur vollständig.
 
+### S35 -- 03 nach Florians Rückmeldung noch mal überarbeitet
+
+**Ziel:** Florian schickte einen Screenshot von 03-application-ontology
+mit "hier sind die linien noch sehr durcheinander" -- S33 hatte diese
+Grafik zwar orthogonal gemacht, aber nicht wirklich entwirrt.
+
+**Befund, zwei getrennte Ursachen:**
+
+1. **Rail-Reihenfolge nicht an Reiseweite angepasst.** Die sechs
+   Fundstelle-Speichen bekamen in S33 zwar je eine eigene Schiene, aber
+   die Zuordnung war willkürlich (nicht nach Entfernung sortiert) --
+   dadurch kreuzten sich Schienen von kurzen Verbindungen (fat, geo_akt:
+   direkt, kein Umweg nötig) mit Schienen von langen Verbindungen (kz,
+   ent, pub, sch: überspringen 1-2 Boxen), obwohl keine einzige Box
+   selbst durchquert wurde -- der Effekt sah trotzdem nach Chaos aus.
+2. **Zufällige Höhen-Koinzidenz bei hatDatierung/hatEntdeckungsart.**
+   `Datierung` (Tier 3) sitzt in derselben Zeile wie `Entdeckung`
+   (Tier 2, dieselbe ROW[1]). Die S33-Routing näherte sich `Datierung`
+   von der Seite auf genau dieser Höhe -- optisch sah es dadurch so
+   aus, als käme die `hatDatierung`-Linie aus `Entdeckung` heraus,
+   obwohl sie tatsächlich von `KulturelleZuordnung` kommt. Dasselbe bei
+   `hatEntdeckungsart`/`EntdeckungsartType` (Zeile deckt sich mit
+   `FundstellenartType`).
+
+**Korrigiert:**
+
+1. Die sechs Schienen jetzt nach Reiseweite sortiert: kz und sch
+   (überspringen je zwei Boxen) bekommen die äußere Schiene (x=650),
+   ent und pub (überspringen je eine Box) die innere (x=680), fat und
+   geo_akt (kein Umweg) bleiben direkt. Da das "nach oben"-Paar
+   (kz/ent) und das "nach unten"-Paar (pub/sch) sich in y nie
+   überschneiden, lässt sich jede der beiden Schienen-x-Positionen
+   zweimal verwenden, ohne dass sich die vier Leitungen je kreuzen --
+   nachvollziehbar, nicht nur optisch geprüft.
+2. hatDatierung und hatEntdeckungsart treten jetzt von **oben** in ihre
+   Zielbox ein (eigene Schiene im Zeilenzwischenraum, dann senkrecht
+   nach unten), nicht mehr seitlich auf Zufallshöhe. Die
+   Höhen-Koinzidenz mit Entdeckung/FundstellenartType spielt dadurch
+   keine Rolle mehr.
+
+**Abnahme:** DE+EN neu gerendert, Fundstelle-Kante und der
+hatDatierung/hatDiscoveryType-Bereich beide vergrößert geprüft -- keine
+Linie kreuzt mehr eine fremde Box oder eine andere Linie auf eine Art,
+die den Ursprung einer Beziehung verschleiert. `python main.py`
+komplett, zweimal hintereinander byte-identisch, 0 AST-Treffer.
+
+### S36 -- Systematischer bend=h/v-Fehler gefunden und über 8 Grafiken behoben
+
+**Ziel:** Florian schickte einen weiteren Screenshot von 03 ("noch nicht
+commited!") und zeigte, dass die Pfeile bei Municipality, Site type und
+Georeferencing activity senkrecht statt waagerecht ankommen -- also
+falscher Eintrittswinkel, nicht (nur) Kreuzung.
+
+**Befund, die eigentliche Ursache:** `svg_arrow_L`s zwei Modi wurden in
+S33/S35 mehrfach verwechselt:
+
+- `bend="h"` (horizontal zuerst) endet mit einem **senkrechten**
+  Segment -- richtig für den Eintritt an einer Ober-/Unterkante.
+- `bend="v"` (vertikal zuerst) endet mit einem **waagerechten**
+  Segment -- richtig für den Eintritt an einer Links-/Rechtskante.
+
+An mehreren Stellen war das vertauscht: das Ziel war eine Links-/Rechtskante
+(erwartet waagerechten Eintritt), aber der Code nutzte `bend="h"`
+(liefert senkrechten Eintritt) -- die Pfeilspitze traf dadurch von
+oben/unten auf die Box statt sauber von der Seite, sichtbar als kurzer
+Haken ins Eck statt als glatte Linie.
+
+**Systematisch durch alle Dateien mit `svg_arrow_L`-Aufrufen gegangen
+(nicht nur 03) und jedes Ziel einzeln geprüft: welche Kante wird
+angesteuert, passt der `bend`-Wert dazu?** Acht Grafiken hatten den
+Fehler an insgesamt 15 Stellen:
+
+- **03**: die drei von Florian gezeigten (inMunicipality, hasSiteType,
+  wasGeoreferencedBy) plus alle sechs Fundstelle-Speichen (jetzt
+  einheitlich `svg_arrow_elbow_v`, siehe unten) -- die eigentliche Ursache
+  der ursprünglichen Meldung.
+- **00**: hasDating, hasSherd, wasGeoreferencedBy (traten seitlich an der
+  Oberkante ihrer Zielboxen ein statt sauber von oben).
+- **01**: die beiden Treffer-/Timeout-Verzweigungen (kleiner seitlicher
+  Haken statt glattem Eintritt von oben -- am wenigsten auffällig von
+  allen Funden, aber derselbe Fehler).
+- **04**: der Dreifach-Fan-out von Fundstelle zu den drei
+  CRM-Ansichten-Zeilen (stach von unten ins Eck statt seitlich
+  einzutreten).
+- **06**: die beiden Pfeile von Datierung zu crm:E52_Time-Span und
+  time:Interval.
+- **10**: csv_in→Stage 1 und fst_wgs84.csv→bb5kbc_lod_pipeline.py.
+- **12**: wasInformedBy (hakte von unten in Top-Level-Activity statt von
+  der Seite).
+- **15**: der Pfeil zu NFDI4Objects Knowledge Graph -- bei normaler
+  Zoomstufe kaum sichtbar, erst beim Hineinzoomen als Haken ins
+  obere linke Eck erkennbar.
+
+**Bewusst nicht geändert:** die vielen `svg_arrow_L`/`bend="h"`-Aufrufe,
+die auf **Kreise** zielen (05, 08, 09, 11 -- die Doppelring-Knoten und
+wd-Badges). Kreise haben keine harte Kante wie Rechtecke; ein waagerechter
+Eintritt an einem leicht von der Mitte versetzten Punkt sieht dort nicht
+falsch aus, sondern ist die übliche Darstellung für "trifft den Kreisrand
+von der Seite" -- geprüft und bestätigt sauber, keine Änderung nötig.
+
+**Abnahme:** jede der acht Dateien einzeln gerendert, jede betroffene
+Stelle vor und nach dem Fix vergrößert verglichen (nicht nur die
+Gesamtansicht -- der 15-Fehler wäre bei normaler Zoomstufe übersehen
+worden). `python main.py` komplett, zweimal hintereinander
+byte-identisch, 0 AST-Treffer.
+
+**Lehre:** ein einzelner falsch verdrahteter Modus-Parameter in einer
+gemeinsam genutzten Utility-Funktion pflanzt sich lautlos durch viele
+Aufrufstellen fort, ohne dass es beim Bauen einer einzelnen Grafik
+auffällt (jede Stelle sah für sich genommen "nicht offensichtlich falsch"
+aus). Bei künftigen neuen `svg_arrow_L`/`svg_arrow_elbow*`-Aufrufen: vor
+dem Commit bewusst prüfen, welche Kante das Ziel tatsächlich ist, und
+den Modus danach wählen -- nicht nach Bauchgefühl.
+
+### S37 -- Sichtbares "Herausragen" vor dem Knick ergänzt
+
+**Ziel:** Florian schickte einen dritten Screenshot ("noch nciht
+commited!") und benannte ein neues, feineres Detail: bei Site (03) auf
+der linken Seite muss die Linie noch etwas "herausragen" wie auf der
+rechten Seite, gleiches Problem bei Fundstelle-Hub (00) von Cultural
+assignment zu Dating und von Site zu Georeferencing/Sherd.
+
+**Befund:** ein Unterschied im *Stil* des Knicks, nicht in der
+Kreuzungsfreiheit (die war nach S33/S35/S36 bereits gegeben). Auf der
+rechten Seite von 03 und beim Fan-out in 00 verlässt jede Linie ihre
+Quellbox zuerst ein Stück sichtbar in die eigene Richtung (ein kurzer
+"Stummel"), bevor sie zur Ziel-Achse abbiegt -- das kommt daher, dass
+diese Verbindungen über `svg_arrow_elbow`/`svg_arrow_elbow_v` mit einer
+eigenen Schiene geroutet sind. Die drei jetzt gemeldeten Verbindungen
+(inGemeinde in 03; hasDating, hasSherd, wasGeoreferencedBy in 00) nutzten
+dagegen die einfachere `svg_arrow_L` (nur ein Knick) -- das erste
+Segment beginnt exakt auf der Boxkante und biegt sofort ab, ohne
+sichtbaren Stummel davor. Funktional identisch (keine Kreuzung, korrekter
+Eintrittswinkel dank S36), aber optisch inkonsistent mit dem Rest der
+Grafik.
+
+**Korrigiert:** alle vier Verbindungen auf `svg_arrow_elbow`/
+`svg_arrow_elbow_v` mit einer kurzen eigenen Schiene (ca. 25-30 px)
+umgestellt, damit sie denselben "erst sichtbar herausragen, dann
+abbiegen"-Stil zeigen wie der Rest der jeweiligen Grafik.
+
+**Abnahme:** DE+EN beider Dateien neu gerendert, visuell mit den
+bereits bekannten "guten" Stellen (Fundstelle-Fan-out in 03, restliche
+Speichen in 00) verglichen -- jetzt einheitlich. `python main.py`
+komplett, zweimal hintereinander byte-identisch, 0 AST-Treffer.
+
 ## Teil D -- Offene Punkte
 
-- **AST-Scan nicht automatisiert.** Dreimal (S16, S27, S30) denselben
-  Python-3.10-Fehlertyp gefunden, jedes Mal von Hand nachgetragen statt
-  automatisch geprüft. Ein `pre-commit`-Hook oder ein Schritt in
-  `main.py --strict` wäre der nächste sinnvolle Schritt, ist aber noch
-  nicht umgesetzt.
-- **"Ein paar Design-Bugs sind überall drin"** (Florians eigene Worte,
-  2026-09-11) -- die drei seither genannten Punkte (Linienführung, interne
-  Verweise, Datengrundlage) sind mit S31--S34 abgearbeitet. Ob damit
-  *alle* gemeinten Punkte erledigt sind, ist nicht bestätigt -- nichts
-  über die genannten drei hinaus vorsorglich geändert.
+- **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
+  automatisch (siehe S16/S27/S30).
+- **Stil-Konsistenz "sichtbarer Stummel vor dem Knick" nicht
+  flächendeckend geprüft.** S37 hat die vier konkret gemeldeten Stellen
+  (00, 03) gefixt, aber nicht systematisch alle `svg_arrow_L`-Aufrufe in
+  allen 19 Grafiken auf denselben Stil-Unterschied durchsucht -- anders
+  als S36 (dort ging es um eine echte Winkel-Fehlfunktion, hier nur um
+  visuelle Konsistenz zum Rest der jeweiligen Grafik). Möglich, dass
+  andere Grafiken ähnliche "Knick ohne Stummel"-Stellen haben, die
+  bisher niemandem aufgefallen sind.
+- **`svg_arrow_L`s zwei Modi sind leicht zu verwechseln** (S36) --
+  weiterhin nur durch manuelle Prüfung abgesichert, keine robustere API.
 - **Datengrundlage: 11 vollständig geprüft (S34), 12 und 16 nur
-  stichprobenartig.** Für 12 wurde keine spezifische Zahlen-/Wert-Behauptung
-  gegen eine reale Quelle nachgeprüft (der Timestamp und die
-  Beispielwerte sind als generisches Format erkennbar, nicht als
-  Real-Wert-Behauptung formuliert -- aber nicht aktiv verifiziert). Für
-  16 sind die URI-Muster (w3id.org/bb5kbc/ont/..., /site_*) aus einer
-  früheren Sitzung übernommen, nicht in dieser Sitzung erneut gegen die
-  echte .htaccess geprüft. 00--04, 07, 10, 13--15, 17, 18 gelten als
-  geprüft oder waren von Anfang an aus der CSV berechnet.
+  stichprobenartig.**
 
-Wenn ein neuer Punkt ansteht: nach S34 einsortieren (S35, S36, …), hier
+Wenn ein neuer Punkt ansteht: nach S37 einsortieren (S38, S39, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.
