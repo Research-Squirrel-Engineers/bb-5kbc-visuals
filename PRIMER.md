@@ -265,6 +265,7 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S38 | Label-Fehlplatzierung im Fundstelle-Fan-out behoben (03) | `step_03_application_ontology.py` | S37 | erledigt 2026-09-15 |
 | S39 | Rückwärtslaufende Linie zum wd-Badge in 05 (rechtes Panel) behoben | `step_05_uncertainty_markers.py` | S38 | erledigt 2026-09-15 |
 | S40 | Balken-Überlauf in 06 behoben, Linien-Fix aus S36 re-bestätigt | `step_06_uncertainty_dating.py` | S39 | erledigt 2026-09-15 |
+| S41 | 19 Allen-/Freksa-Relationen (neu, Skizze) | `step_19_allen_freksa_relations.py` | S17 | erledigt 2026-09-15 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -1193,6 +1194,46 @@ crm:E52_Time-Span/time:Interval zeigen sauberen waagerechten Eintritt.
 `python main.py` komplett, zweimal hintereinander byte-identisch,
 0 AST-Treffer.
 
+### S41 -- 19 Allen-/Freksa-Relationen (neu, Skizze)
+
+**Ziel:** Florian bat um eine weitere Grafik zu 06-uncertainty-dating, die
+zeigt, wie Allens Interval-Relationen und darauf aufbauend Freksas
+Relationen aussehen könnten -- als eigenständige neue Nummer (19), nicht
+als Eingriff in die bestehende, im Paper referenzierte 06.
+
+**Verifikation vor dem Bauen:** `fst_wgs84_lit_enriched.csv` enthält nur
+18 distinkte (dating_start, dating_end)-Intervalle über alle 540 Zeilen.
+Alle Paarungen dieser 18 Intervalle wurden per Skript gegen
+handgeschriebene Allen-Prädikate klassifiziert; für jede der 13
+Relationen ein echtes, real existierendes Paar (FID, Name, Kultur,
+Jahre) ausgewählt und die Klassifikation einzeln noch einmal bestätigt,
+bevor es in den Code kam. Keine erfundenen Beispiele (vgl. S31).
+
+**Substanz:**
+- Linkes Panel: sieben kanonische Allen-Zeilen (Relation + Inverse in
+  einem Bild, Standarddarstellung nach Allen 1983), je mit lokal
+  skalierter Mini-Zeitachse (nicht global über den ganzen Datensatz,
+  damit z. B. die 4000 Jahre breite Mesolithikum-Spanne die enge
+  SBK-Spanne nicht unsichtbar macht) und echten
+  FID/Name/Kultur/Jahres-Beschriftungen.
+- Rechtes Panel: Skizze zu Freksas Semi-Intervallen, aufgehängt am
+  echten "meets"-Paar (FID78/FID153, Grenze bei -4350) mit deren
+  echten datingCertaintyStart/End-Werten (±100/±50 Jahre) als
+  Unsicherheitsbänder; explizit als Skizze markiert, nicht als
+  Berechnung (eigener gestrichelter Kasten unten, Farbsprache
+  terracotta/`UNCERTAIN_*` wie in 05).
+- Relationsnamen bewusst unübersetzt englisch in beiden
+  Sprachversionen (Begründung im Docstring) -- Ausnahme vom sonstigen
+  `vu.cls()`/`vu.prop()`-Muster, weil es keine bb5kbc:-Vokabel ist.
+
+**Abnahme:** DE+EN gerendert und visuell geprüft (kein Overflow, Umlaute
+korrekt); `python py/step_19_allen_freksa_relations.py` zweimal →
+byte-identisch; kompletter `python main.py` (jetzt 20 Schritte,
+80 Dateien) zweimal → alle 80 Dateien byte-identisch. AST-Scan auf das
+f-string-Backslash-Muster: 0 Treffer -- drei verschachtelte f-strings,
+die beim Schreiben den Parser stolpern ließen, vorsorglich in eigene
+Variablen ausgelagert (siehe S16/S27/S30-Historie).
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
@@ -1212,6 +1253,13 @@ crm:E52_Time-Span/time:Interval zeigen sauberen waagerechten Eintritt.
   jeweils nur an gemeldeten Stellen gefixt, nicht flächendeckend.
 - **Datengrundlage: 11 vollständig geprüft (S34), 12 und 16 nur
   stichprobenartig.**
+- **19s Freksa-Panel ist eine Skizze, keine Implementierung** (S41): die
+  Beispielrelationen im "könnte real sein"-Beispiel sind von Hand aus
+  den echten ±100/±50-Jahres-Spannen abgeleitet, nicht aus einer
+  Punktalgebra berechnet. Eine echte Freksa(1992)-Semi-Intervall-/
+  Nachbarschafts-Umsetzung (und ob sie als eigene `.rq`/`queries.yaml`-
+  View in `bb-5kbc-public` oder nur hier als Grafik leben soll) ist
+  offen.
 
-Wenn ein neuer Punkt ansteht: nach S40 einsortieren (S41, S42, …), hier
+Wenn ein neuer Punkt ansteht: nach S41 einsortieren (S42, S43, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

@@ -1,0 +1,85 @@
+<svg width="1750" height="1000" viewBox="0 0 1750 1000" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Allen&apos;s 13 interval relations, then a Freksa/semi-interval sketch under real dating uncertainty</title>
+<rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<text x="90" y="42" font-family="Fira Sans" font-size="13" font-style="italic" fill="#5f5e5a">Skizze — baut auf der „Allen-Relationen“-Notiz in 06-uncertainty-dating auf; alle Werte real, siehe FID-Angaben</text>
+<text x="90" y="78" font-family="Fira Sans" font-weight="500" font-size="15" fill="#2c2c2a">Allens 13 Relationen, sieben kanonische Paare</text>
+<text x="90" y="96" font-family="Fira Sans" font-size="11" fill="#5f5e5a">Nach Allen (1983), englisch zitiert — grau = X (variiert) · grünlich = R (Referenz)</text>
+<text x="90" y="166.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">before</text>
+<text x="90" y="186.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">/ after</text>
+<text x="250.0" y="142.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID40 · Bochow 16 (SBK) · −4804 – −4597</text>
+<text x="250.0" y="220.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID32 · Steckelsdorf 12 (FBG) · −4550 – −3900</text>
+<rect x="298.3" y="148.0" width="138.2" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="467.8" y="174.0" width="433.9" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="90" y="278.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">meets</text>
+<text x="90" y="298.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">/ met-by</text>
+<text x="250.0" y="254.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID78 · Nowe Objezierze 7 (SBK) · −4800 – −4350</text>
+<text x="250.0" y="332.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID153 · Racot 18 (BKK) · −4350 – −3900</text>
+<line x1="600.0" y1="258.0" x2="600.0" y2="312.0" stroke="#888780" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="298.3" y="260.0" width="301.7" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="600.0" y="286.0" width="301.7" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="90" y="390.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">overlaps</text>
+<text x="90" y="410.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">/ overlapped-by</text>
+<text x="250.0" y="366.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID40 · Bochow 16 (SBK) · −4804 – −4597</text>
+<text x="250.0" y="444.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID78 · Nowe Objezierze 7 (SBK) · −4800 – −4350</text>
+<rect x="298.3" y="372.0" width="275.1" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="303.6" y="398.0" width="598.1" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="90" y="502.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">starts</text>
+<text x="90" y="522.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">/ started-by</text>
+<text x="250.0" y="478.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID1 · Tüngeda (SBK) · −4800 – −4750</text>
+<text x="250.0" y="556.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID78 · Nowe Objezierze 7 (SBK) · −4800 – −4350</text>
+<line x1="298.3" y1="482.0" x2="298.3" y2="536.0" stroke="#888780" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="298.3" y="484.0" width="67.0" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="298.3" y="510.0" width="603.4" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="90" y="614.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">during</text>
+<text x="90" y="634.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">/ contains</text>
+<text x="250.0" y="590.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID40 · Bochow 16 (SBK) · −4804 – −4597</text>
+<text x="250.0" y="668.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID305 · Eichhorst - 8 (Mesolithikum) · −8000 – −4000</text>
+<rect x="780.4" y="596.0" width="31.2" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="298.3" y="622.0" width="603.4" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="90" y="726.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">finishes</text>
+<text x="90" y="746.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">/ finished-by</text>
+<text x="250.0" y="702.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID49 · Selchow 7 (Rössener Kultur) · −4650 – −4450</text>
+<text x="250.0" y="780.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID258 · Flemsdorf 10 (Rössener Kultur) · −4700 – −4450</text>
+<line x1="901.7" y1="706.0" x2="901.7" y2="760.0" stroke="#888780" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="419.0" y="708.0" width="482.8" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="298.3" y="734.0" width="603.4" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="90" y="838.0" font-family="Fira Sans" font-weight="500" font-size="16" fill="#2c2c2a">equal</text>
+<text x="250.0" y="814.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID1 · Tüngeda (SBK) · −4800 – −4750</text>
+<text x="250.0" y="892.0" font-family="Fira Sans" font-size="10.5" fill="#5f5e5a">FID2 · Goldbach (SBK) · −4800 – −4750</text>
+<line x1="381.2" y1="818.0" x2="381.2" y2="872.0" stroke="#888780" stroke-width="1" stroke-dasharray="3 4"/>
+<line x1="818.8" y1="818.0" x2="818.8" y2="872.0" stroke="#888780" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="381.2" y="820.0" width="437.5" height="16" rx="4" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
+<rect x="381.2" y="846.0" width="437.5" height="16" rx="4" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
+<text x="1010" y="78" font-family="Fira Sans" font-weight="500" font-size="15" fill="#2c2c2a">Was Freksa ergänzt: Relationen unter Endpunkt-Unsicherheit</text>
+<text x="1010" y="108" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">Jede Datierung trägt bereits einen Spielraum — datingCertaintyStart/End,</text>
+<text x="1010" y="127" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">±10 bis ±200 Jahre je nach Fundstelle (siehe 06-uncertainty-dating).</text>
+<text x="1010" y="146" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">Eine scharfe Allen-Relation schaut nur auf die zwei exakten Zahlen und</text>
+<text x="1010" y="165" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">ignoriert diesen Spielraum. Freksas Semi-Intervalle teilen jedes</text>
+<text x="1010" y="184" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">Intervall in Start- und Endpunkt und fragen, wo jeder Punkt innerhalb</text>
+<text x="1010" y="203" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">seines Spielraums plausibel liegen könnte — das schränkt die Antwort</text>
+<text x="1010" y="222" font-family="Fira Sans" font-size="12.3" fill="#2c2c2a">auf eine Nachbarschaft von Relationen ein, statt sie festzulegen.</text>
+<text x="1010" y="261" font-family="Fira Sans" font-weight="500" font-size="13" fill="#2c2c2a">Durchgerechnetes Beispiel — das echte „meets“-Paar aus der Galerie</text>
+<text x="1010" y="281" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">FID78 Nowe Objezierze 7 (SBK) meets FID153 Racot 18 (BKK) bei −4350</text>
+<rect x="1114.3" y="309.0" width="471.4" height="22" rx="4" fill="#f5dede" stroke="#a03030" stroke-width="1.2" opacity="0.75"/>
+<text x="1020.0" y="305.0" font-family="Fira Sans" font-size="10" fill="#5f5e5a">Nowe Objezierze 7, Ende ±100 J.</text>
+<rect x="1232.1" y="341.0" width="235.7" height="22" rx="4" fill="#a03030" stroke="#a03030" stroke-width="1.2" opacity="0.55"/>
+<text x="1020.0" y="337.0" font-family="Fira Sans" font-size="10" fill="#5f5e5a">Racot 18, Start ±50 J.</text>
+<line x1="1350.0" y1="303.0" x2="1350.0" y2="381.0" stroke="#2c2c2a" stroke-width="1.4"/>
+<text x="1350.0" y="395.0" text-anchor="middle" font-family="Fira Sans" font-size="10" fill="#2c2c2a">−4350 · scharfe Grenze</text>
+<text x="1010" y="419" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a">→ je nachdem, wo die wahre Grenze innerhalb des Spielraums liegt, könnte „meets“ in Wahrheit sein:</text>
+<rect x="1010.0" y="435.0" width="86" height="26" rx="13" fill="#f5dede" stroke="#a03030" stroke-width="1.3"/>
+<text x="1053.0" y="448.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#a03030">before</text>
+<rect x="1108.0" y="435.0" width="86" height="26" rx="13" fill="#f5dede" stroke="#a03030" stroke-width="1.3"/>
+<text x="1151.0" y="448.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#a03030">meets</text>
+<rect x="1206.0" y="435.0" width="86" height="26" rx="13" fill="#f5dede" stroke="#a03030" stroke-width="1.3"/>
+<text x="1249.0" y="448.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#a03030">overlaps</text>
+<text x="1010" y="485" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">Dieselben ±10/50/100/200-Jahres-Spannen aus 06-uncertainty-dating würden das antreiben — nichts Neues zu messen.</text>
+<rect x="1010.0" y="515.0" width="680.0" height="120.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1026.0" y="541.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Skizze, keine Berechnung</text>
+<text x="1026" y="557" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a">Die Relationsnamen im Beispiel oben sind von Hand aus den echten</text>
+<text x="1026" y="576" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a">±100/±50-Jahres-Spannen abgeleitet, nicht aus einer Punktalgebra-</text>
+<text x="1026" y="595" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a">Implementierung. Eine vollständige Freksa(1992)-Behandlung ist</text>
+<text x="1026" y="614" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a">zukünftige Arbeit — noch nicht in queries.yaml oder einer .rq-Datei.</text>
+</svg>

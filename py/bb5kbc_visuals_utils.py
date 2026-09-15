@@ -78,6 +78,7 @@ OUT_DIRS = {
     "16-persistent-uris": IMG / "16-persistent-uris",
     "17-stats-infographic": IMG / "17-stats-infographic",
     "18-site-map": IMG / "18-site-map",
+    "19-allen-freksa-relations": IMG / "19-allen-freksa-relations",
 }
 
 # --------------------------------------------------------------------------- #
