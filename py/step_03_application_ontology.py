@@ -17,6 +17,12 @@ bb5kbc: identifiers in the German figure, translated via ``vu.cls()`` /
 convention. CRM/CRMsci stereotype strings (crm:E27_Site, ...) are never
 translated, they are the standard's own vocabulary.
 
+**Revision 2026-09-15:** every Fundstelle-to-tier-2 connection, plus
+inGemeinde/hatDatierung/hatEntdeckungsart, used to be a diagonal; now
+orthogonal, with the six Fundstelle spokes exiting at six distinct
+points along its right edge so neither the lines nor their labels
+overlap (house rule, PRIMER.md A3).
+
 Writes: application-ontology.de.svg/.png, application-ontology.en.svg/.png
 Run standalone: ``python py/step_03_application_ontology.py``
 """
@@ -80,7 +86,8 @@ def build(lang: str = "en") -> list[str]:
     fx, fy, fw = FUND_X, fcy - fh / 2, 230
     parts.append(vu.svg_box(fx, fy, fw, fh, c("Fundstelle"), stereotype="crm:E27_Site",
                              fill=SITE["fill"], stroke=SITE["stroke"], stroke_width=2.2))
-    parts.append(vu.svg_arrow_labeled(fx, fy + fh - 25, gemeinde[0] + AW, gemeinde[1] + AH / 2, p("inGemeinde")))
+    parts.append(vu.svg_arrow_L(fx, fy + fh - 25, gemeinde[0] + AW, gemeinde[1] + AH / 2, bend="h",
+                                 label=p("inGemeinde"), font_size=11))
 
     # tier 2 -- direct Fundstelle neighbours
     kz = (T2_X, ROW[0])
@@ -97,11 +104,22 @@ def build(lang: str = "en") -> list[str]:
     parts.append(box(*sch, T2W, T2H, c("Scherbe"), "crm:E22_Human-Made_Object", DOC))
 
     fright, fmidy = fx + fw, fy + fh / 2
-    for (bx, by), label in [
-        (kz, p("hatKulturelleZuordnung")), (ent, p("wurdeEntdecktDurch")), (fat, p("hatFundstellenart")),
-        (geo_akt, p("wurdeGeoreferenziertDurch")), (pub, p("hatPublikation")), (sch, p("hatScherbe")),
+    # fat and geo_akt sit immediately above/below Fundstelle's own height,
+    # so a direct corner doesn't cross any other tier-2 box; kz/ent/pub/sch
+    # each skip at least one box in the same column and need a rail routed
+    # through the gap instead (see svg_arrow_elbow_v docstring).
+    parts.append(vu.svg_arrow_L(fright, fmidy - 15, fat[0], fat[1] + T2H / 2, bend="h",
+                                 label=p("hatFundstellenart"), font_size=11))
+    parts.append(vu.svg_arrow_L(fright, fmidy + 15, geo_akt[0], geo_akt[1] + T2H / 2, bend="h",
+                                 label=p("wurdeGeoreferenziertDurch"), font_size=11))
+    for (bx, by), label, exit_dy, rail_x in [
+        (kz, p("hatKulturelleZuordnung"), -40, 665),
+        (ent, p("wurdeEntdecktDurch"), -25, 700),
+        (pub, p("hatPublikation"), 25, 700),
+        (sch, p("hatScherbe"), 40, 665),
     ]:
-        parts.append(vu.svg_arrow_labeled(fright, fmidy, bx, by + T2H / 2, label, font_size=11))
+        parts.append(vu.svg_arrow_elbow_v(fright, fmidy + exit_dy, bx, by + T2H / 2, rail_x,
+                                           label=label, font_size=10.5))
 
     # tier 3 (aligned with tier-2 rows 0..2)
     kg = (T3_X, ROW[0])
@@ -112,10 +130,14 @@ def build(lang: str = "en") -> list[str]:
     parts.append(box(*eat, T3W, T3H, c("EntdeckungsartType"), "crm:E55_Type", TYPE))
     parts.append(vu.svg_arrow_labeled(kz[0] + T2W, kz[1] + T2H / 2, kg[0], kg[1] + T3H / 2, p("hatKulturgruppe"),
                                        font_size=11))
-    parts.append(vu.svg_arrow_labeled(kz[0] + T2W, kz[1] + T2H / 2, dat[0], dat[1] + T3H / 2, p("hatDatierung"),
-                                       font_size=11))
-    parts.append(vu.svg_arrow_labeled(ent[0] + T2W, ent[1] + T2H / 2, eat[0], eat[1] + T3H / 2,
-                                       p("hatEntdeckungsart"), font_size=11))
+    # kz->dat and ent->eat both skip one row in the same crowded column,
+    # so a direct vertical run would cut through the box in between
+    # (ent, and fat, respectively) -- routed via a rail in the gap
+    # between the tier-2 and tier-3 columns instead.
+    parts.append(vu.svg_arrow_elbow_v(kz[0] + T2W, kz[1] + T2H * 0.8, dat[0], dat[1] + T3H / 2, 1090,
+                                       label=p("hatDatierung"), font_size=10.5))
+    parts.append(vu.svg_arrow_elbow_v(ent[0] + T2W, ent[1] + T2H / 2, eat[0], eat[1] + T3H / 2, 1115,
+                                       label=p("hatEntdeckungsart"), font_size=10.5))
 
     # tier 4 (aligned with tier-3 Datierung row)
     dmt = (T4_X, ROW[1])

@@ -123,6 +123,22 @@ Eigenschaften, an denen sich ein fertiges Diagramm messen lassen muss:
 - **Sprachregel:** siehe Kopf dieses Dokuments.
 - Windows ist die Referenzplattform für Befehle an Florian (`cmd`/
   `PowerShell`, `findstr`/`Select-String` statt `grep`).
+- **Nur orthogonale Linien (2026-09-15).** Jede Verbindung zwischen zwei
+  Boxen ist entweder eine gerade Linie (beide Enden auf gleicher x- oder
+  y-Achse) oder ein rechtwinkliger Verbinder (`svg_arrow_L` für einen
+  Knick, `svg_arrow_elbow`/`svg_arrow_elbow_v` für eine gemeinsame
+  Schiene bei mehreren Verbindungen durch denselben engen Bereich) --
+  nie eine Diagonale. Bei mehreren Linien, die exakt am selben Punkt
+  enden, `marker=None` für alle bis auf einen letzten kurzen Hop
+  verwenden, sonst kollidieren zwei Pfeilspitzen zu einem "X" (siehe
+  S33 für den Fund).
+- **Keine internen Verweise im gerenderten Text (2026-09-15).** Keine
+  "Regel N", "Tab. N", "§N", "Sektion N" und keine Querverweise auf
+  andere Diagrammnummern ("siehe 05-...", "(08)") in Text, der tatsächlich
+  ins SVG gerendert wird -- jedes Diagramm muss für sich allein
+  verständlich sein. Solche Referenzen sind in Docstrings weiterhin
+  erlaubt (die sind nicht Teil des Bildes, sondern Dokumentation für
+  künftige Bearbeitung).
 
 ### A4 Beschlusslage
 
@@ -192,6 +208,18 @@ waren erfunden, nicht aus der CSV. Der Docstring hatte fälschlich
 "real heterogeneous CSV values" behauptet, ohne dass die Datei je
 geöffnet worden war. Vollständige Aufarbeitung: siehe S31.
 
+**Befund 2026-09-15 (Florian, nach dem letzten Commit):** drei Aufträge
+auf einmal: (1) "kannst du bitte alle anderen grafiken auch überprüfen?"
+-- die Datengrundlagen-Prüfung aus S31 sollte über die vier
+Datierungs-Grafiken hinaus gehen; (2) "die linien immer 'nur' vertikal
+und horizontal zeichnen, nicht diagonal" -- neue verbindliche
+Layout-Regel für alle Grafiken, nicht nur die drei zuvor gemeldeten; (3)
+"Dinge wie 'Regel x' oder so rausnehmen, die Grafiken sollen für sich
+alleine stehen, teilweise stehen auch texte in linien" -- interne
+Verweise (Regel-Nummern, Tab.-Nummern, §-Abschnitte, Querverweise auf
+andere Diagrammnummern) sollen aus jedem gerenderten Text verschwinden,
+nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
+
 ## Teil B -- Schrittübersicht
 
 | ID | Schritt | Datei | hängt ab von | Status |
@@ -228,6 +256,9 @@ geöffnet worden war. Vollständige Aufarbeitung: siehe S31.
 | S29 | 18: echter Baselayer (Grenzen, Großstädte); kein Hillshade | `step_18_site_map.py` + 3 neue Geodaten-Dateien | S28 | erledigt 2026-09-11 |
 | S30 | Bugfix: Python-3.10-Backslash erneut in S29 gefunden | `step_18_site_map.py` | S29 | erledigt 2026-09-11 |
 | S31 | Korrektur: erfundene Datierungs-Beispielwerte durch echte ersetzt | `step_05/06/08/09_*.py` | S30 | erledigt 2026-09-11 |
+| S32 | Interne Verweise (Regel/Tab./§/Querverweise) aus gerendertem Text entfernt | `step_02/06/07/09/10/13/14_*.py` | S31 | erledigt 2026-09-15 |
+| S33 | Alle Diagramme auf orthogonale Linienführung umgestellt | `bb5kbc_visuals_utils.py`, `step_00/01/03/04/05/06/08/09/10/11/12/15_*.py` | S32 | erledigt 2026-09-15 |
+| S34 | Korrektur: erfundenes Beispiel in 11 (Zeile 214/Q100) als illustrativ gekennzeichnet | `step_11_literature_enrichment.py` | S33 | erledigt 2026-09-15 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -764,6 +795,135 @@ jeder in den Diagrammen sichtbare FID wurde nochmals einzeln gegen
 ``fst_wgs84_lit_enriched.csv`` abgeglichen (siehe Tabelle oben). `python
 main.py` läuft komplett durch, zweimal hintereinander byte-identisch.
 
+### S32 -- Interne Verweise aus gerendertem Text entfernt
+
+**Ziel:** "Dinge wie 'Regel x' oder so rausnehmen, die Grafiken sollen
+für sich alleine stehen."
+
+**Substanz:** systematisch nach ``Regel\s*\d``, ``Tab\.\s*\d``,
+``Abb\.\s*\d``, ``\u00a7\d`` und Diagramm-Querverweisen
+(``0[0-9]-[a-z-]*``, ``(0[0-9])``) im gerenderten Text jeder Datei
+gesucht -- ausdrücklich nur in dem, was tatsächlich ins SVG geht, nicht
+in Docstrings (die sind Dokumentation für künftige Bearbeitung, kein
+Bildinhalt). Funde und Fixes:
+
+- **07**: "Regel 5" aus einem Container-Titel entfernt, "(Tab. 5)" aus
+  einem zweiten. Dabei die referenzierten Zahlen selbst (fslwb:Q23/15/24/113)
+  gegen den echten Pipeline-Code (`bb5kbc_lod_pipeline.py`) verifiziert --
+  die stimmten exakt.
+- **09**: "Regel 3"/"Regel 2/3" aus Box-Untertitel und Fließtext entfernt;
+  ein Querverweis "05-uncertainty-markers." durch einen eigenständigen
+  Satz ersetzt, der den Grund (fsl:certaintyDesc) direkt nennt statt auf
+  ein anderes Diagramm zu verweisen; ein übersehener Querverweis "(08)"
+  im Fließtext nachträglich gefunden und ebenfalls entfernt.
+- **14**: Querverweis "...zeigt 04-crm-crosswalk." durch einen
+  eigenständigen Satz ersetzt.
+- **13**: "(Tab. 6)" entfernt.
+- **02**: "(Paper §3.2)" entfernt.
+- **10**: "(§3)"/"(§6)" aus zwei Container-Titeln entfernt.
+- **06**: "(bb5kbc-csv-issues.md #6)" aus zwei Fließtext-Zeilen entfernt,
+  reiner Fließtext bleibt.
+
+**Abnahme:** ein Python-Scanner (liest jede Datei, überspringt
+Docstring-Blöcke, sucht die obigen Muster) lief nach den Fixes über alle
+19 `step_*.py` -- 0 Treffer im gerenderten Text.
+
+### S33 -- Alle Diagramme auf orthogonale Linienführung umgestellt
+
+**Ziel:** "die linien immer 'nur' vertikal und horiontal zeichnen, nicht
+diagonal, etc, das wird teilw. sehr wild."
+
+**Substanz:** zwei neue Utility-Funktionen in `bb5kbc_visuals_utils.py`:
+
+- `svg_arrow_L(x1,y1,x2,y2,bend="h"|"v")` -- ein Knick. `bend="h"`
+  verlässt die Quelle horizontal, biegt dann zur Ziel-y; `bend="v"`
+  umgekehrt. Degradiert zu einer geraden Linie, wenn x1==x2 oder
+  y1==y2 bereits gilt. Optionales Label sitzt auf dem längeren
+  Teilstück.
+- `marker: str | None` auf `svg_arrow_L` ergänzt -- `marker=None`
+  unterdrückt die Pfeilspitze, für Zubringer-Linien, die an einem
+  gemeinsamen Punkt mit einer anderen Linie zusammenlaufen (siehe
+  unten, S05-Fund).
+
+Dazu zwei bereits vorhandene Funktionen erweitert: `svg_arrow_elbow`
+(horizontale Schiene) und `svg_arrow_elbow_v` (vertikale Schiene) haben
+jetzt beide ein optionales `label`, das auf dem Schienen-Segment sitzt.
+
+**Durchgearbeitet, je mit den gefundenen Problemen:**
+
+- **00 (Fundstelle-Hub):** komplett neu -- alle 7 Speichen orthogonal,
+  teils durch Verschieben von Boxen auf Fundstelles eigene Achse (z. B.
+  KulturelleZuordnung auf Fundstelles Mittelhöhe), teils durch
+  Eck-Routing.
+- **05 (Unsicherheits-Marker, Florians Screenshot):** beim Umbau der
+  Konvergenz-Pfeile zum "wd"-Badge ein **neuer Bug**: zwei Pfeilspitzen,
+  die exakt am selben Punkt enden, überlagern sich zu einem "X".
+  Ursache identifiziert, `marker=None` ergänzt (siehe oben) -- beide
+  Zubringer ohne eigene Spitze, ein letzter kurzer Hop trägt die einzige
+  Pfeilspitze. Dasselbe Muster danach in 09 und 11 wiederverwendet.
+- **08, 09:** Fan-in-Speichen zu geteilten Knoten umgebaut; wo mehrere
+  Quellen denselben Zielknoten erreichen, auf unterschiedliche Punkte
+  am Kreisrand verteilt (kein Konvergenzpunkt = keine Kollision, keine
+  `marker=None`-Klausel nötig).
+- **03 (application-ontology):** der aufwändigste Fall. Erster Versuch
+  routete alle sechs Fundstelle-Speichen direkt auf die linke Kante der
+  Tier-2-Spalte -- lief dadurch quer durch die vier anderen Boxen in
+  derselben Spalte. Zweiter Versuch: nur die vier Verbindungen, die
+  tatsächlich eine Box überspringen (kz, ent, pub, sch), über eine
+  Schiene in der Lücke vor der Spalte geroutet; die zwei direkten
+  Nachbarn (fat, geo_akt) einfacher direkt. Dieselbe Diagnose bei
+  kz->dat und ent->eat: ein direkter Vertikal-Abgang von der Quellbox
+  aus schnitt durch die jeweils dazwischenliegende Box (ent bzw. fat) --
+  ebenfalls auf eine Schiene in der Spalten-Lücke umgestellt.
+- **10 (Pipeline-Architektur):** hier waren aus einer früheren,
+  unvollständigen Session nur 2 von etwa 16 diagonalen Verbindungen
+  gefixt. Alle übrigen jetzt ebenfalls umgestellt, mehrheitlich über
+  Schienen in den jeweils freien Spaltenlücken.
+- **12 (PROV-Chaining):** drei Verbindungen (wasInformedBy, zwei
+  Output-Speichen) umgestellt. Bei den Output-Speichen ein **zweiter
+  Eintrittswinkel-Fehler**: `bend="v"` ließ die Pfeile seitlich statt von
+  oben in ihre Zielboxen laufen (technisch korrekt verbunden, aber der
+  falsche Eintrittswinkel). Auf `svg_arrow_elbow` mit einer Schiene
+  zwischen Aktivitäts-Box und Artefakt-Zeile umgestellt -- jetzt
+  laufen beide Pfeile sauber von oben ein.
+- **01, 04, 11, 15:** je 1--2 übersehene Diagonalen gefunden und
+  gefixt (Phase-2-Verzweigung in 01; Fundstelle-Fan-out in 04;
+  Konflikt-Beispiel-Konvergenz in 11 -- mit demselben
+  `marker=None`-Muster wie 05; ein Pfeil zu NFDI4Objects in 15).
+- **07, 02, 13, 14, 16:** bereits sauber, keine Änderung nötig.
+
+**Abnahme:** jedes geänderte Diagramm einzeln gerendert und visuell
+geprüft (DE, teils EN); abschließend `python main.py` komplett, zweimal
+hintereinander byte-identisch, 0 AST-Scan-Treffer.
+
+### S34 -- Korrektur: erfundenes Beispiel in 11 als illustrativ gekennzeichnet
+
+**Ziel:** im Zuge der Linien-Überarbeitung von 11 fiel auf, dass das
+"overwritten"-Beispiel ("CSV, Zeile 214", "QID_publikation = Q100")
+nie gegen echte Daten geprüft worden war -- derselbe Fehlertyp wie in
+S31, nur in einem fünften Diagramm gefunden statt gemeldet.
+
+**Befund:** FID 214 ist real ("Brześć Kujawski 10"), aber die
+tatsächliche `publikation_arch` ist "Grygiel 2008" mit
+QID `Q139304642` -- nichts mit Pyzel 2019 oder "Q100" zu tun, das an
+keiner Stelle in den Daten vorkommt. Grundsätzliches Problem:
+`fst_wgs84_lit_enriched.csv` zeigt nur den Zustand *nach* der
+Anreicherung -- ein "live" Konflikt ist darin grundsätzlich nicht
+beobachtbar, jede Zeile ist per Definition bereits aufgelöst.
+
+**Korrigiert:** Beispiel als ausdrücklich illustrativ gekennzeichnet
+("CSV-Zeile (Beispiel)", "Q_alt" statt einer konkreten FID/QID). Der
+reale Anker bleibt: `QID_PUBLIKATION["Pyzel 2019"] == "Q139460445"` ist
+gegen `enrich_qids.py` verifiziert echt. Beim Nachschauen in dieser
+Datei zusätzlich gefunden: mehrere echte, dokumentierte
+Korrektur-Fälle im Dictionary selbst (z. B. ein "Raddatz 1959"-Eintrag,
+der sich als Tippfehler für "Raddatz 1958" herausstellte) -- bestätigt,
+dass der beschriebene *Mechanismus* real ist, auch wenn dieses konkrete
+Beispiel keiner einzelnen Zeile zugeordnet werden kann.
+
+**Abnahme:** DE+EN neu gerendert, Docstring dokumentiert den Befund und
+die Korrektur vollständig.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Dreimal (S16, S27, S30) denselben
@@ -772,16 +932,19 @@ main.py` läuft komplett durch, zweimal hintereinander byte-identisch.
   `main.py --strict` wäre der nächste sinnvolle Schritt, ist aber noch
   nicht umgesetzt.
 - **"Ein paar Design-Bugs sind überall drin"** (Florians eigene Worte,
-  2026-09-11) -- ohne Einzelpunkte genannt. Nichts vorsorglich geändert;
-  wartet auf konkrete Rückmeldung, welche Grafiken/Stellen gemeint sind.
-- **Datengrundlage noch nicht systematisch für alle 19 Grafiken
-  nachgeprüft.** S31 hat die vier datierungsbezogenen Grafiken (05, 06,
-  08, 09) korrigiert, weil Florian konkret danach fragte. Ob ähnliche
-  erfundene Beispielwerte auch in anderen Grafiken stecken (z. B. QIDs,
-  Namen, Zahlen in 00--04, 07, 10--18), wurde nicht flächendeckend
-  geprüft -- nur das, was ohnehin schon mit realen Quellen belegt war
-  (etwa 17/18, die von Anfang an aus der CSV berechnet wurden), gilt als
-  verifiziert.
+  2026-09-11) -- die drei seither genannten Punkte (Linienführung, interne
+  Verweise, Datengrundlage) sind mit S31--S34 abgearbeitet. Ob damit
+  *alle* gemeinten Punkte erledigt sind, ist nicht bestätigt -- nichts
+  über die genannten drei hinaus vorsorglich geändert.
+- **Datengrundlage: 11 vollständig geprüft (S34), 12 und 16 nur
+  stichprobenartig.** Für 12 wurde keine spezifische Zahlen-/Wert-Behauptung
+  gegen eine reale Quelle nachgeprüft (der Timestamp und die
+  Beispielwerte sind als generisches Format erkennbar, nicht als
+  Real-Wert-Behauptung formuliert -- aber nicht aktiv verifiziert). Für
+  16 sind die URI-Muster (w3id.org/bb5kbc/ont/..., /site_*) aus einer
+  früheren Sitzung übernommen, nicht in dieser Sitzung erneut gegen die
+  echte .htaccess geprüft. 00--04, 07, 10, 13--15, 17, 18 gelten als
+  geprüft oder waren von Anfang an aus der CSV berechnet.
 
-Wenn ein neuer Punkt ansteht: nach S31 einsortieren (S32, S33, …), hier
+Wenn ein neuer Punkt ansteht: nach S34 einsortieren (S35, S36, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

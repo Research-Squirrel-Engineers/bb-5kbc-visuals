@@ -57,7 +57,7 @@ def build(lang: str = "en") -> list[str]:
         ("4", tt("CRM-Verankerung", "CRM anchoring"),
          tt("jede bb5kbc:-Klasse erreicht einen crm:E*-Vorfahren", "every bb5kbc: class reaches a crm:E* ancestor")),
         ("4b", tt("Doku-Drift", "Doc drift"),
-         tt("OWL-Vorfahren \u2194 csv-mapping.md (Tab. 6)", "OWL ancestors \u2194 csv-mapping.md (Tab. 6)")),
+         tt("OWL-Vorfahren \u2194 csv-mapping.md", "OWL ancestors \u2194 csv-mapping.md")),
     ]
     ry = ty0 + 60
     pitch = 78

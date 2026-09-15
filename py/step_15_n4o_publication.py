@@ -16,6 +16,9 @@ version was loaded.
 Bilingual (revision) -- see step_00 docstring for the convention. File
 and output names are real artefact names and are never translated.
 
+**Revision 2026-09-15:** the connector into the NFDI4Objects box was
+diagonal; now orthogonal (house rule, PRIMER.md A3).
+
 Writes: n4o-publication.de.svg/.png, n4o-publication.en.svg/.png
 Run standalone: ``python py/step_15_n4o_publication.py``
 """
@@ -156,7 +159,7 @@ def build(lang: str = "en") -> list[str]:
     n4o_y = 660
     parts.append(vu.svg_box(rx, n4o_y, rw, 100, tt("NFDI4Objects Knowledge Graph", "NFDI4Objects Knowledge Graph"),
                              "graph.nfdi4objects.net", fill=vu.SITE["fill"], stroke=vu.SITE["stroke"], stroke_width=2.0))
-    parts.append(vu.svg_arrow(px + pw, checks_y + 70, rx, n4o_y + 50))
+    parts.append(vu.svg_arrow_L(px + pw, checks_y + 70, rx, n4o_y + 50, bend="h"))
     parts.append(vu.svg_arrow(rx + rw / 2, fy + 160, rx + rw / 2, n4o_y))
 
     parts.append(vu.svg_close())

@@ -18,6 +18,10 @@ writes its own PROV-Activity, just without the link (standalone mode).
 
 Bilingual (revision) -- see step_00 docstring for the convention.
 
+**Revision 2026-09-15:** the three connectors that used to be diagonal
+(wasInformedBy, and both output spokes) are now orthogonal (house rule,
+PRIMER.md A3).
+
 Writes: prov-chaining.de.svg/.png, prov-chaining.en.svg/.png
 Run standalone: ``python py/step_12_prov_chaining.py``
 """
@@ -92,8 +96,8 @@ def build(lang: str = "en") -> list[str]:
                              fill=LOD["fill"], stroke=LOD["stroke"], stroke_width=2.0))
 
     # spoke: wasInformedBy across the namespace boundary
-    parts.append(vu.svg_arrow_labeled(ax, acy - 10, top_level[0] + mw, top_level[1] + 40,
-                                       "wasInformedBy", dashed=True, stroke=PROV["stroke"], font_size=12))
+    parts.append(vu.svg_arrow_L(ax, acy - 10, top_level[0] + mw, top_level[1] + 40, bend="h",
+                                 dashed=True, stroke=PROV["stroke"], label="wasInformedBy", font_size=12))
 
     # spoke: inputs (used)
     inputs_box = (ax, 130)
@@ -117,9 +121,9 @@ def build(lang: str = "en") -> list[str]:
                              fill=ARTEFACT["fill"], stroke=ARTEFACT["stroke"]))
     parts.append(vu.svg_box(bundle_ttl[0], bundle_ttl[1], dw2, 78, "bb5kbc-bundle.ttl", "~22 400 triples",
                              fill=ARTEFACT["fill"], stroke=ARTEFACT["stroke"]))
-    parts.append(vu.svg_arrow_labeled(ax + 100, ay + ah, data_ttl[0] + dw2 / 2, data_ttl[1],
-                                       "wasGeneratedBy", font_size=11))
-    parts.append(vu.svg_arrow(ax + aw - 100, ay + ah, bundle_ttl[0] + dw2 / 2, bundle_ttl[1]))
+    parts.append(vu.svg_arrow_elbow(ax + 100, ay + ah, data_ttl[0] + dw2 / 2, data_ttl[1], 590,
+                                     label="wasGeneratedBy", font_size=11))
+    parts.append(vu.svg_arrow_elbow(ax + aw - 100, ay + ah, bundle_ttl[0] + dw2 / 2, bundle_ttl[1], 590))
     derived_note = tt("beide: wasDerivedFrom \u2192 fst_wgs84.csv (Pfeil weggelassen, um Kreuzungen zu vermeiden)",
                        "both: wasDerivedFrom \u2192 fst_wgs84.csv (arrow omitted to avoid crossing other lines)")
     parts.append(f'<text x="{data_ttl[0]:.1f}" y="{660 + 78 + 28:.1f}" font-family="Fira Sans" font-size="11.5" '

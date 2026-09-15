@@ -77,8 +77,8 @@ def build(lang: str = "en") -> list[str]:
     # -- bottom-left: one property for all -------------------------------------
     lx, ly, lw, lh = 60, 420, 790, 490
     parts.append(vu.svg_dashed_container(lx, ly, lw, lh,
-                                          tt("Regel 5: eine Property f\u00fcr alle \u2014 bb5kbc:hasExternalIdentifier",
-                                             "Rule 5: one property for all \u2014 bb5kbc:hasExternalIdentifier")))
+                                          tt("Eine Property f\u00fcr alle externen IDs \u2014 bb5kbc:hasExternalIdentifier",
+                                             "One property for all external IDs \u2014 bb5kbc:hasExternalIdentifier")))
     code_lines = [
         ("data:land_3c2f8b8c", vu.TEXT_DARK, False),
         ("    a bb5kbc:Land ;", vu.TEXT_DARK, False),
@@ -113,9 +113,9 @@ def build(lang: str = "en") -> list[str]:
     rx, ry_, rw, rh = 890, 420, 800, 490
     parts.append(vu.svg_dashed_container(rx, ry_, rw, rh,
                                           tt(f"{c('GeoreferenzierungsAktivitaet')} tr\u00e4gt den Sicherheitsgrad "
-                                             "der Verortung (Tab. 5)",
+                                             "der Verortung",
                                              f"{c('GeoreferenzierungsAktivitaet')} carries the location's "
-                                             "certainty grade (Tab. 5)")))
+                                             "certainty grade")))
     rows = [
         ("genauigkeit_m = 0", "fslwb:Q23", "high", tt("direkte DB-\u00dcbernahme", "direct database take-over")),
         ("50\u2013500 m", "fslwb:Q15", "medium",

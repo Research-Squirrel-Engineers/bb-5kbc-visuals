@@ -58,8 +58,7 @@
 <text x="1193.0" y="571.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13" fill="#a03030">FAIL</text>
 <text x="1300" y="562.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">A transliteration typo just misses the</text>
 <text x="1300" y="581.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Municipality threshold — resolved via the alias</text>
-<text x="1300" y="600.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">list (paper §3.2), not by loosening the</text>
-<text x="1300" y="619.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">threshold.</text>
+<text x="1300" y="600.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">list, not by loosening the threshold.</text>
 <text x="60" y="742.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">CSV „MVP“</text>
 <text x="60" y="764.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">vs. Wikidata label „Mecklenburg-Vorpommern“</text>
 <rect x="60" y="778.0" width="104.1" height="24" rx="12" fill="#ece9e2" stroke="#888780" stroke-width="1"/>

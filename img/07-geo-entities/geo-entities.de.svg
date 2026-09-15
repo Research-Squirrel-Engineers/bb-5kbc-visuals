@@ -47,7 +47,7 @@
 <text x="692.0" y="325.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="9.5" fill="#2c2c2a">OSM</text>
 <text x="692.0" y="368" text-anchor="middle" font-family="Fira Sans" font-size="12" fill="#5f5e5a">OSM-Relation</text>
 <rect x="60.0" y="420.0" width="790.0" height="490.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
-<text x="76.0" y="446.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Regel 5: eine Property für alle — bb5kbc:hasExternalIdentifier</text>
+<text x="76.0" y="446.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Eine Property für alle externen IDs — bb5kbc:hasExternalIdentifier</text>
 <text x="88.0" y="494.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#2c2c2a">data:land_3c2f8b8c</text>
 <text x="88.0" y="524.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#2c2c2a">    a bb5kbc:Land ;</text>
 <text x="88.0" y="554.0" font-family="Fira Sans" font-size="14" font-weight="400" fill="#2c2c2a">    rdfs:label „Deutschland“@de ;</text>
@@ -61,7 +61,7 @@
 <text x="88.0" y="802.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">3 Audit-Spalten (Match-Label, -Score, matchReason) bleiben CSV-only —</text>
 <text x="88.0" y="826.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">sie gehen NICHT ins RDF, nur in fst_standortanalysen_ref_report.csv.</text>
 <rect x="890.0" y="420.0" width="800.0" height="490.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
-<text x="906.0" y="446.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">GeoreferenzierungsAktivitaet trägt den Sicherheitsgrad der Verortung (Tab. 5)</text>
+<text x="906.0" y="446.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">GeoreferenzierungsAktivitaet trägt den Sicherheitsgrad der Verortung</text>
 <rect x="916.0" y="494.0" width="200.0" height="64.0" rx="8" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
 <text x="1016.0" y="526.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">genauigkeit_m = 0</text>
 <rect x="1136.0" y="494.0" width="160.0" height="64.0" rx="8" fill="#f5f0d8" stroke="#8a7420" stroke-width="1.4"/>

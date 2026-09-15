@@ -28,6 +28,11 @@ Regel 2/3, computed the same way as step_09's ``kultur_a36e9d6d`` (FBG).
 Bilingual (revision) -- see step_00 docstring for the convention. "SBK"
 and all three FIDs' real values are never translated.
 
+**Revision 2026-09-15:** the three branches into the shared Kulturgruppe
+node were diagonal; now orthogonal (the middle row sits at the circle's
+own height already and stays a straight line, top/bottom rows get one
+corner) -- house rule, see PRIMER.md A3.
+
 Writes: dating-entities.de.svg/.png, dating-entities.en.svg/.png
 Run standalone: ``python py/step_08_dating_entities.py``
 """
@@ -91,8 +96,14 @@ def build(lang: str = "en") -> list[str]:
         parts.append(vu.svg_arrow(fx + fw, cy, kzx, cy))
         parts.append(vu.svg_box(kzx, kzy, kzw, kzh, c("KulturelleZuordnung"), f"site_{fid}_culture",
                                  fill=ZUORDNUNG["fill"], stroke=ZUORDNUNG["stroke"]))
-        # branch to shared Kulturgruppe
-        parts.append(vu.svg_arrow(kzx + kzw, cy - 8, kgcx - kg_r * 0.85, kg_cy - (kg_cy - cy) * 0.35 - 8))
+        # branch to shared Kulturgruppe -- orthogonal; the middle row sits
+        # at the circle's own height already, so it's a straight line,
+        # the top/bottom rows get a single corner
+        kg_target_y = kg_cy if cy == kg_cy else (kg_cy - 45 if cy < kg_cy else kg_cy + 45)
+        if cy == kg_cy:
+            parts.append(vu.svg_arrow(kzx + kzw, cy - 8, kgcx - kg_r * 0.85, kg_target_y))
+        else:
+            parts.append(vu.svg_arrow_L(kzx + kzw, cy - 8, kgcx - kg_r * 0.85, kg_target_y, bend="h"))
         # branch to individual Datierung
         parts.append(vu.svg_arrow(kzx + kzw, cy + 12, dx, cy + 12))
         parts.append(f'<rect x="{dx:.1f}" y="{dy:.1f}" width="{dw:.1f}" height="{dh:.1f}" rx="10" '

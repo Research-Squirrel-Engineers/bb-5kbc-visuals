@@ -52,9 +52,9 @@ EXAMPLES = [
      "prefix-strip step first (stripped: \u201eHavelland\u201c \u2192 100.00)."),
     ("sommerda", "S\u00f6mmerda", "Gemeinde", 82, 75.00, False,
      "Ein Transliterations-Tippfehler verfehlt die {level}-Schwelle knapp \u2014 gel\u00f6st \u00fcber die Alias-"
-     "Liste (Paper \u00a73.2), nicht durch eine niedrigere Schwelle.",
+     "Liste, nicht durch eine niedrigere Schwelle.",
      "A transliteration typo just misses the {level} threshold \u2014 resolved via the alias "
-     "list (paper \u00a73.2), not by loosening the threshold."),
+     "list, not by loosening the threshold."),
     ("MVP", "Mecklenburg-Vorpommern", "Bundesland", 85, 16.00, False,
      "Ein Akronym teilt fast keine Zeichen mit dem vollen Namen \u2014 Fuzzy-Matching kann hier gar nicht "
      "helfen; die Alias-Liste ist der einzige Fix.",

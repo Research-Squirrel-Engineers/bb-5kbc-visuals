@@ -66,6 +66,6 @@
 <rect x="1315.0" y="710.0" width="305.0" height="68.0" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
 <text x="1467.5" y="736.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Timeout → no match</text>
 <text x="1467.5" y="756.0" text-anchor="middle" font-family="Fira Sans" font-size="10.0" fill="#2c2c2a" opacity="0.75">run continues, matchReason=timeout, triage report</text>
-<line x1="1152.0" y1="660.0" x2="1122.5" y2="710.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="1438.0" y1="660.0" x2="1467.5" y2="710.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1152.0 660.0 L 1152.0 710.0 L 1122.5 710.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1438.0 660.0 L 1438.0 710.0 L 1467.5 710.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 </svg>

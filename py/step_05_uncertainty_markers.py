@@ -93,10 +93,15 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_hash_node(kgcx, ROW2_CY, KG_R, "\u201eSBK?\u201c", "kultur_7a001224",
                                    fill=CULTURE["fill"], stroke=U_STROKE))
 
-    # shared QID badge both rows converge on
+    # shared QID badge both rows converge on -- both legs travel right,
+    # then bend to meet the badge (bracket shape, no diagonal). The two
+    # legs stop short of the badge with no arrowhead of their own (two
+    # markers meeting at one point draw as a colliding "X"); one final
+    # short hop carries the single arrowhead into the badge.
     qy = (ROW1_CY + ROW2_CY) / 2
-    parts.append(vu.svg_arrow(kgcx + KG_R, ROW1_CY, qx - BADGE_R, qy - 6))
-    parts.append(vu.svg_arrow(kgcx + KG_R, ROW2_CY, qx - BADGE_R, qy + 6))
+    parts.append(vu.svg_arrow_L(kgcx + KG_R, ROW1_CY, qx - BADGE_R - 20, qy, bend="h", marker=None))
+    parts.append(vu.svg_arrow_L(kgcx + KG_R, ROW2_CY, qx - BADGE_R - 20, qy, bend="h", marker=None))
+    parts.append(vu.svg_arrow(qx - BADGE_R - 20, qy, qx - BADGE_R, qy))
     parts.append(vu.svg_authority_badge(qx, qy, "wd", r=BADGE_R, fill=vu.WORLD_COLORS["authority"]["fill"],
                                          stroke=vu.WORLD_COLORS["authority"]["stroke"]))
     parts.append(f'<text x="{qx:.1f}" y="{qy + 54:.1f}" text-anchor="middle" font-family="Fira Sans" '
@@ -122,8 +127,9 @@ def build(lang: str = "en") -> list[str]:
                              fill=SITE["fill"], stroke=SITE["stroke"]))
     parts.append(vu.svg_box(fx2, ROW1_CY + 40 - FH / 2, FW, FH, f"{c('Fundstelle')} Y", "site_107",
                              fill=SITE["fill"], stroke=SITE["stroke"]))
-    parts.append(vu.svg_arrow(fx2 + FW, ROW1_CY - 40, tcx2 - KG_R, ROW1_CY - 10))
-    parts.append(vu.svg_arrow(fx2 + FW, ROW1_CY + 40, tcx2 - KG_R, ROW1_CY + 10))
+    parts.append(vu.svg_arrow_L(fx2 + FW, ROW1_CY - 40, tcx2 - KG_R - 20, ROW1_CY, bend="h", marker=None))
+    parts.append(vu.svg_arrow_L(fx2 + FW, ROW1_CY + 40, tcx2 - KG_R - 20, ROW1_CY, bend="h", marker=None))
+    parts.append(vu.svg_arrow(tcx2 - KG_R - 20, ROW1_CY, tcx2 - KG_R, ROW1_CY))
     parts.append(vu.svg_hash_node(tcx2, ROW1_CY, KG_R, "\u201eGrab\u201c", tt("geteilt, viele Fundstellen", "shared, many sites"),
                                    fill=TYPE["fill"], stroke=TYPE["stroke"]))
 
@@ -138,8 +144,9 @@ def build(lang: str = "en") -> list[str]:
     parts.append(f'<text x="{tx2u:.1f}" y="{ROW2_CY + tuh/2 + 24:.1f}" font-family="Fira Sans" font-size="12" '
                  f'fill="{U_STROKE}">{grab_type_note}</text>')
 
-    parts.append(vu.svg_arrow(tcx2 + KG_R, ROW1_CY, qx2 - BADGE_R, qy - 6))
-    parts.append(vu.svg_arrow(tx2u + tuw, ROW2_CY, qx2 - BADGE_R, qy + 6))
+    parts.append(vu.svg_arrow_L(tcx2 + KG_R, ROW1_CY, qx2 - BADGE_R - 20, qy, bend="h", marker=None))
+    parts.append(vu.svg_arrow_L(tx2u + tuw, ROW2_CY, qx2 - BADGE_R - 20, qy, bend="h", marker=None))
+    parts.append(vu.svg_arrow(qx2 - BADGE_R - 20, qy, qx2 - BADGE_R, qy))
     parts.append(vu.svg_authority_badge(qx2, qy, "wd", r=BADGE_R, fill=vu.WORLD_COLORS["authority"]["fill"],
                                          stroke=vu.WORLD_COLORS["authority"]["stroke"]))
     parts.append(f'<text x="{qx2:.1f}" y="{qy + 54:.1f}" text-anchor="middle" font-family="Fira Sans" '

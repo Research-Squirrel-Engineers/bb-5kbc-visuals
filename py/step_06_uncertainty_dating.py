@@ -118,11 +118,11 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_box(cx1, cy1, cw1, ch1, "crm:E52_Time-Span",
                              tt("CRM-konforme Zeitspanne", "CRM-conformant time span"),
                              fill=CRM["fill"], stroke=CRM["stroke"]))
-    parts.append(vu.svg_arrow(ux + uw, uy + 115, cx1, cy1 + ch1 / 2))
+    parts.append(vu.svg_arrow_L(ux + uw, uy + 115, cx1, cy1 + ch1 / 2, bend="h"))
 
     parts.append(vu.svg_box(cx1, cy2, cw1, ch1, "time:Interval", "owl-time:TemporalEntity",
                              fill=DATING["fill"], stroke=DATING["stroke"]))
-    parts.append(vu.svg_arrow(ux + uw, uy + 265, cx1, cy2 + ch1 / 2))
+    parts.append(vu.svg_arrow_L(ux + uw, uy + 265, cx1, cy2 + ch1 / 2, bend="h"))
     allen1 = tt("\u2192 \u00f6ffnet Allen-Relationen: \u201ePhase A endet,",
                 "\u2192 opens Allen relations: \u201ePhase A ends")
     allen2 = tt("bevor Phase B beginnt\u201c", "before Phase B begins\u201c")
@@ -189,11 +189,11 @@ def build(lang: str = "en") -> list[str]:
                  f'font-size="12.5" fill="{vu.TEXT_DARK}">{vu.xml_escape(hist_title)}</text>')
     hist_lines = tt(
         ["Heute: alle 540 Zeilen gef\u00fcllt, genau 4 Muster \u2014 \u201e+/- 100/50/200/10 years\u201c.",
-         "Fr\u00fcher (bb5kbc-csv-issues.md #6): 68 leere Zellen, plus Schreibvarianten (\u201e+ / - 100 years\u201c "
+         "Fr\u00fcher: 68 leere Zellen, plus Schreibvarianten (\u201e+ / - 100 years\u201c "
          "vs. \u201e+/- 200 years\u201c) und eine deutsche Variante (\u201e+ /- 100 Jahre\u201c, 51 Zeilen) \u2014 "
          "von Sophie vereinheitlicht."],
         ["Today: all 540 rows filled, exactly 4 patterns \u2014 \u201e+/- 100/50/200/10 years\u201c.",
-         "Before (bb5kbc-csv-issues.md #6): 68 empty cells, plus spelling variants (\u201e+ / - 100 years\u201c "
+         "Before: 68 empty cells, plus spelling variants (\u201e+ / - 100 years\u201c "
          "vs. \u201e+/- 200 years\u201c) and a German variant (\u201e+ /- 100 Jahre\u201c, 51 rows) \u2014 "
          "unified by Sophie."])
     hy = ry + 74

@@ -24,8 +24,8 @@
 <rect x="760.0" y="415.0" width="420.0" height="110.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="2.0"/>
 <text x="970.0" y="462.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">pipeline_run_2026-04-27T09-22-28Z</text>
 <text x="970.0" y="482.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">«prov:Activity» · eine Activity pro Lauf, nicht pro Zeile</text>
-<line x1="760.0" y1="460.0" x2="500.0" y2="360.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
-<text x="625.0" y="423.1" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">wasInformedBy</text>
+<path d="M 760.0 460.0 L 500.0 460.0 L 500.0 360.0" fill="none" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<text x="630.0" y="450.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">wasInformedBy</text>
 <rect x="760.0" y="130.0" width="420.0" height="78.0" rx="10" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
 <text x="970.0" y="161.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Eingaben (prov:used)</text>
 <text x="970.0" y="181.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">fst_wgs84.csv + bb5kbc-ontology.ttl (file://)</text>
@@ -40,8 +40,8 @@
 <rect x="1060.0" y="660.0" width="380.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
 <text x="1250.0" y="691.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc-bundle.ttl</text>
 <text x="1250.0" y="711.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">~22 400 triples</text>
-<line x1="860.0" y1="525.0" x2="820.0" y2="660.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="890.9" y="607.6" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">wasGeneratedBy</text>
-<line x1="1080.0" y1="525.0" x2="1250.0" y2="660.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 860.0 525.0 L 860.0 590.0 L 820.0 590.0 L 820.0 660.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<text x="840.0" y="582.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="11" fill="#2c2c2a">wasGeneratedBy</text>
+<path d="M 1080.0 525.0 L 1080.0 590.0 L 1250.0 590.0 L 1250.0 660.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <text x="630.0" y="766.0" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">beide: wasDerivedFrom → fst_wgs84.csv (Pfeil weggelassen, um Kreuzungen zu vermeiden)</text>
 </svg>

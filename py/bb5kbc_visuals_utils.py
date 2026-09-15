@@ -498,15 +498,78 @@ def svg_arrow_elbow(x1: float, y1: float, x2: float, y2: float, rail_y: float,
 
 def svg_arrow_elbow_v(x1: float, y1: float, x2: float, y2: float, rail_x: float,
                        *, stroke: str = ARROW_STROKE, dashed: bool = False,
-                       marker: str = "arrow") -> str:
+                       marker: str = "arrow", label: str = "", label_color: str = TEXT_DARK,
+                       font_size: int = 11) -> str:
     """Like :func:`svg_arrow_elbow` but routed via a shared *vertical*
     rail (horizontal, then vertical, then horizontal) -- for skirting
-    around the side of a container instead of under a whole diagram."""
+    around the side of a container instead of under a whole diagram, or
+    for a multi-target fan-out where the targets share an x that's too
+    crowded (with other boxes) to land a vertical segment on directly --
+    route the vertical run through a clear rail_x in the gap before that
+    column instead, then one short final hop into the actual edge. An
+    optional ``label`` sits on the vertical (rail) segment, which is
+    usually the one part of the path unique to this connection."""
     dash = ' stroke-dasharray="6 4"' if dashed else ""
     path = (f'M {x1:.1f} {y1:.1f} L {rail_x:.1f} {y1:.1f} '
             f'L {rail_x:.1f} {y2:.1f} L {x2:.1f} {y2:.1f}')
-    return (f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="1.6"{dash} '
-            f'marker-end="url(#{marker})"/>')
+    parts = [f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="1.6"{dash} '
+             f'marker-end="url(#{marker})"/>']
+    if label:
+        ly = (y1 + y2) / 2
+        parts.append(f'<text x="{rail_x + text_width(label, font_size) / 2 + 8:.1f}" y="{ly:.1f}" '
+                     f'text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" '
+                     f'font-weight="500" font-size="{font_size}" fill="{label_color}">{xml_escape(label)}</text>')
+    return "\n".join(parts)
+
+
+def svg_arrow_L(x1: float, y1: float, x2: float, y2: float, *, bend: str = "h",
+                 stroke: str = ARROW_STROKE, dashed: bool = False,
+                 marker: str | None = "arrow", label: str = "", label_color: str = TEXT_DARK,
+                 font_size: int = 11) -> str:
+    """Single-corner orthogonal connector -- the house default for any
+    connection whose source and target aren't already aligned on one
+    axis (house rule from 2026-09-15: no diagonal lines anywhere).
+    ``bend="h"`` leaves the source horizontally first (at y1) then turns
+    to y2; ``bend="v"`` leaves vertically first (at x1) then turns to
+    x2. Pick whichever keeps the corner out of any box that isn't the
+    source or target -- for a fan-out from one box's side, that is
+    usually the bend that matches the side the arrow exits from (bottom
+    edge -> "v", right edge -> "h"). An optional ``label`` sits on the
+    longer of the two segments, offset perpendicular to it so the line
+    still reads through cleanly. If ``x1==x2`` or ``y1==y2`` already,
+    this degrades to a single straight segment (no dead corner).
+    ``marker=None`` omits the arrowhead entirely -- for legs that
+    converge with another connector on the same point, where two
+    arrowheads would collide into an "X"; give the *last* short hop
+    into the actual target its own arrowhead instead (see
+    step_05_uncertainty_markers.py for the pattern)."""
+    if x1 == x2 or y1 == y2:
+        path = f'M {x1:.1f} {y1:.1f} L {x2:.1f} {y2:.1f}'
+        seg_mid = ((x1 + x2) / 2, (y1 + y2) / 2)
+        vertical = x1 == x2
+    elif bend == "h":
+        path = f'M {x1:.1f} {y1:.1f} L {x2:.1f} {y1:.1f} L {x2:.1f} {y2:.1f}'
+        long_horizontal = abs(x2 - x1) >= abs(y2 - y1)
+        seg_mid = ((x1 + x2) / 2, y1) if long_horizontal else (x2, (y1 + y2) / 2)
+        vertical = not long_horizontal
+    else:
+        path = f'M {x1:.1f} {y1:.1f} L {x1:.1f} {y2:.1f} L {x2:.1f} {y2:.1f}'
+        long_vertical = abs(y2 - y1) >= abs(x2 - x1)
+        seg_mid = (x1, (y1 + y2) / 2) if long_vertical else ((x1 + x2) / 2, y2)
+        vertical = long_vertical
+    dash = ' stroke-dasharray="6 4"' if dashed else ""
+    marker_attr = f' marker-end="url(#{marker})"' if marker else ""
+    parts = [f'<path d="{path}" fill="none" stroke="{stroke}" stroke-width="1.6"{dash}{marker_attr}/>']
+    if label:
+        lx, ly = seg_mid
+        if vertical:
+            lx += text_width(label, font_size) / 2 + 10
+        else:
+            ly -= 10
+        parts.append(f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="middle" dominant-baseline="central" '
+                     f'font-family="Fira Sans" font-weight="500" font-size="{font_size}" '
+                     f'fill="{label_color}">{xml_escape(label)}</text>')
+    return "\n".join(parts)
 
 
 def svg_arrow_labeled(x1: float, y1: float, x2: float, y2: float, label: str,

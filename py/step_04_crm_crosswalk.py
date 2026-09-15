@@ -111,10 +111,12 @@ def build(lang: str = "en") -> list[str]:
         ("LADO + Pleiades \u2014 lado:Location, pleiades:Location", LADO),
     ]
     ty0 = cy + 60
+    n = len(triples)
     for i, (label, colors) in enumerate(triples):
         ty = ty0 + i * 62
         row(parts, tx, ty, tw, 46, label, "", colors, rx=8)
-        parts.append(vu.svg_arrow(fx + fw, fy + fh / 2, tx, ty + 23))
+        exit_y = fy + fh * (i + 0.5) / n
+        parts.append(vu.svg_arrow_L(fx + fw, exit_y, tx, ty + 23, bend="h"))
 
     parts.append(vu.svg_close())
     return vu.write_figure(OUT, f"crm-crosswalk.{lang}", "\n".join(parts), zoom=1.5)

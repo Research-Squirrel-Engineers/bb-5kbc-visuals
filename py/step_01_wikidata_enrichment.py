@@ -22,6 +22,9 @@ Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
 translation convention (class names via ``vu.cls()``, CSV/SPARQL example
 values such as "Babekuhl" or the wdt:P31 class labels never translated).
 
+**Revision 2026-09-15:** the two branches out of "Phase 2 (Fallback)"
+were diagonal; now orthogonal (house rule, PRIMER.md A3).
+
 Writes: wikidata-enrichment.de.svg/.png, wikidata-enrichment.en.svg/.png
 Run standalone: ``python py/step_01_wikidata_enrichment.py``
 """
@@ -166,8 +169,8 @@ def build(lang: str = "en") -> list[str]:
                              tt("Lauf l\u00e4uft weiter, matchReason=timeout, Triage-Report",
                                 "run continues, matchReason=timeout, triage report"),
                              fill=C_WARN["fill"], stroke=C_WARN["stroke"]))
-    parts.append(vu.svg_arrow(cx0 + cw * 0.28, y3 + 68, cx0 + half / 2, y4))
-    parts.append(vu.svg_arrow(cx0 + cw * 0.72, y3 + 68, cx0 + half + 40 + half / 2, y4))
+    parts.append(vu.svg_arrow_L(cx0 + cw * 0.28, y3 + 68, cx0 + half / 2, y4, bend="v"))
+    parts.append(vu.svg_arrow_L(cx0 + cw * 0.72, y3 + 68, cx0 + half + 40 + half / 2, y4, bend="v"))
 
     parts.append(vu.svg_close())
     return vu.write_figure(OUT, f"wikidata-enrichment.{lang}", "\n".join(parts), zoom=1.5)

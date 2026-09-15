@@ -16,7 +16,7 @@
 <text x="200.0" y="761.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">csv-mapping.md</text>
 <text x="200.0" y="781.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">(ancestor table)</text>
 <rect x="380.0" y="55.0" width="290.0" height="660.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
-<text x="396.0" y="81.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">CSV enrichment (§3)</text>
+<text x="396.0" y="81.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">CSV enrichment</text>
 <rect x="400.0" y="140.0" width="250.0" height="78.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
 <text x="525.0" y="171.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Stage 1: enrich_qids.py</text>
 <text x="525.0" y="191.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">literature mappings (46+34 QIDs)</text>
@@ -26,10 +26,10 @@
 <rect x="400.0" y="360.0" width="250.0" height="78.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
 <text x="525.0" y="391.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Stage 3: enrich_fst.py</text>
 <text x="525.0" y="411.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">merge on FID</text>
-<line x1="310.0" y1="109.0" x2="400.0" y2="179.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="310.0" y1="329.0" x2="400.0" y2="619.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="525.0" y1="218.0" x2="495.0" y2="360.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="525.0" y1="580.0" x2="555.0" y2="438.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 310.0 109.0 L 400.0 109.0 L 400.0 179.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 310.0 329.0 L 350.0 329.0 L 350.0 619.0 L 400.0 619.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 525.0 218.0 L 495.0 218.0 L 495.0 360.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 525.0 580.0 L 555.0 580.0 L 555.0 438.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="720.0" y="360.0" width="190.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
 <text x="815.0" y="391.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">fst_wgs84.csv</text>
 <text x="815.0" y="411.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">540 × 65 cols</text>
@@ -38,7 +38,7 @@
 <text x="815.0" y="588.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">csv_enrichment_run.ttl</text>
 <line x1="815.0" y1="438.0" x2="815.0" y2="560.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
 <rect x="970.0" y="55.0" width="290.0" height="660.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
-<text x="986.0" y="81.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">LOD transformation (§6)</text>
+<text x="986.0" y="81.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">LOD transformation</text>
 <rect x="990.0" y="300.0" width="250.0" height="78.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
 <text x="1115.0" y="331.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">bb5kbc_lod_pipeline.py</text>
 <text x="1115.0" y="351.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">12 builders × 540 rows</text>
@@ -47,9 +47,9 @@
 <text x="1115.0" y="511.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">from the ontology</text>
 <rect x="990.0" y="620.0" width="250.0" height="78.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
 <text x="1115.0" y="659.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">pyshacl.validate()</text>
-<line x1="910.0" y1="389.0" x2="990.0" y2="329.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 910.0 389.0 L 990.0 389.0 L 990.0 329.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <path d="M 310.0 549.0 L 950.0 549.0 L 950.0 349.0 L 990.0 349.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="920.0" y1="588.0" x2="990.0" y2="418.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<path d="M 920.0 588.0 L 960.0 588.0 L 960.0 368.0 L 990.0 368.0" fill="none" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
 <line x1="1115.0" y1="378.0" x2="1115.0" y2="460.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <line x1="1115.0" y1="538.0" x2="1115.0" y2="620.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="1280.0" y="70.0" width="210.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
@@ -63,19 +63,19 @@
 <text x="1385.0" y="531.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">+ shacl-report-bundle.ttl</text>
 <rect x="1280.0" y="630.0" width="210.0" height="56.0" rx="10" fill="#fce5cd" stroke="#a86028" stroke-width="1.4"/>
 <text x="1385.0" y="658.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">csv_to_lod_run.ttl</text>
-<line x1="1240.0" y1="333.0" x2="1280.0" y2="138.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="1240.0" y1="345.0" x2="1280.0" y2="259.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="1240.0" y1="359.0" x2="1280.0" y2="640.0" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
-<line x1="1240.0" y1="659.0" x2="1280.0" y2="519.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1240.0 333.0 L 1240.0 138.0 L 1280.0 138.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1240.0 345.0 L 1240.0 259.0 L 1280.0 259.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1240.0 359.0 L 1240.0 640.0 L 1280.0 640.0" fill="none" stroke="#a86028" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+<path d="M 1240.0 659.0 L 1240.0 519.0 L 1280.0 519.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="1560.0" y="400.0" width="150.0" height="96.0" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
 <text x="1635.0" y="440.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">validate_lod.py</text>
 <text x="1635.0" y="460.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">4 + 1 sections</text>
 <rect x="1560.0" y="620.0" width="150.0" height="78.0" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.4"/>
 <text x="1635.0" y="659.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="11.0" fill="#2c2c2a">validation_report.md</text>
-<line x1="1490.0" y1="109.0" x2="1560.0" y2="415.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="1490.0" y1="259.0" x2="1560.0" y2="435.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="1490.0" y1="519.0" x2="1560.0" y2="455.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<line x1="910.0" y1="409.0" x2="1560.0" y2="475.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1490.0 109.0 L 1510.0 109.0 L 1510.0 415.0 L 1560.0 415.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1490.0 259.0 L 1520.0 259.0 L 1520.0 435.0 L 1560.0 435.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 1490.0 519.0 L 1530.0 519.0 L 1530.0 455.0 L 1560.0 455.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 910.0 409.0 L 1545.0 409.0 L 1545.0 475.0 L 1560.0 475.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <path d="M 200.0 808.0 L 200.0 808.0 L 1600.0 808.0 L 1600.0 496.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <line x1="1635.0" y1="496.0" x2="1635.0" y2="620.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="60.0" y="900.0" width="16" height="16" rx="3" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>

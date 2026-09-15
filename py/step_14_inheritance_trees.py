@@ -67,8 +67,8 @@ def build(lang: str = "en") -> list[str]:
     c = lambda n: vu.cls(n, lang)
     parts = [vu.svg_open("Four full inheritance chains: from 2 hops (Datierung) to 8 (Entdeckung)")]
 
-    intro = tt("Nur die prim\u00e4re CRM/CRMsci-Kette \u2014 die weiteren Eltern (FSL, LADO, PROV-O, OWL-Time) zeigt 04-crm-crosswalk.",
-               "Only the primary CRM/CRMsci chain \u2014 the other parents (FSL, LADO, PROV-O, OWL-Time) are shown in 04-crm-crosswalk.")
+    intro = tt("Nur die prim\u00e4re CRM/CRMsci-Kette \u2014 jede Klasse hat au\u00dferdem weitere, hier nicht gezeigte Eltern (FSL, LADO, PROV-O, OWL-Time).",
+               "Only the primary CRM/CRMsci chain \u2014 every class also has further parents not shown here (FSL, LADO, PROV-O, OWL-Time).")
     parts.append(f'<text x="60" y="45" font-family="Fira Sans" font-size="13.5" '
                  f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(intro)}</text>')
 

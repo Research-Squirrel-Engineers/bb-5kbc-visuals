@@ -14,6 +14,23 @@ dictionary is authoritative over the CSV, not a similarity score.
 
 Bilingual (revision) -- see step_00 docstring for the convention.
 
+**Revision 2026-09-15 (correction):** the worked "overwritten" example
+originally claimed a specific row ("CSV, Zeile 214") and a specific old
+value ("Q100"). Checked against ``fst_wgs84_lit_enriched.csv``: FID 214
+is real ("Brzesc Kujawski 10") but its actual publikation_arch is
+"Grygiel 2008" with QID Q139304642 -- nothing to do with Pyzel 2019 or
+"Q100", which doesn't appear anywhere in the data. The enrichment output
+file only ever shows the *post*-correction state, so no live conflict is
+observable in it to point to. Reworded as an explicitly illustrative
+example (generic "Q_alt", no FID claimed) -- the one part that stays
+real is the mapping itself, ``QID_PUBLIKATION["Pyzel 2019"] ==
+"Q139460445"``, verified directly against ``enrich_qids.py`` (that file
+also documents several genuine historical corrections to this same
+dictionary -- e.g. a "Raddatz 1959" entry that turned out to be a typo
+for "Raddatz 1958" -- confirming the *mechanism* this figure describes
+is real, even though this specific worked example is not tied to one
+row).
+
 Writes: literature-enrichment.de.svg/.png, literature-enrichment.en.svg/.png
 Run standalone: ``python py/step_11_literature_enrichment.py``
 """
@@ -92,19 +109,22 @@ def build(lang: str = "en") -> list[str]:
     # -- worked example: overwritten -------------------------------------------
     wy = ry + 20
     parts.append(vu.svg_dashed_container(60, wy, 1630, 280,
-                                          tt("Beispiel: der Fall \u201eoverwritten\u201c", "Worked example: the \u201coverwritten\u201d case")))
+                                          tt("Beispiel: der Fall \u201eoverwritten\u201c (illustrativ, kein konkreter FID)",
+                                             "Worked example: the \u201coverwritten\u201d case (illustrative, no specific FID)")))
     ex_y = wy + 60
     b1w = 460
     b1h = 64
-    parts.append(vu.svg_box(100, ex_y, b1w, b1h, tt("CSV, Zeile 214", "CSV, row 214"),
-                             "QID_publikation = \u201eQ100\u201c", fill=NEUTRAL["fill"], stroke=NEUTRAL["stroke"]))
+    parts.append(vu.svg_box(100, ex_y, b1w, b1h, tt("CSV-Zeile (Beispiel)", "CSV row (example)"),
+                             "QID_publikation = \u201eQ_alt\u201c", fill=NEUTRAL["fill"], stroke=NEUTRAL["stroke"]))
     parts.append(vu.svg_box(100, ex_y + 90, b1w, b1h, "QID_PUBLIKATION[\u201ePyzel 2019\u201c]",
                              "= \u201eQ139460445\u201c", fill=C["fill"], stroke=C["stroke"]))
     arrow_label = tt("weicht ab \u2192", "differs \u2192")
-    parts.append(vu.svg_arrow_labeled(100 + b1w, ex_y + 32, 720, ex_y + 77, arrow_label, font_size=12))
-    parts.append(vu.svg_arrow(100 + b1w, ex_y + 90 + 32, 720, ex_y + 77))
+    parts.append(vu.svg_arrow_L(100 + b1w, ex_y + 32, 700, ex_y + 77, bend="h", marker=None,
+                                 label=arrow_label, font_size=12))
+    parts.append(vu.svg_arrow_L(100 + b1w, ex_y + 90 + 32, 700, ex_y + 77, bend="h", marker=None))
+    parts.append(vu.svg_arrow(700, ex_y + 77, 720, ex_y + 77))
     parts.append(vu.svg_box(720, ex_y + 32, 420, 90, tt("Konflikt geloggt", "Conflict logged"),
-                             "alt=Q100, neu=Q139460445, row=214", fill=C_WARN["fill"], stroke=C_WARN["stroke"]))
+                             "alt=Q_alt, neu=Q139460445", fill=C_WARN["fill"], stroke=C_WARN["stroke"]))
     parts.append(vu.svg_arrow(720 + 420, ex_y + 77, 1240, ex_y + 77))
     parts.append(vu.svg_box(1240, ex_y + 32, 350, 90, tt("CSV \u00fcberschrieben", "CSV overwritten"),
                              "QID_publikation = \u201eQ139460445\u201c", fill=C_OK["fill"], stroke=C_OK["stroke"]))

@@ -23,11 +23,11 @@
 <rect x="860.0" y="75.0" width="320.0" height="64.0" rx="10" fill="#e4e8f0" stroke="#33456b" stroke-width="1.4"/>
 <text x="1020.0" y="99.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">crm:E52_Time-Span</text>
 <text x="1020.0" y="119.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">CRM-conformant time span</text>
-<line x1="740.0" y1="170.0" x2="860.0" y2="107.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 740.0 170.0 L 860.0 170.0 L 860.0 107.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="860.0" y="195.0" width="320.0" height="64.0" rx="10" fill="#e2f0dd" stroke="#3d7a2a" stroke-width="1.4"/>
 <text x="1020.0" y="219.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">time:Interval</text>
 <text x="1020.0" y="239.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">owl-time:TemporalEntity</text>
-<line x1="740.0" y1="320.0" x2="860.0" y2="227.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 740.0 320.0 L 860.0 320.0 L 860.0 227.0" fill="none" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <text x="860.0" y="289.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">→ opens Allen relations: „Phase A ends</text>
 <text x="860.0" y="307.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">before Phase B begins“</text>
 <rect x="860.0" y="365.0" width="780.0" height="155.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
@@ -54,5 +54,5 @@
 <line x1="100.0" y1="799.0" x2="1660.0" y2="799.0" stroke="#dedcd4" stroke-width="1"/>
 <text x="100.0" y="825.0" font-family="Fira Sans" font-weight="500" font-size="12.5" fill="#2c2c2a">By contrast: dating_certainty_start/end are clean today — they weren&apos;t always</text>
 <text x="100.0" y="847.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">Today: all 540 rows filled, exactly 4 patterns — „+/- 100/50/200/10 years“.</text>
-<text x="100.0" y="867.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">Before (bb5kbc-csv-issues.md #6): 68 empty cells, plus spelling variants („+ / - 100 years“ vs. „+/- 200 years“) and a German variant („+ /- 100 Jahre“, 51 rows) — unified by Sophie.</text>
+<text x="100.0" y="867.0" font-family="Fira Sans" font-size="12" fill="#5f5e5a">Before: 68 empty cells, plus spelling variants („+ / - 100 years“ vs. „+/- 200 years“) and a German variant („+ /- 100 Jahre“, 51 rows) — unified by Sophie.</text>
 </svg>

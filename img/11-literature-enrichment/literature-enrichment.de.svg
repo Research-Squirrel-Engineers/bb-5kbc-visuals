@@ -36,19 +36,20 @@
 <text x="700.0" y="538.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">kein Eintrag</text>
 <text x="1000.0" y="538.0" font-family="Fira Sans" font-size="13.5" fill="#2c2c2a">unverändert (Miss-Log-Eintrag)</text>
 <rect x="60.0" y="656.0" width="1630.0" height="280.0" rx="16" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
-<text x="76.0" y="682.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Beispiel: der Fall „overwritten“</text>
+<text x="76.0" y="682.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Beispiel: der Fall „overwritten“ (illustrativ, kein konkreter FID)</text>
 <rect x="100.0" y="716.0" width="460.0" height="64.0" rx="10" fill="#f1efe8" stroke="#888780" stroke-width="1.4"/>
-<text x="330.0" y="740.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">CSV, Zeile 214</text>
-<text x="330.0" y="760.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">QID_publikation = „Q100“</text>
+<text x="330.0" y="740.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">CSV-Zeile (Beispiel)</text>
+<text x="330.0" y="760.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">QID_publikation = „Q_alt“</text>
 <rect x="100.0" y="806.0" width="460.0" height="64.0" rx="10" fill="#cfe2f3" stroke="#1e4f8a" stroke-width="1.4"/>
 <text x="330.0" y="830.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">QID_PUBLIKATION[„Pyzel 2019“]</text>
 <text x="330.0" y="850.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">= „Q139460445“</text>
-<line x1="560.0" y1="748.0" x2="720.0" y2="793.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
-<text x="643.8" y="757.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">weicht ab →</text>
-<line x1="560.0" y1="838.0" x2="720.0" y2="793.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
+<path d="M 560.0 748.0 L 700.0 748.0 L 700.0 793.0" fill="none" stroke="#73726c" stroke-width="1.6"/>
+<text x="630.0" y="738.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="12" fill="#2c2c2a">weicht ab →</text>
+<path d="M 560.0 838.0 L 700.0 838.0 L 700.0 793.0" fill="none" stroke="#73726c" stroke-width="1.6"/>
+<line x1="700.0" y1="793.0" x2="720.0" y2="793.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="720.0" y="748.0" width="420.0" height="90.0" rx="10" fill="#fff2cc" stroke="#7f6000" stroke-width="1.4"/>
 <text x="930.0" y="785.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Konflikt geloggt</text>
-<text x="930.0" y="805.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">alt=Q100, neu=Q139460445, row=214</text>
+<text x="930.0" y="805.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">alt=Q_alt, neu=Q139460445</text>
 <line x1="1140.0" y1="793.0" x2="1240.0" y2="793.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="1240.0" y="748.0" width="350.0" height="90.0" rx="10" fill="#d9ead3" stroke="#3c763d" stroke-width="1.4"/>
 <text x="1415.0" y="785.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">CSV überschrieben</text>

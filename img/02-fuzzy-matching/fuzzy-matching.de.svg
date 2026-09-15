@@ -60,8 +60,8 @@
 <text x="1210.3" y="571.0" text-anchor="middle" dominant-baseline="central" font-family="Fira Sans" font-weight="500" font-size="13" fill="#a03030">DURCHGEFALLEN</text>
 <text x="1300" y="562.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Ein Transliterations-Tippfehler verfehlt die</text>
 <text x="1300" y="581.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Gemeinde-Schwelle knapp — gelöst über die</text>
-<text x="1300" y="600.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Alias-Liste (Paper §3.2), nicht durch eine</text>
-<text x="1300" y="619.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">niedrigere Schwelle.</text>
+<text x="1300" y="600.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Alias-Liste, nicht durch eine niedrigere</text>
+<text x="1300" y="619.0" font-family="Fira Sans" font-size="12.5" fill="#2c2c2a">Schwelle.</text>
 <text x="60" y="742.0" font-family="Fira Sans" font-weight="500" font-size="14.5" fill="#2c2c2a">CSV „MVP“</text>
 <text x="60" y="764.0" font-family="Fira Sans" font-size="13" fill="#5f5e5a">vs. Wikidata-Label „Mecklenburg-Vorpommern“</text>
 <rect x="60" y="778.0" width="86.0" height="24" rx="12" fill="#ece9e2" stroke="#888780" stroke-width="1"/>

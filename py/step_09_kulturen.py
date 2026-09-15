@@ -25,6 +25,12 @@ Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
 translation convention. "FBG"/"SBK"/"SBK?" are real culture values,
 never translated.
 
+**Revision 2026-09-15:** the four fan-in arrows and the SBK/SBK? -> wd
+convergence were diagonal; now orthogonal (house rule, PRIMER.md A3).
+The four fan-in arrows land on four distinct points on the circle so
+they keep their own arrowheads; the two-way convergence uses a shared
+final hop with a single arrowhead, same pattern as step_05.
+
 Writes: kulturen.de.svg/.png, kulturen.en.svg/.png
 Run standalone: ``python py/step_09_kulturen.py``
 """
@@ -81,7 +87,7 @@ def build(lang: str = "en") -> list[str]:
     # -- left: UML attribute box -----------------------------------------------
     ux, uy, uw, uh = 90, 60, 580, 380
     parts.append(_uml_box(ux, uy, uw, uh, c("Kulturgruppe"),
-                           f"kultur_{{hash}} \u00b7 {shared} / {tt('dedupliziert', 'deduplicated')} (Regel 3)"))
+                           f"kultur_{{hash}} \u00b7 {shared} / {tt('dedupliziert', 'deduplicated')}"))
 
     # -- right: how the node comes to exist -------------------------------------
     nx, ny, nw, nh = 710, 60, 880, 380
@@ -89,11 +95,11 @@ def build(lang: str = "en") -> list[str]:
                                           tt(f"Wie ein {c('Kulturgruppe')}-Knoten entsteht",
                                              f"How a {c('Kulturgruppe')} node is created")))
     para1 = tt(
-        ["Regel 2/3: jeder distinkte String in der kultur-Spalte der CSV wird zu",
+        ["Jeder distinkte String in der kultur-Spalte der CSV wird zu",
          "genau einem Knoten. Der Hash in der URI sind die ersten 8 Zeichen eines",
          "MD5-Digests \u00fcber den Wert (UTF-8) \u2014 deterministisch, derselbe String",
          "f\u00fchrt immer zum selben Knoten, Umlaute kollidieren nie."],
-        ["Regel 2/3: every distinct string in the CSV's kultur column becomes exactly",
+        ["Every distinct string in the CSV's kultur column becomes exactly",
          "one node. The URI's hash is the first 8 characters of an MD5 digest over the",
          "value (UTF-8) \u2014 deterministic, so the same string always resolves to the",
          "same node, and umlauts never collide."])
@@ -131,15 +137,19 @@ def build(lang: str = "en") -> list[str]:
     chip_w, chip_h = 190, 50
     centers = [560, 650, 740, 830]
     labels = ["FID 32", "FID 33", "FID 61", "FID 77"]
-    for cy, lbl in zip(centers, labels):
+    # four different points on the circle's left arc, evenly spread, so
+    # each arrow lands on a distinct point -- no shared endpoint, so no
+    # arrowhead collision, and each corner stays a single clean bend
+    kg_targets = [kg_cy - 60, kg_cy - 20, kg_cy + 20, kg_cy + 60]
+    for cy, lbl, kgt in zip(centers, labels, kg_targets):
         cy0 = cy - chip_h / 2
         parts.append(vu.svg_box(90, cy0, chip_w, chip_h, c("Fundstelle"), lbl,
                                  fill=SITE["fill"], stroke=SITE["stroke"]))
-        parts.append(vu.svg_arrow(90 + chip_w, cy, kgcx - kg_r * 0.9, kg_cy - (kg_cy - cy) * 0.5))
+        parts.append(vu.svg_arrow_L(90 + chip_w, cy, kgcx - kg_r * 0.9, kgt, bend="h"))
     intro1 = tt(f"Jede {c('Fundstelle')} mit dieser Kultur h\u00e4ngt \u00fcber eine eigene",
                 f"Every {c('Fundstelle')} with this culture links in via its own")
-    intro2 = tt(f"{c('KulturelleZuordnung')} (08) daran \u2014 alle laufen in diesem einen geteilten Knoten zusammen.",
-                f"{c('KulturelleZuordnung')} (08) \u2014 all of them fan in to this one shared node.")
+    intro2 = tt(f"{c('KulturelleZuordnung')} daran \u2014 alle laufen in diesem einen geteilten Knoten zusammen.",
+                f"{c('KulturelleZuordnung')} \u2014 all of them fan in to this one shared node.")
     parts.append(f'<text x="90" y="{centers[0] - 70:.1f}" font-family="Fira Sans" font-size="13" '
                  f'fill="{vu.TEXT_MUTED}">{intro1}</text>')
     parts.append(f'<text x="90" y="{centers[0] - 50:.1f}" font-family="Fira Sans" font-size="13" '
@@ -168,15 +178,18 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_hash_node(n2cx, n2cy, nr, "\u201eSBK?\u201c", "",
                                    fill=CULTURE["fill"], stroke=U_STROKE))
     bqx, bqy = rx + 360, (n1cy + n2cy) / 2
-    parts.append(vu.svg_arrow(n1cx + nr, n1cy, bqx - 28, bqy - 6))
-    parts.append(vu.svg_arrow(n2cx + nr, n2cy, bqx - 28, bqy + 6))
+    parts.append(vu.svg_arrow_L(n1cx + nr, n1cy, bqx - 28 - 20, bqy, bend="h", marker=None))
+    parts.append(vu.svg_arrow_L(n2cx + nr, n2cy, bqx - 28 - 20, bqy, bend="h", marker=None))
+    parts.append(vu.svg_arrow(bqx - 28 - 20, bqy, bqx - 28, bqy))
     parts.append(vu.svg_authority_badge(bqx, bqy, "wd", r=28, fill=AUTH["fill"], stroke=AUTH["stroke"]))
-    same_qid_note = tt("Dieselbe QID, eigener Knoten \u2014 ausf\u00fchrliche Details zur Ankerstelle in",
-                        "Same QID, separate node \u2014 full anchor-point detail in")
+    same_qid_note = tt("Dieselbe QID, aber ein eigener Knoten \u2014 weil \u201eSBK?\u201c die",
+                        "Same QID, but a separate node \u2014 because \u201eSBK?\u201c carries the")
+    same_qid_note2 = tt("Unsicherheits-Markierung fsl:certaintyDesc \u201euncertain\u201c@en tr\u00e4gt.",
+                         "fsl:certaintyDesc \u201euncertain\u201c@en uncertainty marker.")
     parts.append(f'<text x="{rx + 26:.1f}" y="{ry_ + 360:.1f}" font-family="Fira Sans" font-size="12.5" '
-                 f'fill="{vu.TEXT_MUTED}">{same_qid_note} </text>')
-    parts.append(f'<text x="{rx + 26:.1f}" y="{ry_ + 382:.1f}" font-family="Fira Sans" font-weight="500" '
-                 f'font-size="12.5" fill="{vu.TEXT_DARK}">05-uncertainty-markers.</text>')
+                 f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(same_qid_note)}</text>')
+    parts.append(f'<text x="{rx + 26:.1f}" y="{ry_ + 382:.1f}" font-family="Fira Sans" font-size="12.5" '
+                 f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(same_qid_note2)}</text>')
 
     parts.append(vu.svg_close())
     return vu.write_figure(OUT, f"kulturen.{lang}", "\n".join(parts), zoom=1.5)
