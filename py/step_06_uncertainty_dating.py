@@ -32,6 +32,20 @@ Bilingual (revision) -- see step_00 docstring for the convention. FID 1
 string quoted below, are real CSV content and are never translated,
 paraphrased, or altered in either language.
 
+**Revision 2026-09-15g:** two issues Florian flagged from the same
+screenshot. (1) The two connectors into crm:E52_Time-Span/time:Interval
+already carry the ``bend="v"`` fix from S36 (horizontal entry, not
+vertical) -- re-confirmed here, since the screenshot showed the older
+vertical-entry behaviour, most likely from a not-yet-rebuilt or
+not-yet-repatched copy rather than a regression in this file. (2) The
+real bug: the widest bar (n=299) plus its count label could run past
+the dashed container's right edge -- ``bar_w`` was a fixed 1560px that
+was never checked against how wide "n=299" actually renders. Now
+computed from the container's real right edge minus the widest "n=NNN"
+label's actual rendered width (``vu.text_width``), so the longest bar
+can never push its label past the border, whatever the counts turn out
+to be.
+
 Writes: uncertainty-dating.de.svg/.png, uncertainty-dating.en.svg/.png
 Run standalone: ``python py/step_06_uncertainty_dating.py``
 """
@@ -118,11 +132,11 @@ def build(lang: str = "en") -> list[str]:
     parts.append(vu.svg_box(cx1, cy1, cw1, ch1, "crm:E52_Time-Span",
                              tt("CRM-konforme Zeitspanne", "CRM-conformant time span"),
                              fill=CRM["fill"], stroke=CRM["stroke"]))
-    parts.append(vu.svg_arrow_L(ux + uw, uy + 115, cx1, cy1 + ch1 / 2, bend="h"))
+    parts.append(vu.svg_arrow_L(ux + uw, uy + 115, cx1, cy1 + ch1 / 2, bend="v"))
 
     parts.append(vu.svg_box(cx1, cy2, cw1, ch1, "time:Interval", "owl-time:TemporalEntity",
                              fill=DATING["fill"], stroke=DATING["stroke"]))
-    parts.append(vu.svg_arrow_L(ux + uw, uy + 265, cx1, cy2 + ch1 / 2, bend="h"))
+    parts.append(vu.svg_arrow_L(ux + uw, uy + 265, cx1, cy2 + ch1 / 2, bend="v"))
     allen1 = tt("\u2192 \u00f6ffnet Allen-Relationen: \u201ePhase A endet,",
                 "\u2192 opens Allen relations: \u201ePhase A ends")
     allen2 = tt("bevor Phase B beginnt\u201c", "before Phase B begins\u201c")
@@ -159,9 +173,17 @@ def build(lang: str = "en") -> list[str]:
                                              "mit echten H\u00e4ufigkeiten (n=540)",
                                              "dating_certainty_range: real free-text heterogeneity, "
                                              "with real counts (n=540)")))
-    bar_x, bar_y0, bar_w = 100, by + 60, 1560
+    bar_x, bar_y0 = 100, by + 60
     label_w = 620
     max_val = RANGE_VALUES[0][1]
+    # right edge of the container, minus a margin, minus room for the
+    # widest "n=NNN" label -- so the longest bar (n=299) can never push
+    # its own count label past the dashed border (the overflow Florian
+    # flagged: bar_w was set once and never checked against the actual
+    # rendered width of "n=299").
+    widest_n_label = max(vu.text_width(f"n={c}", 12.5) for _, c in RANGE_VALUES)
+    container_right = 60 + 1630
+    bar_w = container_right - 20 - widest_n_label - 10 - bar_x - label_w
     ry = bar_y0
     for text, count in RANGE_VALUES:
         parts.append(f'<text x="{bar_x:.1f}" y="{ry + 15:.1f}" font-family="Fira Sans" font-size="12.5" '

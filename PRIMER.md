@@ -264,6 +264,7 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S37 | Sichtbares "Herausragen" vor dem Knick ergänzt (00, 03) | `step_00_fundstelle_hub.py`, `step_03_application_ontology.py` | S36 | erledigt 2026-09-15 |
 | S38 | Label-Fehlplatzierung im Fundstelle-Fan-out behoben (03) | `step_03_application_ontology.py` | S37 | erledigt 2026-09-15 |
 | S39 | Rückwärtslaufende Linie zum wd-Badge in 05 (rechtes Panel) behoben | `step_05_uncertainty_markers.py` | S38 | erledigt 2026-09-15 |
+| S40 | Balken-Überlauf in 06 behoben, Linien-Fix aus S36 re-bestätigt | `step_06_uncertainty_dating.py` | S39 | erledigt 2026-09-15 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -1155,22 +1156,62 @@ berechnet werden. Bei rein visueller PNG-Prüfung wäre das an dieser
 Stelle leicht zu übersehen gewesen; das Nachrechnen im rohen SVG-Pfad
 hat den Fehler eindeutig bestätigt.
 
+### S40 -- Balken-Überlauf in 06 behoben, Linien-Fix aus S36 re-bestätigt
+
+**Ziel:** Florian schickte einen Screenshot von 06-uncertainty-dating:
+"hier stimmt auch die linien-logik nicht und n=299 ragt über den kasten
+hinaus".
+
+**Befund, zwei getrennte Sachverhalte:**
+
+1. **Linien-Logik:** der Screenshot zeigte die beiden Pfeile zu
+   crm:E52_Time-Span/time:Interval mit senkrechtem statt waagerechtem
+   Eintritt -- genau das Muster, das S36 bereits für diese Datei behoben
+   hatte (`bend="v"`). Im aktuellen Code hier nachgeprüft: die Zeile
+   steht bereits auf `bend="v"`, der eigene Render zeigt sauberen
+   waagerechten Eintritt. Der Screenshot zeigte vermutlich einen nicht
+   neu gebauten oder nicht vollständig gepatchten Stand, keine Regression
+   in dieser Datei -- sicherheitshalber trotzdem erneut ausgeliefert,
+   um jeden Zweifel auszuräumen.
+2. **Balken-Überlauf (der echte, neue Fund):** `bar_w` war ein fest
+   codierter Wert (1560px), nie gegen die tatsächliche gerenderte Breite
+   von "n=299" (der längste Zahlen-Text neben dem längsten Balken)
+   geprüft. Nachgerechnet: Balkenende + Textanfang + Textbreite lag bei
+   rund x=1712, der gestrichelte Rahmen endet bei x=1690 -- der Text lief
+   also tatsächlich über den Rahmen hinaus.
+
+**Korrigiert:** `bar_w` wird jetzt aus dem tatsächlichen rechten
+Rahmenrand minus der echten gerenderten Breite des längsten "n=NNN"-
+Labels (`vu.text_width()`, nicht geschätzt) berechnet -- der längste
+Balken kann seinen Zahlen-Text dadurch nie mehr über den Rahmen hinaus
+schieben, unabhängig davon, welche Häufigkeiten die Daten irgendwann
+liefern.
+
+**Abnahme:** DE+EN neu gerendert, n=299-Balken samt Label liegt jetzt
+mit sichtbarem Rand innerhalb des Rahmens; beide Linien zu
+crm:E52_Time-Span/time:Interval zeigen sauberen waagerechten Eintritt.
+`python main.py` komplett, zweimal hintereinander byte-identisch,
+0 AST-Treffer.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
   automatisch (siehe S16/S27/S30).
-- **Konvergenzpunkte aus ungleich großen/geformten Quellen sind ein
-  wiederkehrendes Fehlermuster** (S39): mindestens einmal gefunden, wo
-  ein gemeinsamer Ziel-/Abbiegepunkt nur aus EINER der beiden Quellen
-  berechnet wurde statt aus beiden. Nicht systematisch in anderen
-  Diagrammen mit Konvergenz-Mustern (09, 11 nutzen dasselbe
-  marker=None-Muster) nachgeprüft, ob dort dieselbe Asymmetrie
-  vorliegt -- dort sind die jeweiligen Quellen aber gleich große Boxen,
-  das konkrete Risiko dürfte geringer sein, wurde aber nicht verifiziert.
-- **Label-Platzierung, Linienführungs-Stil, bend=h/v** (S36-S38) --
+- **Fest codierte Balkenbreiten sind ein wiederkehrendes Risiko**
+  (S40): mindestens eine Stelle gefunden, wo eine Breite als fixer Wert
+  gesetzt war statt gegen die tatsächliche Textbreite geprüft. Andere
+  balkenartige Elemente (17-stats-infographic hat ähnliche Bars) wurden
+  nicht auf dasselbe Muster durchsucht.
+- **Nach einem Patch immer prüfen, ob der Screenshot den Stand *nach*
+  dem letzten Patch zeigt** (S40 Punkt 1) -- ein bereits gefixtes Detail
+  erneut gemeldet zu bekommen ist harmlos, aber ein Hinweis, dass
+  Patch-Anwendung/Neu-Build zwischen den Runden nicht immer
+  nachvollziehbar ist. Keine Aktion nötig, nur als Beobachtung notiert.
+- **Konvergenzpunkte aus ungleich großen/geformten Quellen** (S39),
+  **Label-Platzierung, Linienführungs-Stil, bend=h/v** (S36-S38) --
   jeweils nur an gemeldeten Stellen gefixt, nicht flächendeckend.
 - **Datengrundlage: 11 vollständig geprüft (S34), 12 und 16 nur
   stichprobenartig.**
 
-Wenn ein neuer Punkt ansteht: nach S39 einsortieren (S40, S41, …), hier
+Wenn ein neuer Punkt ansteht: nach S40 einsortieren (S41, S42, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.
