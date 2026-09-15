@@ -251,29 +251,26 @@ def build(lang: str = "en") -> list[str]:
     tt = lambda de, en: vu.t(lang, de, en)
     parts = [vu.svg_open("Allen's 13 relations as a bar grid, Freksa's neighbourhood lattice with computed real examples")]
 
-    intro = tt("Bildsprache aus \u201eVon Allen zu Freksa\u201c (Florians Referenz-Artikel, 2026-09-16) \u2014 alle FIDs/Jahre real",
-               "Visual form from \u201eVon Allen zu Freksa\u201c (Florian's reference article, 2026-09-16) \u2014 every FID/year real")
-    parts.append(f'<text x="90" y="42" font-family="Fira Sans" font-size="13" font-style="italic" '
-                 f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(intro)}</text>')
-
     # ============================================================= left: Allen bar grid
     allen_title = tt("Allens 13 Relationen als Balkenraster", "Allen's 13 relations as a bar grid")
-    parts.append(f'<text x="90" y="78" font-family="Fira Sans" font-weight="500" font-size="15" '
+    parts.append(f'<text x="90" y="42" font-family="Fira Sans" font-weight="500" font-size="15" '
                  f'fill="{vu.TEXT_DARK}">{vu.xml_escape(allen_title)}</text>')
     allen_legend = tt("Balkenform schematisch wie im Original (Abb. 1) \u2014 petrol = X (fest), ocher = Y \u2014 gelesen als \u201eX <r> Y\u201c; FID/Name/Kultur sind real",
                        "Bar shape schematic, as in the original (Abb. 1) \u2014 petrol = X (fixed), ocher = Y \u2014 read as \u2018X <r> Y\u2019; FID/name/culture are real")
-    parts.append(f'<text x="90" y="96" font-family="Fira Sans" font-size="10.3" '
+    parts.append(f'<text x="90" y="60" font-family="Fira Sans" font-size="10.3" '
                  f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(allen_legend)}</text>')
 
     gx0, gx1 = 90, 950
-    g_y0, cols, gap = 118, 4, 18
+    g_y0, cols, gap = 84, 4, 16
     cell_w = (gx1 - gx0 - (cols - 1) * gap) / cols
-    row_h = 140
+    row_h = 112
     scale = (cell_w - 12) / 120.0
+    last_row_x0 = gx0 + ((cols * cell_w + (cols - 1) * gap) - cell_w) / 2  # centres a lone last-row cell
 
     for i, (code, x_iv, y_iv) in enumerate(ALLEN_CELLS):
         col, row = i % cols, i // cols
-        lx = gx0 + col * (cell_w + gap)
+        is_last_alone = (i == len(ALLEN_CELLS) - 1) and (len(ALLEN_CELLS) % cols == 1) and col == 0
+        lx = last_row_x0 if is_last_alone else gx0 + col * (cell_w + gap)
         ly = g_y0 + row * (row_h + gap)
         parts.append(f'<rect x="{lx:.1f}" y="{ly:.1f}" width="{cell_w:.1f}" height="{row_h:.1f}" '
                      f'rx="6" fill="#fbfbf9" stroke="{vu.LINE_NEUTRAL}" stroke-width="1"/>')
@@ -282,62 +279,73 @@ def build(lang: str = "en") -> list[str]:
         yfid, yname, ykultur = y_iv
         x_cap = f"X = FID{xfid} \u00b7 {xname} ({xkultur})"
         y_cap = f"Y = FID{yfid} \u00b7 {yname} ({ykultur})"
-        parts.append(f'<text x="{lx + 8:.1f}" y="{ly + 13:.1f}" font-family="Fira Sans" font-size="9" '
+        parts.append(f'<text x="{lx + 8:.1f}" y="{ly + 14:.1f}" font-family="Fira Sans" font-size="9.3" '
                      f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(x_cap)}</text>')
 
         ix0 = lx + 8
         b1, b2 = BARS[code]
-        parts.append(f'<rect x="{ix0 + 40 * scale:.1f}" y="{ly + 20:.1f}" '
-                     f'width="{40 * scale:.1f}" height="9" rx="2" fill="{ALLEN}"/>')
-        parts.append(f'<rect x="{ix0 + b1 * scale:.1f}" y="{ly + 33:.1f}" '
-                     f'width="{max(2, (b2 - b1) * scale):.1f}" height="9" rx="2" fill="{FRESKA}"/>')
+        parts.append(f'<rect x="{ix0 + 40 * scale:.1f}" y="{ly + 22:.1f}" '
+                     f'width="{40 * scale:.1f}" height="11" rx="2.5" fill="{ALLEN}"/>')
+        parts.append(f'<rect x="{ix0 + b1 * scale:.1f}" y="{ly + 37:.1f}" '
+                     f'width="{max(2, (b2 - b1) * scale):.1f}" height="11" rx="2.5" fill="{FRESKA}"/>')
 
-        parts.append(f'<text x="{lx + 8:.1f}" y="{ly + 58:.1f}" font-family="Fira Sans" font-size="9" '
+        parts.append(f'<text x="{lx + 8:.1f}" y="{ly + 66:.1f}" font-family="Fira Sans" font-size="9.3" '
                      f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(y_cap)}</text>')
-        parts.append(f'<text x="{lx + 8:.1f}" y="{ly + 78:.1f}" font-family="Fira Sans" font-weight="600" '
-                     f'font-size="13" fill="{ALLEN}">{vu.xml_escape(code)}'
-                     f'<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="{vu.TEXT_MUTED}">'
-                     f'  {vu.xml_escape(NAMES[code])}</tspan></text>')
+        # code left-aligned, name right-aligned -- a leading space inside a
+        # <tspan> is silently collapsed by SVG's default whitespace handling
+        # (confirmed 2026-09-16: rendered as "ffinishes", no visible gap),
+        # so the two are two separate text runs at opposite cell edges
+        # instead of relying on any whitespace character to keep them apart.
+        parts.append(f'<text x="{lx + 8:.1f}" y="{ly + 90:.1f}" font-family="Fira Sans" font-weight="600" '
+                     f'font-size="14" fill="{ALLEN}">{vu.xml_escape(code)}</text>')
+        parts.append(f'<text x="{lx + cell_w - 8:.1f}" y="{ly + 90:.1f}" text-anchor="end" '
+                     f'font-family="Fira Sans" font-size="11.5" fill="{vu.TEXT_MUTED}">'
+                     f'{vu.xml_escape(NAMES[code])}</text>')
 
     # ============================================================= right: Freksa lattice gallery
     rx0, rx1 = 1010, 1690
     freksa_title = tt("Freksas Nachbarschaftsgitter \u2014 sieben berechnete Beispiele",
                        "Freksa's neighbourhood lattice \u2014 seven computed examples")
-    parts.append(f'<text x="{rx0}" y="78" font-family="Fira Sans" font-weight="500" font-size="15" '
+    parts.append(f'<text x="{rx0}" y="42" font-family="Fira Sans" font-weight="500" font-size="15" '
                  f'fill="{vu.TEXT_DARK}">{vu.xml_escape(freksa_title)}</text>')
 
     para = tt(["Jede echte Datierung tr\u00e4gt einen echten Spielraum (\u00b110 bis \u00b1200 Jahre,",
-               "siehe 06-uncertainty-dating). F\u00fcr jedes der sieben Paare unten wurde",
-               "berechnet, nicht geraten, welche der 13 Relationen innerhalb der Spanne",
-               "noch m\u00f6glich sind \u2014 und ob diese Menge im Gitter zusammenh\u00e4ngt."],
-              ["Every real dating carries a real margin (\u00b110 to \u00b1200 years,",
-               "see 06-uncertainty-dating). For each of the seven pairs below, which of",
-               "the 13 relations remain possible within that margin was computed, not",
-               "guessed \u2014 and whether that set is connected in the lattice."])
-    py = 98
+               "siehe 06-uncertainty-dating). F\u00fcr jedes Paar unten wurde berechnet, nicht",
+               "geraten, welche der 13 Relationen noch m\u00f6glich sind \u2014 und ob das im Gitter zusammenh\u00e4ngt."],
+              ["Every real dating carries a real margin (\u00b110 to \u00b1200 years, see",
+               "06-uncertainty-dating). For each pair below, which of the 13 relations",
+               "remain possible was computed, not guessed \u2014 and whether that set is connected."])
+    py = 64
     for line in para:
         parts.append(f'<text x="{rx0}" y="{py}" font-family="Fira Sans" font-size="11.3" '
                      f'fill="{vu.TEXT_DARK}">{vu.xml_escape(line)}</text>')
         py += 16
 
-    fcols, fgap = 4, 18
-    ficon_w = (rx1 - rx0 - (fcols - 1) * fgap) / fcols
-    ficon_draw = ficon_w - 20
+    fcols, fgap, frow_gap = 3, 34, 30
+    ficon_w = 143.0 + 16  # width driven by the vertical budget below, not by panel width
+    ficon_draw = ficon_w - 16
     ficon_h = ficon_draw * 84 / 64
-    frow_h = 22 + ficon_h + 34
-    fy0 = py + 14
+    cap_above_h, cap_below_h = 16, 28
+    frow_h = cap_above_h + ficon_h + cap_below_h
+    fy0 = py + 18
+    grid_w = fcols * ficon_w + (fcols - 1) * fgap
+    grid_x0 = rx0 + (rx1 - rx0 - grid_w) / 2  # centre the grid in the panel's leftover width
+
+    slots: list[tuple[float, float]] = []
+    for idx in range(9):
+        col, row = idx % fcols, idx // fcols
+        slots.append((grid_x0 + col * (ficon_w + fgap), fy0 + row * (frow_h + frow_gap)))
 
     # slot 0: labelled legend
     legend_cap = tt("Legende: alle 13, unausgef\u00fcllt", "Legend: all 13, unfilled")
-    parts.append(f'<text x="{rx0:.1f}" y="{fy0 + 12:.1f}" font-family="Fira Sans" font-weight="600" '
-                 f'font-size="10" fill="{vu.TEXT_DARK}">{vu.xml_escape(legend_cap)}</text>')
-    parts += _lattice(rx0 + 8, fy0 + 22, ficon_draw, ficon_h, set(ORDER), labeled=True)
+    lcx, lcy = slots[0]
+    parts.append(f'<text x="{lcx:.1f}" y="{lcy + 11:.1f}" font-family="Fira Sans" font-weight="600" '
+                 f'font-size="10.5" fill="{vu.TEXT_DARK}">{vu.xml_escape(legend_cap)}</text>')
+    parts += _lattice(lcx + (ficon_w - ficon_draw) / 2, lcy + cap_above_h, ficon_draw, ficon_h,
+                       set(ORDER), labeled=True)
 
     for i, (x_iv, x_cert, r_iv, r_cert) in enumerate(FRESKA_EXAMPLES):
-        slot = i + 1
-        col, row = slot % fcols, slot // fcols
-        cx0 = rx0 + col * (ficon_w + fgap)
-        cy0 = fy0 + row * (frow_h + fgap)
+        cx0, cy0 = slots[i + 1]
 
         xfid, xname, xkultur, xs, xe = x_iv
         rfid, rname, rkultur, rs, re = r_iv
@@ -346,28 +354,28 @@ def build(lang: str = "en") -> list[str]:
         crisp = CODE[_classify(xs, xe, rs, re)]
 
         set_label = "{" + ",".join(codes) + "}" if len(codes) < 13 else tt("alle 13", "all 13")
-        parts.append(f'<text x="{cx0:.1f}" y="{cy0 + 12:.1f}" font-family="Fira Sans" font-weight="600" '
-                     f'font-size="10" fill="{FRESKA if conn else vu.UNCERTAIN_STROKE}">'
+        parts.append(f'<text x="{cx0:.1f}" y="{cy0 + 11:.1f}" font-family="Fira Sans" font-weight="600" '
+                     f'font-size="10.5" fill="{FRESKA if conn else vu.UNCERTAIN_STROKE}">'
                      f'{vu.xml_escape(set_label)}</text>')
-        parts += _lattice(cx0 + 8, cy0 + 22, ficon_draw, ficon_h, set(codes))
+        parts += _lattice(cx0 + (ficon_w - ficon_draw) / 2, cy0 + cap_above_h, ficon_draw, ficon_h, set(codes))
 
-        cy_txt = cy0 + 22 + ficon_h + 12
+        cy_txt = cy0 + cap_above_h + ficon_h + 14
         cap1 = f"FID{xfid} {xname} \u00d7 FID{rfid} {rname}"
         cap2 = tt(f"scharf: {crisp} \u00b7 {x_cert[0]}/{x_cert[1]} \u00b7 {r_cert[0]}/{r_cert[1]} J.",
                   f"crisp: {crisp} \u00b7 {x_cert[0]}/{x_cert[1]} \u00b7 {r_cert[0]}/{r_cert[1]}y")
-        parts.append(f'<text x="{cx0:.1f}" y="{cy_txt:.1f}" font-family="Fira Sans" font-size="8.7" '
+        parts.append(f'<text x="{cx0:.1f}" y="{cy_txt:.1f}" font-family="Fira Sans" font-size="9.3" '
                      f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(cap1)}</text>')
-        parts.append(f'<text x="{cx0:.1f}" y="{cy_txt + 13:.1f}" font-family="Fira Sans" font-size="8.7" '
+        parts.append(f'<text x="{cx0:.1f}" y="{cy_txt + 14:.1f}" font-family="Fira Sans" font-size="9.3" '
                      f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(cap2)}</text>')
 
-    note_y = fy0 + 2 * (frow_h + fgap) + 6
+    note_y = fy0 + 3 * (frow_h + frow_gap) - frow_gap + 26
     note_lines = tt(
-        ["Alle sieben Ergebnismengen sind zusammenh\u00e4ngend (Freksas Nachbarschafts-",
-         "Theorem, nicht so gew\u00e4hlt) \u2014 auch das \u201eequals\u201c-Paar oben rechts: die volle",
-         "Menge aller 13 ist trivial zusammenh\u00e4ngend, sagt dann aber nichts mehr aus."],
-        ["All seven result sets are connected (Freksa's neighbourhood theorem,",
-         "not chosen to be) \u2014 including the \u2018equals\u2019 pair, top right: the full set",
-         "of all 13 is trivially connected too, it just stops saying anything."])
+        ["Alle sieben Ergebnismengen sind zusammenh\u00e4ngend (Freksas Nachbarschafts-Theorem, nicht so gew\u00e4hlt) \u2014",
+         "auch das \u201eequals\u201c-Paar (FID1 \u00d7 FID2, alle 13 erreichbar): die volle Menge aller 13 ist trivial",
+         "zusammenh\u00e4ngend, sagt dann aber nichts mehr aus."],
+        ["All seven result sets are connected (Freksa's neighbourhood theorem, not chosen to be) \u2014 including",
+         "the \u2018equals\u2019 pair (FID1 \u00d7 FID2, all 13 reachable): the full set of all 13 is trivially",
+         "connected too, it just stops saying anything."])
     for i, line in enumerate(note_lines):
         parts.append(f'<text x="{rx0}" y="{note_y + i * 15:.1f}" font-family="Fira Sans" font-size="10.3" '
                      f'fill="{vu.TEXT_MUTED}">{vu.xml_escape(line)}</text>')

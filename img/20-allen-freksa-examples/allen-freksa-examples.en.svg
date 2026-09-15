@@ -3,360 +3,371 @@
 <rect x="0" y="0" width="1750" height="1000" fill="#ffffff"/>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="arrow-uncertain" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#a03030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 
-<text x="90" y="42" font-family="Fira Sans" font-size="13" font-style="italic" fill="#5f5e5a">Visual form from „Von Allen zu Freksa“ (Florian&apos;s reference article, 2026-09-16) — every FID/year real</text>
-<text x="90" y="78" font-family="Fira Sans" font-weight="500" font-size="15" fill="#2c2c2a">Allen&apos;s 13 relations as a bar grid</text>
-<text x="90" y="96" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">Bar shape schematic, as in the original (Abb. 1) — petrol = X (fixed), ocher = Y — read as ‘X &lt;r&gt; Y’; FID/name/culture are real</text>
-<rect x="90.0" y="118.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="98.0" y="131.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID40 · Bochow 16 (SBK)</text>
-<rect x="161.2" y="138.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="240.1" y="151.0" width="47.4" height="9" rx="2" fill="#A2560F"/>
-<text x="98.0" y="176.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID32 · Steckelsdorf 12 (FBG)</text>
-<text x="98.0" y="196.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">&lt;<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  before</tspan></text>
-<rect x="309.5" y="118.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="317.5" y="131.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID32 · Steckelsdorf 12 (FBG)</text>
-<rect x="380.7" y="138.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="317.5" y="151.0" width="47.4" height="9" rx="2" fill="#A2560F"/>
-<text x="317.5" y="176.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID40 · Bochow 16 (SBK)</text>
-<text x="317.5" y="196.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">&gt;<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  after</tspan></text>
-<rect x="529.0" y="118.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="537.0" y="131.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID78 · Nowe Objezierze 7 (SBK)</text>
-<rect x="600.2" y="138.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="663.3" y="151.0" width="63.2" height="9" rx="2" fill="#A2560F"/>
-<text x="537.0" y="176.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID153 · Racot 18 (BKK)</text>
-<text x="537.0" y="196.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">m<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  meets</tspan></text>
-<rect x="748.5" y="118.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="756.5" y="131.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID153 · Racot 18 (BKK)</text>
-<rect x="819.7" y="138.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="756.5" y="151.0" width="63.2" height="9" rx="2" fill="#A2560F"/>
-<text x="756.5" y="176.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID78 · Nowe Objezierze 7 (SBK)</text>
-<text x="756.5" y="196.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">mi<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  met by</tspan></text>
-<rect x="90.0" y="276.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="98.0" y="289.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID40 · Bochow 16 (SBK)</text>
-<rect x="161.2" y="296.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="200.6" y="309.0" width="71.1" height="9" rx="2" fill="#A2560F"/>
-<text x="98.0" y="334.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID78 · Nowe Objezierze 7 (SBK)</text>
-<text x="98.0" y="354.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">o<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  overlaps</tspan></text>
-<rect x="309.5" y="276.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="317.5" y="289.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID78 · Nowe Objezierze 7 (SBK)</text>
-<rect x="380.7" y="296.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="357.0" y="309.0" width="55.3" height="9" rx="2" fill="#A2560F"/>
-<text x="317.5" y="334.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID40 · Bochow 16 (SBK)</text>
-<text x="317.5" y="354.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">oi<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  overlapped by</tspan></text>
-<rect x="529.0" y="276.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="537.0" y="289.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID1 · Tüngeda (SBK)</text>
-<rect x="600.2" y="296.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="600.2" y="309.0" width="94.8" height="9" rx="2" fill="#A2560F"/>
-<text x="537.0" y="334.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID78 · Nowe Objezierze 7 (SBK)</text>
-<text x="537.0" y="354.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">s<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  starts</tspan></text>
-<rect x="748.5" y="276.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="756.5" y="289.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID78 · Nowe Objezierze 7 (SBK)</text>
-<rect x="819.7" y="296.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="819.7" y="309.0" width="39.5" height="9" rx="2" fill="#A2560F"/>
-<text x="756.5" y="334.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID1 · Tüngeda (SBK)</text>
-<text x="756.5" y="354.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">si<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  started by</tspan></text>
-<rect x="90.0" y="434.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="98.0" y="447.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID40 · Bochow 16 (SBK)</text>
-<rect x="161.2" y="454.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="137.5" y="467.0" width="118.4" height="9" rx="2" fill="#A2560F"/>
-<text x="98.0" y="492.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID305 · Eichhorst - 8 (Mesolithikum)</text>
-<text x="98.0" y="512.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">d<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  during</tspan></text>
-<rect x="309.5" y="434.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="317.5" y="447.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID305 · Eichhorst - 8 (Mesolithikum)</text>
-<rect x="380.7" y="454.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="399.6" y="467.0" width="25.3" height="9" rx="2" fill="#A2560F"/>
-<text x="317.5" y="492.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID40 · Bochow 16 (SBK)</text>
-<text x="317.5" y="512.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">di<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  contains</tspan></text>
-<rect x="529.0" y="434.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="537.0" y="447.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID49 · Selchow 7 (Rössener Kultur)</text>
-<rect x="600.2" y="454.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="568.6" y="467.0" width="94.8" height="9" rx="2" fill="#A2560F"/>
-<text x="537.0" y="492.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID258 · Flemsdorf 10 (Rössener Kultur)</text>
-<text x="537.0" y="512.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">f<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  finishes</tspan></text>
-<rect x="748.5" y="434.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="756.5" y="447.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID258 · Flemsdorf 10 (Rössener Kultur)</text>
-<rect x="819.7" y="454.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="848.1" y="467.0" width="34.7" height="9" rx="2" fill="#A2560F"/>
-<text x="756.5" y="492.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID49 · Selchow 7 (Rössener Kultur)</text>
-<text x="756.5" y="512.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">fi<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  finished by</tspan></text>
-<rect x="90.0" y="592.0" width="201.5" height="140.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
-<text x="98.0" y="605.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">X = FID1 · Tüngeda (SBK)</text>
-<rect x="161.2" y="612.0" width="63.2" height="9" rx="2" fill="#1F4E5F"/>
-<rect x="161.2" y="625.0" width="63.2" height="9" rx="2" fill="#A2560F"/>
-<text x="98.0" y="650.0" font-family="Fira Sans" font-size="9" fill="#5f5e5a">Y = FID2 · Goldbach (SBK)</text>
-<text x="98.0" y="670.0" font-family="Fira Sans" font-weight="600" font-size="13" fill="#1F4E5F">=<tspan font-family="Fira Sans" font-weight="400" font-size="11" fill="#5f5e5a">  equals</tspan></text>
-<text x="1010" y="78" font-family="Fira Sans" font-weight="500" font-size="15" fill="#2c2c2a">Freksa&apos;s neighbourhood lattice — seven computed examples</text>
-<text x="1010" y="98" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">Every real dating carries a real margin (±10 to ±200 years,</text>
-<text x="1010" y="114" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">see 06-uncertainty-dating). For each of the seven pairs below, which of</text>
-<text x="1010" y="130" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">the 13 relations remain possible within that margin was computed, not</text>
-<text x="1010" y="146" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">guessed — and whether that set is connected in the lattice.</text>
-<text x="1010.0" y="188.0" font-family="Fira Sans" font-weight="600" font-size="10" fill="#2c2c2a">Legend: all 13, unfilled</text>
-<line x1="1077.7" y1="210.8" x2="1077.7" y2="234.3" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="234.3" x2="1077.7" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="262.0" x2="1047.9" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="262.0" x2="1107.6" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="262.0" x2="1107.6" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="262.0" x2="1077.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="285.4" x2="1107.6" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="308.9" x2="1077.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="308.9" x2="1077.7" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="308.9" x2="1047.9" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="308.9" x2="1077.7" y2="336.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="336.6" x2="1077.7" y2="360.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="308.9" x2="1077.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="308.9" x2="1047.9" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="285.4" x2="1047.9" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="262.0" x2="1077.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1077.7" cy="210.8" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="217.6" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">&lt;</text>
-<circle cx="1077.7" cy="234.3" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="241.1" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">m</text>
-<circle cx="1077.7" cy="262.0" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="268.8" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">o</text>
-<circle cx="1107.6" cy="262.0" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1107.6" y="268.8" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">fi</text>
-<circle cx="1107.6" cy="285.4" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1107.6" y="292.3" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">di</text>
-<circle cx="1107.6" cy="308.9" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1107.6" y="315.7" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">si</text>
-<circle cx="1077.7" cy="285.4" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="292.3" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">=</text>
-<circle cx="1047.9" cy="262.0" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1047.9" y="268.8" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">s</text>
-<circle cx="1047.9" cy="285.4" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1047.9" y="292.3" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">d</text>
-<circle cx="1047.9" cy="308.9" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1047.9" y="315.7" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">f</text>
-<circle cx="1077.7" cy="308.9" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="315.7" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">oi</text>
-<circle cx="1077.7" cy="336.6" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="343.5" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">mi</text>
-<circle cx="1077.7" cy="360.1" r="18.1" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
-<text x="1077.7" y="366.9" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="18.1" fill="#1F4E5F">&gt;</text>
-<text x="1184.5" y="188.0" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">{d}</text>
-<line x1="1252.2" y1="210.8" x2="1252.2" y2="234.3" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="234.3" x2="1252.2" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="262.0" x2="1222.4" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="262.0" x2="1282.1" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="262.0" x2="1282.1" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="262.0" x2="1252.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="285.4" x2="1282.1" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="308.9" x2="1252.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="308.9" x2="1252.2" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="308.9" x2="1222.4" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="308.9" x2="1252.2" y2="336.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="336.6" x2="1252.2" y2="360.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="308.9" x2="1252.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="308.9" x2="1222.4" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="285.4" x2="1222.4" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="262.0" x2="1252.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1252.2" cy="210.8" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="234.3" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="262.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1282.1" cy="262.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1282.1" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1282.1" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1222.4" cy="262.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1222.4" cy="285.4" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1222.4" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="336.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="360.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<text x="1184.5" y="389.2" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID40 Bochow 16 × FID305 Eichhorst - 8</text>
-<text x="1184.5" y="402.2" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: d · 100/100 · 100/100y</text>
-<text x="1359.0" y="188.0" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">{d,o,s}</text>
-<line x1="1426.7" y1="210.8" x2="1426.7" y2="234.3" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="234.3" x2="1426.7" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="262.0" x2="1396.9" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="262.0" x2="1456.6" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="262.0" x2="1456.6" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="262.0" x2="1426.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="285.4" x2="1456.6" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="308.9" x2="1426.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="308.9" x2="1426.7" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="308.9" x2="1396.9" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="308.9" x2="1426.7" y2="336.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="336.6" x2="1426.7" y2="360.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="308.9" x2="1426.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="308.9" x2="1396.9" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="285.4" x2="1396.9" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="262.0" x2="1426.7" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1426.7" cy="210.8" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="234.3" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="262.0" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1456.6" cy="262.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1456.6" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1456.6" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1396.9" cy="262.0" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1396.9" cy="285.4" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1396.9" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="336.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="360.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<text x="1359.0" y="389.2" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID40 Bochow 16 × FID78 Nowe Objezierze 7</text>
-<text x="1359.0" y="402.2" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: o · 100/100 · 100/100y</text>
-<text x="1533.5" y="188.0" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">{&lt;,m,o}</text>
-<line x1="1601.2" y1="210.8" x2="1601.2" y2="234.3" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="234.3" x2="1601.2" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="262.0" x2="1571.4" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="262.0" x2="1631.1" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="262.0" x2="1631.1" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="262.0" x2="1601.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="285.4" x2="1631.1" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="308.9" x2="1601.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="308.9" x2="1601.2" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="308.9" x2="1571.4" y2="308.9" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="308.9" x2="1601.2" y2="336.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="336.6" x2="1601.2" y2="360.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="308.9" x2="1601.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="308.9" x2="1571.4" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="285.4" x2="1571.4" y2="262.0" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="262.0" x2="1601.2" y2="285.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1601.2" cy="210.8" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="234.3" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="262.0" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1631.1" cy="262.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1631.1" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1631.1" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1601.2" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1571.4" cy="262.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1571.4" cy="285.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1571.4" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1601.2" cy="308.9" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1601.2" cy="336.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1601.2" cy="360.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<text x="1533.5" y="389.2" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID78 Nowe Objezierze 7 × FID153 Racot 18</text>
-<text x="1533.5" y="402.2" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: m · 100/100 · 50/100y</text>
-<text x="1010.0" y="441.2" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">{&lt;,m,o}</text>
-<line x1="1077.7" y1="464.0" x2="1077.7" y2="487.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="487.4" x2="1077.7" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="515.1" x2="1047.9" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="515.1" x2="1107.6" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="515.1" x2="1107.6" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="515.1" x2="1077.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="538.6" x2="1107.6" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="562.1" x2="1077.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1107.6" y1="562.1" x2="1077.7" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="562.1" x2="1047.9" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="562.1" x2="1077.7" y2="589.8" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1077.7" y1="589.8" x2="1077.7" y2="613.2" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="562.1" x2="1077.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="562.1" x2="1047.9" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="538.6" x2="1047.9" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1047.9" y1="515.1" x2="1077.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1077.7" cy="464.0" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1077.7" cy="487.4" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1077.7" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1107.6" cy="515.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1107.6" cy="538.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1107.6" cy="562.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1077.7" cy="538.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1047.9" cy="515.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1047.9" cy="538.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1047.9" cy="562.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1077.7" cy="562.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1077.7" cy="589.8" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1077.7" cy="613.2" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<text x="1010.0" y="642.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID40 Bochow 16 × FID32 Steckelsdorf 12</text>
-<text x="1010.0" y="655.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: &lt; · 100/100 · 100/100y</text>
-<text x="1184.5" y="441.2" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">{&lt;,d,m,o,s}</text>
-<line x1="1252.2" y1="464.0" x2="1252.2" y2="487.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="487.4" x2="1252.2" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="515.1" x2="1222.4" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="515.1" x2="1282.1" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="515.1" x2="1282.1" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="515.1" x2="1252.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="538.6" x2="1282.1" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="562.1" x2="1252.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1282.1" y1="562.1" x2="1252.2" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="562.1" x2="1222.4" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="562.1" x2="1252.2" y2="589.8" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1252.2" y1="589.8" x2="1252.2" y2="613.2" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="562.1" x2="1252.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="562.1" x2="1222.4" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="538.6" x2="1222.4" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1222.4" y1="515.1" x2="1252.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1252.2" cy="464.0" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1252.2" cy="487.4" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1252.2" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1282.1" cy="515.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1282.1" cy="538.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1282.1" cy="562.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="538.6" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1222.4" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1222.4" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1222.4" cy="562.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="562.1" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="589.8" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1252.2" cy="613.2" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<text x="1184.5" y="642.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID1 Tüngeda × FID78 Nowe Objezierze 7</text>
-<text x="1184.5" y="655.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: s · 100/100 · 100/100y</text>
-<text x="1359.0" y="441.2" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">{=,d,di,f,fi,mi,o,oi,s,si}</text>
-<line x1="1426.7" y1="464.0" x2="1426.7" y2="487.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="487.4" x2="1426.7" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="515.1" x2="1396.9" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="515.1" x2="1456.6" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="515.1" x2="1456.6" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="515.1" x2="1426.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="538.6" x2="1456.6" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="562.1" x2="1426.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1456.6" y1="562.1" x2="1426.7" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="562.1" x2="1396.9" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="562.1" x2="1426.7" y2="589.8" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1426.7" y1="589.8" x2="1426.7" y2="613.2" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="562.1" x2="1426.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="562.1" x2="1396.9" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="538.6" x2="1396.9" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1396.9" y1="515.1" x2="1426.7" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1426.7" cy="464.0" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="487.4" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<circle cx="1426.7" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1456.6" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1456.6" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1456.6" cy="562.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1426.7" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1396.9" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1396.9" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1396.9" cy="562.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1426.7" cy="562.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1426.7" cy="589.8" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1426.7" cy="613.2" r="7.7" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
-<text x="1359.0" y="642.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID49 Selchow 7 × FID258 Flemsdorf 10</text>
-<text x="1359.0" y="655.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: f · 100/100 · 100/100y</text>
-<text x="1533.5" y="441.2" font-family="Fira Sans" font-weight="600" font-size="10" fill="#A2560F">all 13</text>
-<line x1="1601.2" y1="464.0" x2="1601.2" y2="487.4" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="487.4" x2="1601.2" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="515.1" x2="1571.4" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="515.1" x2="1631.1" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="515.1" x2="1631.1" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="515.1" x2="1601.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="538.6" x2="1631.1" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="562.1" x2="1601.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1631.1" y1="562.1" x2="1601.2" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="562.1" x2="1571.4" y2="562.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="562.1" x2="1601.2" y2="589.8" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1601.2" y1="589.8" x2="1601.2" y2="613.2" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="562.1" x2="1601.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="562.1" x2="1571.4" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="538.6" x2="1571.4" y2="515.1" stroke="#B6BEB6" stroke-width="1.3"/>
-<line x1="1571.4" y1="515.1" x2="1601.2" y2="538.6" stroke="#B6BEB6" stroke-width="1.3"/>
-<circle cx="1601.2" cy="464.0" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="487.4" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1631.1" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1631.1" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1631.1" cy="562.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1571.4" cy="515.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1571.4" cy="538.6" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1571.4" cy="562.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="562.1" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="589.8" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<circle cx="1601.2" cy="613.2" r="7.7" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
-<text x="1533.5" y="642.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">FID1 Tüngeda × FID2 Goldbach</text>
-<text x="1533.5" y="655.3" font-family="Fira Sans" font-size="8.7" fill="#5f5e5a">crisp: = · 100/100 · 100/100y</text>
-<text x="1010" y="688.3" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">All seven result sets are connected (Freksa&apos;s neighbourhood theorem,</text>
-<text x="1010" y="703.3" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">not chosen to be) — including the ‘equals’ pair, top right: the full set</text>
-<text x="1010" y="718.3" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">of all 13 is trivially connected too, it just stops saying anything.</text>
+<text x="90" y="42" font-family="Fira Sans" font-weight="500" font-size="15" fill="#2c2c2a">Allen&apos;s 13 relations as a bar grid</text>
+<text x="90" y="60" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">Bar shape schematic, as in the original (Abb. 1) — petrol = X (fixed), ocher = Y — read as ‘X &lt;r&gt; Y’; FID/name/culture are real</text>
+<rect x="90.0" y="84.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="98.0" y="98.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID40 · Bochow 16 (SBK)</text>
+<rect x="161.7" y="106.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="241.2" y="121.0" width="47.8" height="11" rx="2.5" fill="#A2560F"/>
+<text x="98.0" y="150.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID32 · Steckelsdorf 12 (FBG)</text>
+<text x="98.0" y="174.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">&lt;</text>
+<text x="285.0" y="174.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">before</text>
+<rect x="309.0" y="84.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="317.0" y="98.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID32 · Steckelsdorf 12 (FBG)</text>
+<rect x="380.7" y="106.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="317.0" y="121.0" width="47.8" height="11" rx="2.5" fill="#A2560F"/>
+<text x="317.0" y="150.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID40 · Bochow 16 (SBK)</text>
+<text x="317.0" y="174.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">&gt;</text>
+<text x="504.0" y="174.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">after</text>
+<rect x="528.0" y="84.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="536.0" y="98.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID78 · Nowe Objezierze 7 (SBK)</text>
+<rect x="599.7" y="106.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="663.3" y="121.0" width="63.7" height="11" rx="2.5" fill="#A2560F"/>
+<text x="536.0" y="150.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID153 · Racot 18 (BKK)</text>
+<text x="536.0" y="174.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">m</text>
+<text x="723.0" y="174.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">meets</text>
+<rect x="747.0" y="84.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="755.0" y="98.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID153 · Racot 18 (BKK)</text>
+<rect x="818.7" y="106.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="755.0" y="121.0" width="63.7" height="11" rx="2.5" fill="#A2560F"/>
+<text x="755.0" y="150.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID78 · Nowe Objezierze 7 (SBK)</text>
+<text x="755.0" y="174.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">mi</text>
+<text x="942.0" y="174.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">met by</text>
+<rect x="90.0" y="212.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="98.0" y="226.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID40 · Bochow 16 (SBK)</text>
+<rect x="161.7" y="234.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="201.5" y="249.0" width="71.6" height="11" rx="2.5" fill="#A2560F"/>
+<text x="98.0" y="278.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID78 · Nowe Objezierze 7 (SBK)</text>
+<text x="98.0" y="302.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">o</text>
+<text x="285.0" y="302.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">overlaps</text>
+<rect x="309.0" y="212.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="317.0" y="226.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID78 · Nowe Objezierze 7 (SBK)</text>
+<rect x="380.7" y="234.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="356.8" y="249.0" width="55.7" height="11" rx="2.5" fill="#A2560F"/>
+<text x="317.0" y="278.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID40 · Bochow 16 (SBK)</text>
+<text x="317.0" y="302.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">oi</text>
+<text x="504.0" y="302.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">overlapped by</text>
+<rect x="528.0" y="212.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="536.0" y="226.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID1 · Tüngeda (SBK)</text>
+<rect x="599.7" y="234.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="599.7" y="249.0" width="95.5" height="11" rx="2.5" fill="#A2560F"/>
+<text x="536.0" y="278.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID78 · Nowe Objezierze 7 (SBK)</text>
+<text x="536.0" y="302.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">s</text>
+<text x="723.0" y="302.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">starts</text>
+<rect x="747.0" y="212.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="755.0" y="226.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID78 · Nowe Objezierze 7 (SBK)</text>
+<rect x="818.7" y="234.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="818.7" y="249.0" width="39.8" height="11" rx="2.5" fill="#A2560F"/>
+<text x="755.0" y="278.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID1 · Tüngeda (SBK)</text>
+<text x="755.0" y="302.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">si</text>
+<text x="942.0" y="302.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">started by</text>
+<rect x="90.0" y="340.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="98.0" y="354.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID40 · Bochow 16 (SBK)</text>
+<rect x="161.7" y="362.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="137.8" y="377.0" width="119.4" height="11" rx="2.5" fill="#A2560F"/>
+<text x="98.0" y="406.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID305 · Eichhorst - 8 (Mesolithikum)</text>
+<text x="98.0" y="430.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">d</text>
+<text x="285.0" y="430.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">during</text>
+<rect x="309.0" y="340.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="317.0" y="354.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID305 · Eichhorst - 8 (Mesolithikum)</text>
+<rect x="380.7" y="362.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="399.8" y="377.0" width="25.5" height="11" rx="2.5" fill="#A2560F"/>
+<text x="317.0" y="406.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID40 · Bochow 16 (SBK)</text>
+<text x="317.0" y="430.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">di</text>
+<text x="504.0" y="430.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">contains</text>
+<rect x="528.0" y="340.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="536.0" y="354.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID49 · Selchow 7 (Rössener Kultur)</text>
+<rect x="599.7" y="362.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="567.8" y="377.0" width="95.5" height="11" rx="2.5" fill="#A2560F"/>
+<text x="536.0" y="406.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID258 · Flemsdorf 10 (Rössener Kultur)</text>
+<text x="536.0" y="430.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">f</text>
+<text x="723.0" y="430.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">finishes</text>
+<rect x="747.0" y="340.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="755.0" y="354.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID258 · Flemsdorf 10 (Rössener Kultur)</text>
+<rect x="818.7" y="362.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="847.3" y="377.0" width="35.0" height="11" rx="2.5" fill="#A2560F"/>
+<text x="755.0" y="406.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID49 · Selchow 7 (Rössener Kultur)</text>
+<text x="755.0" y="430.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">fi</text>
+<text x="942.0" y="430.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">finished by</text>
+<rect x="418.5" y="468.0" width="203.0" height="112.0" rx="6" fill="#fbfbf9" stroke="#888780" stroke-width="1"/>
+<text x="426.5" y="482.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">X = FID1 · Tüngeda (SBK)</text>
+<rect x="490.2" y="490.0" width="63.7" height="11" rx="2.5" fill="#1F4E5F"/>
+<rect x="490.2" y="505.0" width="63.7" height="11" rx="2.5" fill="#A2560F"/>
+<text x="426.5" y="534.0" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">Y = FID2 · Goldbach (SBK)</text>
+<text x="426.5" y="558.0" font-family="Fira Sans" font-weight="600" font-size="14" fill="#1F4E5F">=</text>
+<text x="613.5" y="558.0" text-anchor="end" font-family="Fira Sans" font-size="11.5" fill="#5f5e5a">equals</text>
+<text x="1010" y="42" font-family="Fira Sans" font-weight="500" font-size="15" fill="#2c2c2a">Freksa&apos;s neighbourhood lattice — seven computed examples</text>
+<text x="1010" y="64" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">Every real dating carries a real margin (±10 to ±200 years, see</text>
+<text x="1010" y="80" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">06-uncertainty-dating). For each pair below, which of the 13 relations</text>
+<text x="1010" y="96" font-family="Fira Sans" font-size="11.3" fill="#2c2c2a">remain possible was computed, not guessed — and whether that set is connected.</text>
+<text x="1077.5" y="141.0" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#2c2c2a">Legend: all 13, unfilled</text>
+<line x1="1148.1" y1="159.4" x2="1148.1" y2="184.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="184.0" x2="1148.1" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="213.0" x2="1116.8" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="213.0" x2="1179.3" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="213.0" x2="1179.3" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="213.0" x2="1148.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="237.6" x2="1179.3" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="262.2" x2="1148.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="262.2" x2="1148.1" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="262.2" x2="1116.8" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="262.2" x2="1148.1" y2="291.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="291.2" x2="1148.1" y2="315.8" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="262.2" x2="1148.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="262.2" x2="1116.8" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="237.6" x2="1116.8" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="213.0" x2="1148.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1148.1" cy="159.4" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="166.6" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">&lt;</text>
+<circle cx="1148.1" cy="184.0" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="191.1" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">m</text>
+<circle cx="1148.1" cy="213.0" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="220.2" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">o</text>
+<circle cx="1179.3" cy="213.0" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1179.3" y="220.2" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">fi</text>
+<circle cx="1179.3" cy="237.6" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1179.3" y="244.8" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">di</text>
+<circle cx="1179.3" cy="262.2" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1179.3" y="269.3" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">si</text>
+<circle cx="1148.1" cy="237.6" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="244.8" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">=</text>
+<circle cx="1116.8" cy="213.0" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1116.8" y="220.2" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">s</text>
+<circle cx="1116.8" cy="237.6" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1116.8" y="244.8" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">d</text>
+<circle cx="1116.8" cy="262.2" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1116.8" y="269.3" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">f</text>
+<circle cx="1148.1" cy="262.2" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="269.3" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">oi</text>
+<circle cx="1148.1" cy="291.2" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="298.4" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">mi</text>
+<circle cx="1148.1" cy="315.8" r="19.0" fill="#F4F6F2" stroke="#1F4E5F" stroke-width="1.4"/>
+<text x="1148.1" y="323.0" text-anchor="middle" font-family="Fira Sans" font-weight="600" font-size="19.0" fill="#1F4E5F">&gt;</text>
+<text x="1270.5" y="141.0" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">{d}</text>
+<line x1="1341.1" y1="159.4" x2="1341.1" y2="184.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="184.0" x2="1341.1" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="213.0" x2="1309.8" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="213.0" x2="1372.3" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="213.0" x2="1372.3" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="213.0" x2="1341.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="237.6" x2="1372.3" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="262.2" x2="1341.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="262.2" x2="1341.1" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="262.2" x2="1309.8" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="262.2" x2="1341.1" y2="291.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="291.2" x2="1341.1" y2="315.8" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="262.2" x2="1341.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="262.2" x2="1309.8" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="237.6" x2="1309.8" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="213.0" x2="1341.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1341.1" cy="159.4" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="184.0" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="213.0" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1372.3" cy="213.0" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1372.3" cy="237.6" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1372.3" cy="262.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="237.6" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1309.8" cy="213.0" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1309.8" cy="237.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1309.8" cy="262.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="262.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="291.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="315.8" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<text x="1270.5" y="347.7" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID40 Bochow 16 × FID305 Eichhorst - 8</text>
+<text x="1270.5" y="361.7" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: d · 100/100 · 100/100y</text>
+<text x="1463.5" y="141.0" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">{d,o,s}</text>
+<line x1="1534.1" y1="159.4" x2="1534.1" y2="184.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="184.0" x2="1534.1" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="213.0" x2="1502.8" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="213.0" x2="1565.3" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="213.0" x2="1565.3" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="213.0" x2="1534.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="237.6" x2="1565.3" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="262.2" x2="1534.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="262.2" x2="1534.1" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="262.2" x2="1502.8" y2="262.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="262.2" x2="1534.1" y2="291.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="291.2" x2="1534.1" y2="315.8" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="262.2" x2="1534.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="262.2" x2="1502.8" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="237.6" x2="1502.8" y2="213.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="213.0" x2="1534.1" y2="237.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1534.1" cy="159.4" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="184.0" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="213.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1565.3" cy="213.0" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1565.3" cy="237.6" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1565.3" cy="262.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="237.6" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1502.8" cy="213.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1502.8" cy="237.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1502.8" cy="262.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="262.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="291.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="315.8" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<text x="1463.5" y="347.7" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID40 Bochow 16 × FID78 Nowe Objezierze 7</text>
+<text x="1463.5" y="361.7" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: o · 100/100 · 100/100y</text>
+<text x="1077.5" y="402.7" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">{&lt;,m,o}</text>
+<line x1="1148.1" y1="421.1" x2="1148.1" y2="445.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="445.7" x2="1148.1" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="474.7" x2="1116.8" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="474.7" x2="1179.3" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="474.7" x2="1179.3" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="474.7" x2="1148.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="499.3" x2="1179.3" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="523.9" x2="1148.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="523.9" x2="1148.1" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="523.9" x2="1116.8" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="523.9" x2="1148.1" y2="552.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="552.9" x2="1148.1" y2="577.5" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="523.9" x2="1148.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="523.9" x2="1116.8" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="499.3" x2="1116.8" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="474.7" x2="1148.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1148.1" cy="421.1" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1148.1" cy="445.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1148.1" cy="474.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1179.3" cy="474.7" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1179.3" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1179.3" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1148.1" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1116.8" cy="474.7" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1116.8" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1116.8" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1148.1" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1148.1" cy="552.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1148.1" cy="577.5" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<text x="1077.5" y="609.4" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID78 Nowe Objezierze 7 × FID153 Racot 18</text>
+<text x="1077.5" y="623.4" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: m · 100/100 · 50/100y</text>
+<text x="1270.5" y="402.7" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">{&lt;,m,o}</text>
+<line x1="1341.1" y1="421.1" x2="1341.1" y2="445.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="445.7" x2="1341.1" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="474.7" x2="1309.8" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="474.7" x2="1372.3" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="474.7" x2="1372.3" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="474.7" x2="1341.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="499.3" x2="1372.3" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="523.9" x2="1341.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="523.9" x2="1341.1" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="523.9" x2="1309.8" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="523.9" x2="1341.1" y2="552.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="552.9" x2="1341.1" y2="577.5" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="523.9" x2="1341.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="523.9" x2="1309.8" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="499.3" x2="1309.8" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="474.7" x2="1341.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1341.1" cy="421.1" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="445.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="474.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1372.3" cy="474.7" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1372.3" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1372.3" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1309.8" cy="474.7" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1309.8" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1309.8" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="552.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1341.1" cy="577.5" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<text x="1270.5" y="609.4" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID40 Bochow 16 × FID32 Steckelsdorf 12</text>
+<text x="1270.5" y="623.4" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: &lt; · 100/100 · 100/100y</text>
+<text x="1463.5" y="402.7" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">{&lt;,d,m,o,s}</text>
+<line x1="1534.1" y1="421.1" x2="1534.1" y2="445.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="445.7" x2="1534.1" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="474.7" x2="1502.8" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="474.7" x2="1565.3" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="474.7" x2="1565.3" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="474.7" x2="1534.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="499.3" x2="1565.3" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="523.9" x2="1534.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1565.3" y1="523.9" x2="1534.1" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="523.9" x2="1502.8" y2="523.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="523.9" x2="1534.1" y2="552.9" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1534.1" y1="552.9" x2="1534.1" y2="577.5" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="523.9" x2="1534.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="523.9" x2="1502.8" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="499.3" x2="1502.8" y2="474.7" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1502.8" y1="474.7" x2="1534.1" y2="499.3" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1534.1" cy="421.1" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1534.1" cy="445.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1534.1" cy="474.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1565.3" cy="474.7" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1565.3" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1565.3" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="499.3" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1502.8" cy="474.7" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1502.8" cy="499.3" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1502.8" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="523.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="552.9" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1534.1" cy="577.5" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<text x="1463.5" y="609.4" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID1 Tüngeda × FID78 Nowe Objezierze 7</text>
+<text x="1463.5" y="623.4" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: s · 100/100 · 100/100y</text>
+<text x="1077.5" y="664.4" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">{=,d,di,f,fi,mi,o,oi,s,si}</text>
+<line x1="1148.1" y1="682.8" x2="1148.1" y2="707.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="707.4" x2="1148.1" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="736.4" x2="1116.8" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="736.4" x2="1179.3" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="736.4" x2="1179.3" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="736.4" x2="1148.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="761.0" x2="1179.3" y2="785.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="785.6" x2="1148.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1179.3" y1="785.6" x2="1148.1" y2="785.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="785.6" x2="1116.8" y2="785.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="785.6" x2="1148.1" y2="814.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1148.1" y1="814.6" x2="1148.1" y2="839.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="785.6" x2="1148.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="785.6" x2="1116.8" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="761.0" x2="1116.8" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1116.8" y1="736.4" x2="1148.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1148.1" cy="682.8" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1148.1" cy="707.4" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<circle cx="1148.1" cy="736.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1179.3" cy="736.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1179.3" cy="761.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1179.3" cy="785.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1148.1" cy="761.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1116.8" cy="736.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1116.8" cy="761.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1116.8" cy="785.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1148.1" cy="785.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1148.1" cy="814.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1148.1" cy="839.2" r="8.0" fill="#F4F6F2" stroke="#98A398" stroke-width="1.4"/>
+<text x="1077.5" y="871.1" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID49 Selchow 7 × FID258 Flemsdorf 10</text>
+<text x="1077.5" y="885.1" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: f · 100/100 · 100/100y</text>
+<text x="1270.5" y="664.4" font-family="Fira Sans" font-weight="600" font-size="10.5" fill="#A2560F">all 13</text>
+<line x1="1341.1" y1="682.8" x2="1341.1" y2="707.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="707.4" x2="1341.1" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="736.4" x2="1309.8" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="736.4" x2="1372.3" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="736.4" x2="1372.3" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="736.4" x2="1341.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="761.0" x2="1372.3" y2="785.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="785.6" x2="1341.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1372.3" y1="785.6" x2="1341.1" y2="785.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="785.6" x2="1309.8" y2="785.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="785.6" x2="1341.1" y2="814.6" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1341.1" y1="814.6" x2="1341.1" y2="839.2" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="785.6" x2="1341.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="785.6" x2="1309.8" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="761.0" x2="1309.8" y2="736.4" stroke="#B6BEB6" stroke-width="1.3"/>
+<line x1="1309.8" y1="736.4" x2="1341.1" y2="761.0" stroke="#B6BEB6" stroke-width="1.3"/>
+<circle cx="1341.1" cy="682.8" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="707.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="736.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1372.3" cy="736.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1372.3" cy="761.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1372.3" cy="785.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="761.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1309.8" cy="736.4" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1309.8" cy="761.0" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1309.8" cy="785.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="785.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="814.6" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<circle cx="1341.1" cy="839.2" r="8.0" fill="#A2560F" stroke="#A2560F" stroke-width="1.4"/>
+<text x="1270.5" y="871.1" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">FID1 Tüngeda × FID2 Goldbach</text>
+<text x="1270.5" y="885.1" font-family="Fira Sans" font-size="9.3" fill="#5f5e5a">crisp: = · 100/100 · 100/100y</text>
+<text x="1010" y="911.1" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">All seven result sets are connected (Freksa&apos;s neighbourhood theorem, not chosen to be) — including</text>
+<text x="1010" y="926.1" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">the ‘equals’ pair (FID1 × FID2, all 13 reachable): the full set of all 13 is trivially</text>
+<text x="1010" y="941.1" font-family="Fira Sans" font-size="10.3" fill="#5f5e5a">connected too, it just stops saying anything.</text>
 </svg>

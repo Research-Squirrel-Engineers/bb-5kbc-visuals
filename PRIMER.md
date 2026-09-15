@@ -267,6 +267,7 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S40 | Balken-Überlauf in 06 behoben, Linien-Fix aus S36 re-bestätigt | `step_06_uncertainty_dating.py` | S39 | erledigt 2026-09-15 |
 | S41 | 19 Allen-/Freksa-Relationen (neu, Skizze) | `step_19_allen_freksa_relations.py` | S17 | erledigt 2026-09-15 |
 | S42 | 20 Allen-Balkenraster + Freksa-Gitter-Galerie (neu, Bildsprache aus Referenz-Artikel) | `step_20_allen_freksa_examples.py` | S41 | erledigt 2026-09-16 |
+| S43 | 20 nach Screenshot-Feedback überarbeitet: Label-Overlap, Freiraum, Gitter-Größe | `step_20_allen_freksa_examples.py` | S42 | erledigt 2026-09-16 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -1292,6 +1293,57 @@ Gitter-Legende zur Textkontrolle); `python py/step_20_allen_freksa_examples.py`
 zweimal → byte-identisch; kompletter `python main.py` (jetzt 21
 Schritte, 84 Dateien) zweimal → alle 84 Dateien byte-identisch.
 
+### S43 -- 20 nach Screenshot-Feedback überarbeitet: Label-Overlap, Freiraum, Gitter-Größe
+
+**Ziel:** Florian schickte einen Screenshot von 20 direkt nach dem
+S42-Rendern mit fünf konkreten Punkten.
+
+**Befunde und Korrekturen:**
+
+1. **Obere Zeile "Visual form from..." soll weg.** Entfernt; beide
+   Panel-Titel rücken auf y=42 nach oben.
+2. **"equals" (13. Zelle, allein in Zeile 4) soll unter den 4 Spalten
+   zentriert sein**, nicht links ausgerichtet. `last_row_x0` berechnet
+   die zentrierte X-Position für eine einzelne Zelle in einer sonst
+   4-spaltigen Reihe; nur die letzte Zelle (wenn `len % cols == 1`)
+   bekommt sie.
+3. **"ffinishes" -- Code und Name kleben aneinander.** Ursache
+   gefunden, nicht nur kosmetisch gefixt: ein führendes Leerzeichen in
+   einem `<tspan>` wird von SVGs Standard-Whitespace-Handling
+   stillschweigend entfernt -- das Leerzeichen im Quelltext war die
+   ganze Zeit da, kam aber nie im Rendering an. Behoben durch zwei
+   getrennte `<text>`-Elemente (Code linksbündig, Name rechtsbündig am
+   Zellenrand) statt eines Whitespace-Trenners -- exakt Florians
+   Vorschlag ("< links und 'before' rechts").
+4. **Balken-Kacheln hatten unten zu viel Leerraum.** `row_h` 140→112,
+   Balkenhöhe 9→11, Beschriftungsgrößen leicht erhöht (9→9.3, 13→14),
+   damit der Inhalt die Zeile ausfüllt statt nur oben zu sitzen.
+5. **Freksa-Seite: Legende zu gedrängt, Platz nach unten zu wenig
+   genutzt.** Zwei Ursachen zugleich behoben: (a) von 4×2 auf 3×3
+   Slots umgestellt (Legende + 7 Beispiele = 8 von 9, letzter Slot
+   leer) -- bei fester Panel-Breite (680px) ergibt das bei gleichem
+   Seitenverhältnis (Gitter ist hochformatig, 64:84) spürbar größere
+   Icons als 4 Spalten es erlauben würden; (b) die Icon-Größe wird
+   jetzt aus dem verfügbaren **Höhen**-Budget hergeleitet (3 Zeilen bis
+   knapp über die Schlussnotiz), nicht aus der Panel-Breite -- die
+   Breite hat danach spürbar Luft übrig, die als größerer Spalten-Gap
+   (34px) und zentrierte Positionierung des Rasters verwendet wird,
+   statt ungenutzt zu bleiben.
+
+**Eigener Rechenfehler dabei gefunden und korrigiert, bevor gerendert
+wurde:** die erste 3×3-Neuberechnung (auf Basis der Panel-*Breite*,
+wie zuvor bei 4 Spalten) hätte die dritte Zeile bis y≈1054 reichen
+lassen -- über die 1000px-Canvas-Höhe hinaus, also unsichtbar
+abgeschnitten. Beim eigenen Rendern vor der Auslieferung bemerkt (nicht
+von Florian gemeldet), auf eine Höhen-budget-getriebene Berechnung
+umgestellt und erneut geprüft, dass die Schlussnotiz jetzt bei y≈935
+endet, klar innerhalb der 1000px.
+
+**Abnahme:** DE+EN neu gerendert; alle fünf Punkte visuell bestätigt
+(Screenshot-Vergleich); `python py/step_20_allen_freksa_examples.py`
+zweimal → byte-identisch; kompletter `python main.py` (21 Schritte,
+84 Dateien) zweimal → alle 84 Dateien byte-identisch.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
@@ -1323,6 +1375,20 @@ Schritte, 84 Dateien) zweimal → alle 84 Dateien byte-identisch.
   Fira Sans vendored ist -- resvg fällt still zurück, kein Fehler, nur
   ein optisch schwer lesbares Label. Nicht flächendeckend auf andere
   Figuren durchsucht, ob derselbe Fehler woanders schon vorkommt.
+- **SVG-Whitespace-Handling ist ein wiederkehrendes Risiko** (S43):
+  führende/mehrfache Leerzeichen in `<tspan>`/`<text>`-Inhalten werden
+  von resvg (Standard `xml:space`) stillschweigend entfernt -- im
+  Quelltext sieht der Abstand korrekt aus, im Rendering fehlt er. Bisher
+  nur in 20 gefunden und auf "zwei getrennte Text-Elemente statt
+  Whitespace-Trenner" umgestellt; nicht geprüft, ob andere Figuren
+  denselben Trick (Leerzeichen als alleiniger Trenner) verwenden.
+- **Icon-/Kachelgrößen aus der Höhen- statt der Breiten-Budget-Richtung
+  herleiten, wenn das Seitenverhältnis fest ist** (S43): bei 20s
+  Freksa-Gitter (hochformatig, fest) führte breitenbasierte Bemessung
+  zu ungenutzter Höhe; höhenbasierte Bemessung mit der übrigen Breite
+  als Gap/Zentrierung verwendet, nicht als ungenutzter Rand. Als
+  allgemeine Faustregel notiert, nicht rückwirkend auf andere Figuren
+  mit festem Seitenverhältnis (z. B. Icons in 04, 14) angewendet.
 
-Wenn ein neuer Punkt ansteht: nach S42 einsortieren (S43, S44, …), hier
+Wenn ein neuer Punkt ansteht: nach S43 einsortieren (S44, S45, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.
