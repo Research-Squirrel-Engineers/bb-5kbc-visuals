@@ -263,6 +263,7 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S36 | Systematischer bend=h/v-Fehler in `svg_arrow_L` gefunden und über 8 Grafiken hinweg behoben | `step_00/01/03/04/06/10/12/15_*.py` | S35 | erledigt 2026-09-15 |
 | S37 | Sichtbares "Herausragen" vor dem Knick ergänzt (00, 03) | `step_00_fundstelle_hub.py`, `step_03_application_ontology.py` | S36 | erledigt 2026-09-15 |
 | S38 | Label-Fehlplatzierung im Fundstelle-Fan-out behoben (03) | `step_03_application_ontology.py` | S37 | erledigt 2026-09-15 |
+| S39 | Rückwärtslaufende Linie zum wd-Badge in 05 (rechtes Panel) behoben | `step_05_uncertainty_markers.py` | S38 | erledigt 2026-09-15 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -1115,25 +1116,61 @@ Längere deutsche Labels (wurdeGeoreferenziertDurch) auf Kollision mit
 der Zielbox geprüft -- passt mit Rand. `python main.py` komplett,
 zweimal hintereinander byte-identisch, 0 AST-Treffer.
 
+### S39 -- Rückwärtslaufende Linie zum wd-Badge in 05 behoben
+
+**Ziel:** Florian, zu 05-uncertainty-markers (schon committed): "hier
+passen insb. rechts die linien zu wikidata nicht!"
+
+**Befund:** ein echter Koordinatenfehler, kein Wahrnehmungsproblem --
+im rohen SVG nachgeprüft, nicht nur im PNG. Die x-Position des rechten
+wd-Badges (`qx2`) wurde ausschließlich aus dem Radius des
+"Grab"-Kreises berechnet. Das war auf der linken Seite unproblematisch,
+weil dort beide Quellen ("SBK" und "SBK?") gleich große Kreise mit
+demselben Radius `KG_R` sind -- die Annahme "beide Quellen gleich
+breit" stimmte dort. Auf der rechten Seite gilt sie nicht: "Grab?" ist
+eine 230px breite Box, die deutlich weiter rechts reicht als der
+"Grab"-Kreis. Der gemeinsame Abbiegepunkt lag dadurch *innerhalb* der
+"Grab?"-Box selbst (x=1361 bei einer Box, die bis x=1425 reicht) --
+die Linie von "Grab?" musste dadurch erst nach **links** zurück
+laufen, bevor sie zum Badge abbog, statt die Box sauber nach rechts zu
+verlassen wie alle anderen Verbindungen in der Grafik.
+
+**Korrigiert:** `qx2` wird jetzt aus dem **weiter rechts liegenden** der
+beiden Quell-Ränder berechnet (`max(Grab-Kreis-Rand, Grab?-Box-Rand)`),
+nicht mehr nur aus dem Kreis. Das Badge rückt dadurch etwas weiter nach
+rechts (mehr Platz für die breitere Box), beide Zubringer-Linien laufen
+jetzt konsistent nach rechts, symmetrisch zum linken Panel.
+
+**Abnahme:** rohes SVG vor und nach dem Fix verglichen (Pfad-Koordinaten
+direkt geprüft, nicht nur das PNG angesehen), DE+EN neu gerendert und
+visuell mit dem linken Panel verglichen -- jetzt strukturell
+symmetrisch. `python main.py` komplett, zweimal hintereinander
+byte-identisch, 0 AST-Treffer.
+
+**Lehre:** wenn zwei Konvergenz-Linien zu einem gemeinsamen Punkt aus
+unterschiedlich geformten/großen Quellen kommen (hier: Kreis + breite
+Box), reicht es nicht, den Zielpunkt aus einer der beiden Quellen
+abzuleiten -- er muss aus dem tatsächlich weiter außen liegenden Rand
+berechnet werden. Bei rein visueller PNG-Prüfung wäre das an dieser
+Stelle leicht zu übersehen gewesen; das Nachrechnen im rohen SVG-Pfad
+hat den Fehler eindeutig bestätigt.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
   automatisch (siehe S16/S27/S30).
-- **`svg_arrow_elbow_v`/`svg_arrow_elbow`s Default-Label-Platzierung
-  (Schienen-Mittelpunkt) ist nur sicher, wenn Start- und Zielbereich
-  ähnlich weit auseinanderliegen.** S38 hat das für 03s Fan-out lokal
-  gelöst (manuelles Label auf dem finalen Segment statt des Funktions-
-  Defaults), aber die Funktion selbst wurde nicht geändert -- andere
-  Stellen, die den Default nutzen (z. B. 10, 12, sowie 00s drei
-  S37-Verbindungen), könnten ein ähnliches Problem haben, wenn dort
-  je Start- und Zielbereich stark unterschiedlich weit auseinanderliegen.
-  Nicht systematisch nachgeprüft, da dort (Stand jetzt) niemand ein
-  verrutschtes Label gemeldet hat.
-- **Stil-Konsistenz "sichtbarer Stummel vor dem Knick"** (S37) und
-  **bend=h/v-Fehler** (S36) -- beide nur an den gemeldeten Stellen
-  gefixt, nicht flächendeckend über alle 19 Grafiken durchsucht.
+- **Konvergenzpunkte aus ungleich großen/geformten Quellen sind ein
+  wiederkehrendes Fehlermuster** (S39): mindestens einmal gefunden, wo
+  ein gemeinsamer Ziel-/Abbiegepunkt nur aus EINER der beiden Quellen
+  berechnet wurde statt aus beiden. Nicht systematisch in anderen
+  Diagrammen mit Konvergenz-Mustern (09, 11 nutzen dasselbe
+  marker=None-Muster) nachgeprüft, ob dort dieselbe Asymmetrie
+  vorliegt -- dort sind die jeweiligen Quellen aber gleich große Boxen,
+  das konkrete Risiko dürfte geringer sein, wurde aber nicht verifiziert.
+- **Label-Platzierung, Linienführungs-Stil, bend=h/v** (S36-S38) --
+  jeweils nur an gemeldeten Stellen gefixt, nicht flächendeckend.
 - **Datengrundlage: 11 vollständig geprüft (S34), 12 und 16 nur
   stichprobenartig.**
 
-Wenn ein neuer Punkt ansteht: nach S38 einsortieren (S39, S40, …), hier
+Wenn ein neuer Punkt ansteht: nach S39 einsortieren (S40, S41, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

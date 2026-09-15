@@ -27,6 +27,18 @@ FIDs verified against ``fst_wgs84_lit_enriched.csv`` 2026-09-11: FID 1
 FID 98 and FID 107 (both fundstellenart=Grab) and FID 54 (Grab?) on the
 right.
 
+**Revision 2026-09-15f:** the right panel's wd-badge x-position (``qx2``)
+was computed from the Grab circle's own radius alone, on the assumption
+that both sources feeding the badge were the same size (true on the
+left panel, where SBK and SBK? are both circles of radius KG_R). On the
+right, Grab? is a wide box (230px) that extends well past Grab circle's
+own right edge, so that assumption put the shared turn point *inside*
+Grab?'s own span -- its connector had to double back leftward before
+heading toward the badge, instead of cleanly leaving the box to the
+right first (Florian: "die linien zu wikidata passen nicht"). Fixed by
+basing the turn point on whichever of the two sources' right edges is
+actually farther right.
+
 Writes: uncertainty-markers.de.svg/.png, uncertainty-markers.en.svg/.png
 Run standalone: ``python py/step_05_uncertainty_markers.py``
 """
@@ -121,7 +133,15 @@ def build(lang: str = "en") -> list[str]:
     tcx2 = fx2 + FW + 100 + KG_R
     tx2u = fx2 + FW + 100
     tuw, tuh = 230, 76
-    qx2 = tcx2 + KG_R + 70 + BADGE_R
+    # qx2 (and therefore the wd badge's x) must clear whichever of the
+    # two sources extends farther right -- Grab? is a wide box (tuw=230)
+    # whose right edge sits well past Grab circle's own edge, so basing
+    # this on the circle alone (as a first version did) left the Grab?
+    # line's turn point *inside* the box's own span: it had to double
+    # back leftward before heading up to the badge instead of cleanly
+    # leaving the box to the right first.
+    right_edge = max(tcx2 + KG_R, tx2u + tuw)
+    qx2 = right_edge + 70 + BADGE_R
 
     parts.append(vu.svg_box(fx2, ROW1_CY - 40 - FH / 2, FW, FH, f"{c('Fundstelle')} X", "site_98",
                              fill=SITE["fill"], stroke=SITE["stroke"]))
