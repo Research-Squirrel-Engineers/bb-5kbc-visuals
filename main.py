@@ -65,6 +65,7 @@ STEPS: list[tuple[str, str, str]] = [
     ("17", "step_17_stats_infographic", "540 sites: dataset scale and real regional distribution"),
     ("18", "step_18_site_map", "All 540 sites plotted from their real WGS84 coordinates"),
     ("19", "step_19_allen_freksa_relations", "Allen's 13 relations + a Freksa/semi-interval sketch, real site pairs"),
+    ("20", "step_20_allen_freksa_examples", "Allen bar-grid + Freksa neighbourhood gallery, in the reference article's visual form"),
 ]
 STEP_IDS = [s[0] for s in STEPS]
 

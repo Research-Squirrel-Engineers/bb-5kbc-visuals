@@ -266,6 +266,7 @@ nicht nur aus Docstrings. Vollständige Umsetzung: siehe S32--S34.
 | S39 | Rückwärtslaufende Linie zum wd-Badge in 05 (rechtes Panel) behoben | `step_05_uncertainty_markers.py` | S38 | erledigt 2026-09-15 |
 | S40 | Balken-Überlauf in 06 behoben, Linien-Fix aus S36 re-bestätigt | `step_06_uncertainty_dating.py` | S39 | erledigt 2026-09-15 |
 | S41 | 19 Allen-/Freksa-Relationen (neu, Skizze) | `step_19_allen_freksa_relations.py` | S17 | erledigt 2026-09-15 |
+| S42 | 20 Allen-Balkenraster + Freksa-Gitter-Galerie (neu, Bildsprache aus Referenz-Artikel) | `step_20_allen_freksa_examples.py` | S41 | erledigt 2026-09-16 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -1234,6 +1235,63 @@ f-string-Backslash-Muster: 0 Treffer -- drei verschachtelte f-strings,
 die beim Schreiben den Parser stolpern ließen, vorsorglich in eigene
 Variablen ausgelagert (siehe S16/S27/S30-Historie).
 
+### S42 -- 20 Allen-Balkenraster + Freksa-Gitter-Galerie (neu, Bildsprache aus Referenz-Artikel)
+
+**Ziel:** Florian lud seinen eigenen Referenz-Artikel "Von Allen zu Freksa"
+(`allen-freksa-amt_1_.html`, 2026-09-16) hoch und bat um eine weitere
+Grafik zu 19, die dessen Bildsprache übernimmt -- Balkenraster für die 13
+Allen-Relationen (Abb. 1 dort), Nachbarschaftsgitter für Freksa (dessen
+`icon()`-Funktion) -- mit echten Beispielen, als eigene neue Nummer 20.
+
+**Übernommen, nicht neu erfunden:** `NODES`/`EDGES` (die 13-Knoten-
+Gitterkoordinaten) und die Farben (`vu.ALLEN_FRESKA`, petrol/ocher) sind
+wörtlich aus dem `<script>`-Block der hochgeladenen Datei kopiert, nicht
+aus dem Gedächtnis nachgebaut. `BARS` (die schematische Balkengeometrie
+je Relation) ebenso.
+
+**Substanz:**
+- Linkes Panel: alle 13 Relationen als Balkenraster-Zellen, exakt in
+  der schematischen Balkenform der Referenz (nicht maßstäblich --
+  steht so auch im Panel-Legendentext), aber mit echten FID/Name/
+  Kultur-Beschriftungen -- Wiederverwendung der 7 in 19 bereits
+  CSV-verifizierten Paare, je in beide Leserichtungen (2×7=14, minus
+  einer Dopplung durch "equals" symmetrisch = 13 Zellen).
+- Rechtes Panel: sieben echte FID-Paare mit ihren echten
+  `dating_certainty_start`/`_end`-Spannen. Die je Paar unter der
+  Unsicherheit erreichbare Allen-Relationsmenge wird **berechnet**
+  (`_achievable()`: Kandidatenwerte = beide Spannengrenzen, die Mitte,
+  plus jeder andere Eckpunkt, der in den eigenen Bereich fällt --
+  deckt alle Fälle ab, in denen sich die `classify()`-Fallunterscheidung
+  ändern kann, inklusive der exakten Berührungsfälle, die zufälliges
+  Sampling mit Wahrscheinlichkeit 0 verfehlen würde -- siehe Docstring
+  für die erste, fehlgeschlagene Sampling-Version), nicht von Hand
+  behauptet wie noch in 19. Jedes Ergebnis wird zusätzlich gegen
+  `NODES`/`EDGES` auf Zusammenhang geprüft (`_connected()`, BFS).
+  Alle sieben Ergebnisse sind zusammenhängend -- eine echte, nicht
+  vorab geplante Bestätigung von Freksas Nachbarschafts-Theorem.
+
+**Befund beim ersten Rendern:** `font-family="IBM Plex Mono, Fira Sans"`
+für die Gitter-Legende gesetzt (IBM Plex Mono ist in diesem Repo nicht
+vendored) -- resvg ist stillschweigend auf Fira Sans zurückgefallen, im
+PNG bei kleiner Vorschaugröße war das "o"-Knoten-Label dadurch schwer
+lesbar (auf den ersten Blick wie "n" gelesen). Behoben: nur noch
+`font-family="Fira Sans"`, wie im Rest des Repos. Bei genauem Hinsehen
+(Crop-Vergrößerung) war der Text schon vorher korrekt "o" -- kein
+Daten-, nur ein Font-Deklarationsfehler.
+
+**Zweiter Befund:** der erste Entwurf des Schlusshinweises im rechten
+Panel behauptete fälschlich, das "equals"-Paar (Ergebnis: alle 13
+Relationen erreichbar) sei eine Ausnahme von der Zusammenhangs-
+Eigenschaft. Das ist falsch -- die volle Knotenmenge eines
+zusammenhängenden Graphen ist trivial selbst zusammenhängend. Text
+korrigiert: es ist weiterhin zusammenhängend, nur eben nicht mehr
+informativ.
+
+**Abnahme:** DE+EN gerendert und visuell geprüft (Crop-Zoom auf die
+Gitter-Legende zur Textkontrolle); `python py/step_20_allen_freksa_examples.py`
+zweimal → byte-identisch; kompletter `python main.py` (jetzt 21
+Schritte, 84 Dateien) zweimal → alle 84 Dateien byte-identisch.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Weiterhin von Hand geprüft statt
@@ -1260,6 +1318,11 @@ Variablen ausgelagert (siehe S16/S27/S30-Historie).
   Nachbarschafts-Umsetzung (und ob sie als eigene `.rq`/`queries.yaml`-
   View in `bb-5kbc-public` oder nur hier als Grafik leben soll) ist
   offen.
+- **Nicht-vendorte Font-Namen in `font-family` sind ein wiederkehrendes
+  Risiko** (S42): `IBM Plex Mono` wurde in 20 referenziert, obwohl nur
+  Fira Sans vendored ist -- resvg fällt still zurück, kein Fehler, nur
+  ein optisch schwer lesbares Label. Nicht flächendeckend auf andere
+  Figuren durchsucht, ob derselbe Fehler woanders schon vorkommt.
 
-Wenn ein neuer Punkt ansteht: nach S41 einsortieren (S42, S43, …), hier
+Wenn ein neuer Punkt ansteht: nach S42 einsortieren (S43, S44, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

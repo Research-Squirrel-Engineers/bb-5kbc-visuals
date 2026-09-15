@@ -79,6 +79,7 @@ OUT_DIRS = {
     "17-stats-infographic": IMG / "17-stats-infographic",
     "18-site-map": IMG / "18-site-map",
     "19-allen-freksa-relations": IMG / "19-allen-freksa-relations",
+    "20-allen-freksa-examples": IMG / "20-allen-freksa-examples",
 }
 
 # --------------------------------------------------------------------------- #
@@ -151,6 +152,21 @@ SITE = {"fill": "#f4dde9", "stroke": BB5KBC_MAGENTA}
 # vocabulary is descriptive, not a data-quality error).
 UNCERTAIN_STROKE = "#a03030"
 UNCERTAIN_FILL = "#f5dede"
+
+# Allen/Freksa accent pair -- taken verbatim (not reinvented) from Florian's
+# reference article "Von Allen zu Freksa" (uploaded 2026-09-16, its own
+# --allen/--freksa CSS custom properties), so 19-allen-freksa-relations and
+# 20 read as the same visual language as that piece: petrol for the fine
+# (13-relation) vocabulary, ocher for the coarse (Freksa) one. lattice_edge/
+# node_empty_* are that article's conceptual-neighbourhood-lattice colours,
+# same source.
+ALLEN_FRESKA = {
+    "allen": "#1F4E5F",
+    "freksa": "#A2560F",
+    "lattice_edge": "#B6BEB6",
+    "node_empty_fill": "#F4F6F2",
+    "node_empty_stroke": "#98A398",
+}
 
 TEXT_DARK = "#2c2c2a"
 TEXT_MUTED = "#5f5e5a"
