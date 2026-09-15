@@ -184,6 +184,14 @@ Relief wäre genau die Art von vorgetäuschter kartografischer Präzision,
 die dieses Projekt sonst vermeidet. Stattdessen ein ehrlicher Hinweis
 direkt in der Grafik.
 
+**Befund 2026-09-11b (Florian, mit Screenshot von 06-uncertainty-dating):**
+"insbesondere hier der free text irritiert. kannst du da nochmal schauen
+auf welcher Grundlage du da welche Diagramme gebaut hast?" -- Nachprüfung
+ergab: die Freitext-Beispiele in 06 ("grob", "unsicher", "Schaetzung")
+waren erfunden, nicht aus der CSV. Der Docstring hatte fälschlich
+"real heterogeneous CSV values" behauptet, ohne dass die Datei je
+geöffnet worden war. Vollständige Aufarbeitung: siehe S31.
+
 ## Teil B -- Schrittübersicht
 
 | ID | Schritt | Datei | hängt ab von | Status |
@@ -219,6 +227,7 @@ direkt in der Grafik.
 | S28 | Linienführung in 10/12/15 überarbeitet | `bb5kbc_visuals_utils.py`, `step_10/12/15_*.py` | S27 | erledigt 2026-09-11 |
 | S29 | 18: echter Baselayer (Grenzen, Großstädte); kein Hillshade | `step_18_site_map.py` + 3 neue Geodaten-Dateien | S28 | erledigt 2026-09-11 |
 | S30 | Bugfix: Python-3.10-Backslash erneut in S29 gefunden | `step_18_site_map.py` | S29 | erledigt 2026-09-11 |
+| S31 | Korrektur: erfundene Datierungs-Beispielwerte durch echte ersetzt | `step_05/06/08/09_*.py` | S30 | erledigt 2026-09-11 |
 
 Alle Diagramm-Schritte sind voneinander unabhängig (jeder importiert nur
 `bb5kbc_visuals_utils`) und können einzeln per `--only NN` neu gebaut werden.
@@ -678,6 +687,83 @@ passiert.
 **Abnahme:** `python main.py`, alle 19 Schritte, keine Fehler; zweimal
 hintereinander → `git status` sauber.
 
+### S31 -- Korrektur: erfundene Datierungs-Beispielwerte durch echte ersetzt
+
+**Ziel:** Florians Nachfrage nachgehen, auf welcher Datengrundlage die
+Datierungs-Grafiken tatsächlich gebaut wurden -- ausgelöst durch einen
+Screenshot von 06-uncertainty-dating mit der konkreten Frage nach dem
+Freitext.
+
+**Befund:** kein einziges Diagramm dieser Session hatte tatsächlich
+``fst_wgs84_lit_enriched.csv`` geöffnet. 06s Freitext-Chips ("grob",
+"unsicher", "ca. 50 a", "unclear", "+/- 50 years", "Schätzung") waren
+plausibel klingende Erfindungen, keine echten Werte -- und der eigene
+Docstring behauptete das Gegenteil ("real heterogeneous CSV values").
+Die echten Spalten zeigen ein anderes Bild:
+
+- ``dating_certainty_start``/``_end``: **heute sauber**, nur 4 Muster
+  („+/- 100/50/200/10 years“), alle 540 Zeilen gefüllt.
+- ``dating_certainty_range``: **das** ist die tatsächlich heterogene
+  Spalte -- 14 echte, größtenteils englische Sätze
+  („low precision, as only stylistic dating“, n=299 von 540).
+- ``bb5kbc-csv-issues.md`` Punkt 6 dokumentiert eine echte, aber
+  **bereits behobene** Vorgeschichte: früher Deutsch/Englisch-Mischung
+  bei genau den Spalten, die 06 fälschlich als aktuell heterogen
+  darstellte („+ /- 100 Jahre“, 51 Zeilen, von Sophie vereinheitlicht).
+
+Beim Gegenprüfen der in 05/08/09 verwendeten Beispiel-FIDs fielen
+weitere, unabhängige Fehler auf: FID 12/57/101 (Diagramm 08/09) sind
+reale Zeilen, aber kultur=SBK, nicht FBG wie dargestellt, mit erfundenen
+Datierungswerten. FID 144 (Diagramm 05) ist real fundstellenart=Grab
+(sicher) -- das genaue Gegenteil der dort gezeigten Unsicherheits-Markierung.
+
+**Korrigiert, alle gegen ``fst_wgs84_lit_enriched.csv`` verifiziert:**
+
+- **06**: komplett neu. UML-Box zeigt FID 1 ("Tüngeda", SBK, echte
+  Start/End- und Certainty-Werte). Freitext-Panel zeigt die vier
+  häufigsten echten ``dating_certainty_range``-Werte als Balken mit
+  echten Häufigkeiten (n=299/203/24/1), plus die echte
+  Cleanup-Geschichte von ``dating_certainty_start``/``_end`` unter
+  Verweis auf ``bb5kbc-csv-issues.md`` #6.
+- **08**: FBG durch SBK ersetzt -- alle 14 echten FBG-Fundstellen teilen
+  zufällig exakt dieselbe Datierung (−4550/−3900), zeigen also keine
+  Varianz; SBK hat real 7 distinkte Start/End-Paare unter 183
+  Fundstellen. Drei echte FIDs (1, 6, 53) mit drei echten,
+  unterschiedlichen Datierungen.
+- **09**: die vier Fan-in-Beispiele sind jetzt echte FBG-FIDs (32, 33,
+  61, 77 von 14 real existierenden); der Platzhalter-Hash
+  ``kultur_a1b2c3d4`` durch den echten ``hashlib.md5("FBG")[:8]`` ersetzt.
+- **05**: SBK/SBK?-Beispiel auf FID 1 (sicher) / FID 81 ("Gartz ?",
+  real kultur=SBK?) umgestellt; Grab/Grab?-Beispiel auf FID 98 + 107
+  (real fundstellenart=Grab) / FID 54 (real Grab?). Auch der
+  Platzhalter ``kultur_{hash}`` für "SBK?" durch den echten
+  ``hashlib.md5("SBK?")[:8]`` ersetzt. Der "FID-Salt"-Mechanismus für
+  Grab? selbst war bereits korrekt (wörtlich aus modelling-rules.md
+  übernommen) -- nur die Beispiel-FIDs waren falsch.
+
+**Nicht geändert, weil bereits korrekt:** die Struktur-Aussagen selbst
+(1:1-Zuordnung, geteilter vs. eigener Knoten, CRM/OWL-Time-Doppelanker,
+FID-Salt-Mechanismus, die "~200 SBK-Fundstellen"-Zahl aus Regel 4) waren
+alle bereits wortgetreu aus ``modelling-rules.md`` übernommen und
+stimmten. Betroffen waren ausschließlich erfundene *Beispielwerte* und
+ein erfundener Platzhalter-Hash -- nicht die Modellierungsaussagen selbst.
+
+**Lehre für künftige Diagramme:** eine Quellenangabe im Docstring ist
+keine Garantie, dass die Datei tatsächlich geöffnet wurde. Ab jetzt gilt
+verbindlich: sobald ein Diagramm einen konkreten CSV-Beispielwert zeigt
+(FID, Datierung, Freitext, Hash), wird die betreffende CSV *in dieser
+Session* tatsächlich mit ``python3 -c "import csv; ..."`` geöffnet und
+der Wert direkt daraus gelesen -- nicht aus einer früheren
+Zusammenfassung, einer Doku-Beschreibung oder Plausibilität heraus
+konstruiert. Wenn keine CSV-Prüfung stattgefunden hat, sagt der
+Docstring das auch so (z. B. "strukturell aus modelling-rules.md, kein
+Beispielwert gegen die CSV verifiziert") statt "real value" zu behaupten.
+
+**Abnahme:** alle vier Grafiken (DE+EN) neu gerendert, visuell geprüft;
+jeder in den Diagrammen sichtbare FID wurde nochmals einzeln gegen
+``fst_wgs84_lit_enriched.csv`` abgeglichen (siehe Tabelle oben). `python
+main.py` läuft komplett durch, zweimal hintereinander byte-identisch.
+
 ## Teil D -- Offene Punkte
 
 - **AST-Scan nicht automatisiert.** Dreimal (S16, S27, S30) denselben
@@ -688,6 +774,14 @@ hintereinander → `git status` sauber.
 - **"Ein paar Design-Bugs sind überall drin"** (Florians eigene Worte,
   2026-09-11) -- ohne Einzelpunkte genannt. Nichts vorsorglich geändert;
   wartet auf konkrete Rückmeldung, welche Grafiken/Stellen gemeint sind.
+- **Datengrundlage noch nicht systematisch für alle 19 Grafiken
+  nachgeprüft.** S31 hat die vier datierungsbezogenen Grafiken (05, 06,
+  08, 09) korrigiert, weil Florian konkret danach fragte. Ob ähnliche
+  erfundene Beispielwerte auch in anderen Grafiken stecken (z. B. QIDs,
+  Namen, Zahlen in 00--04, 07, 10--18), wurde nicht flächendeckend
+  geprüft -- nur das, was ohnehin schon mit realen Quellen belegt war
+  (etwa 17/18, die von Anfang an aus der CSV berechnet wurden), gilt als
+  verifiziert.
 
-Wenn ein neuer Punkt ansteht: nach S30 einsortieren (S31, S32, …), hier
+Wenn ein neuer Punkt ansteht: nach S31 einsortieren (S32, S33, …), hier
 eintragen, nach Erledigung wieder streichen und in Teil B übernehmen.

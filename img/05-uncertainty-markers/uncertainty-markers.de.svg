@@ -7,11 +7,11 @@
 <text x="76.0" y="76.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">Kulturgruppe (SBK?, SRK?) — Unsicherheit an der KulturelleZuordnung verankert</text>
 <rect x="105.0" y="183.0" width="160.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
 <text x="185.0" y="207.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Fundstelle A</text>
-<text x="185.0" y="227.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_12</text>
+<text x="185.0" y="227.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_1</text>
 <line x1="265.0" y1="215.0" x2="320.0" y2="215.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="320.0" y="183.0" width="210.0" height="64.0" rx="10" fill="#ece4f2" stroke="#5b3fa0" stroke-width="1.4"/>
 <text x="425.0" y="207.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">KulturelleZuordnung</text>
-<text x="425.0" y="227.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_12_culture</text>
+<text x="425.0" y="227.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_1_culture</text>
 <line x1="530.0" y1="215.0" x2="600.0" y2="215.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <circle cx="658.0" cy="215.0" r="58.0" fill="#eef0d6" stroke="#6b7a1f" stroke-width="2"/>
 <circle cx="658.0" cy="215.0" r="52.0" fill="none" stroke="#6b7a1f" stroke-width="1" opacity="0.55"/>
@@ -19,17 +19,17 @@
 <text x="658.0" y="229.0" text-anchor="middle" font-family="Fira Sans" font-size="10.0" fill="#2c2c2a" opacity="0.75">kultur_a36e9d6d</text>
 <rect x="105.0" y="708.0" width="160.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
 <text x="185.0" y="732.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Fundstelle B</text>
-<text x="185.0" y="752.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_57</text>
+<text x="185.0" y="752.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_81</text>
 <line x1="265.0" y1="740.0" x2="320.0" y2="740.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="320.0" y="708.0" width="210.0" height="64.0" rx="10" fill="#f5dede" stroke="#a03030" stroke-width="1.4" stroke-dasharray="7 5"/>
 <text x="425.0" y="732.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">KulturelleZuordnung</text>
-<text x="425.0" y="752.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_57_culture</text>
+<text x="425.0" y="752.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_81_culture</text>
 <text x="320.0" y="796.0" font-family="Fira Sans" font-size="12" fill="#a03030">+ certaintyDesc „uncertain“@en</text>
 <line x1="530.0" y1="740.0" x2="600.0" y2="740.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <circle cx="658.0" cy="740.0" r="58.0" fill="#eef0d6" stroke="#a03030" stroke-width="2"/>
 <circle cx="658.0" cy="740.0" r="52.0" fill="none" stroke="#a03030" stroke-width="1" opacity="0.55"/>
 <text x="658.0" y="736.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="13.0" fill="#2c2c2a">„SBK?“</text>
-<text x="658.0" y="754.0" text-anchor="middle" font-family="Fira Sans" font-size="10.5" fill="#2c2c2a" opacity="0.75">kultur_{hash}</text>
+<text x="658.0" y="754.0" text-anchor="middle" font-family="Fira Sans" font-size="10.0" fill="#2c2c2a" opacity="0.75">kultur_7a001224</text>
 <line x1="716.0" y1="215.0" x2="771.0" y2="471.5" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <line x1="716.0" y1="740.0" x2="771.0" y2="483.5" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <polygon points="819.5,490.5 797.0,503.5 774.5,490.5 774.5,464.5 797.0,451.5 819.5,464.5" fill="#e8e8e8" stroke="#666666" stroke-width="1.4"/>
@@ -40,10 +40,10 @@
 <text x="906.0" y="76.0" font-family="Fira Sans" font-weight="500" font-size="13" fill="#888780">FundstellenartType (Grab?) — kein Verknüpfungsknoten → Unsicherheit direkt am Typ verankert</text>
 <rect x="935.0" y="143.0" width="160.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
 <text x="1015.0" y="167.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Fundstelle X</text>
-<text x="1015.0" y="187.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_3</text>
+<text x="1015.0" y="187.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_98</text>
 <rect x="935.0" y="223.0" width="160.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
 <text x="1015.0" y="247.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Fundstelle Y</text>
-<text x="1015.0" y="267.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_88</text>
+<text x="1015.0" y="267.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_107</text>
 <line x1="1095.0" y1="175.0" x2="1195.0" y2="205.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <line x1="1095.0" y1="255.0" x2="1195.0" y2="225.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <circle cx="1253.0" cy="215.0" r="58.0" fill="#e8e8e8" stroke="#666666" stroke-width="2"/>
@@ -53,7 +53,7 @@
 <text x="1253.0" y="240.0" text-anchor="middle" font-family="Fira Sans" font-size="8.0" fill="#2c2c2a" opacity="0.75">Fundstellen</text>
 <rect x="935.0" y="708.0" width="160.0" height="64.0" rx="10" fill="#f4dde9" stroke="#9c2860" stroke-width="1.4"/>
 <text x="1015.0" y="732.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">Fundstelle Z</text>
-<text x="1015.0" y="752.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_144</text>
+<text x="1015.0" y="752.0" text-anchor="middle" font-family="Fira Sans" font-size="11.5" fill="#2c2c2a" opacity="0.75">site_54</text>
 <line x1="1095.0" y1="740.0" x2="1195.0" y2="740.0" stroke="#73726c" stroke-width="1.6" marker-end="url(#arrow)"/>
 <rect x="1195.0" y="702.0" width="230.0" height="76.0" rx="10" fill="#f5dede" stroke="#a03030" stroke-width="1.4" stroke-dasharray="7 5"/>
 <text x="1310.0" y="732.0" text-anchor="middle" font-family="Fira Sans" font-weight="500" font-size="14.0" fill="#2c2c2a">„Grab?“</text>

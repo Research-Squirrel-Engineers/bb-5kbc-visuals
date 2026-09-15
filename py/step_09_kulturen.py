@@ -12,6 +12,15 @@ structural/modelling figure, not a statistics chart: the one real number
 it carries (9 distinct values across the 540-row CSV) is a single
 grounding fact, not the figure's subject.
 
+**Revision 2026-09-11 (correction):** the fan-in example originally used
+placeholder FIDs (site_12/57/101/205, none of them actually FBG) and a
+placeholder hash (``kultur_a1b2c3d4``, not a real MD5 digest). Fixed
+against ``fst_wgs84_lit_enriched.csv``: FBG has exactly 14 real members
+(FIDs 32, 33, 61, 77, 278, 504-508, 510, 563-565), four of which are now
+shown by their real FID; the hash is the real
+``hashlib.md5("FBG")[:8] == "a36e9d6d"``, verified the same way step_08's
+SBK hash was.
+
 Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
 translation convention. "FBG"/"SBK"/"SBK?" are real culture values,
 never translated.
@@ -112,13 +121,16 @@ def build(lang: str = "en") -> list[str]:
         ty += 22
 
     # -- bottom-left: fan-in from several Fundstelle rows -----------------------
+    # FIDs 32, 33, 61, 77 are four of the 14 real FBG sites in
+    # fst_wgs84_lit_enriched.csv (verified 2026-09-11); kultur_a36e9d6d is
+    # the real hashlib.md5("FBG")[:8].
     kgcx, kg_cy, kg_r = 620, 680, 95
-    parts.append(vu.svg_hash_node(kgcx, kg_cy, kg_r, "\u201eFBG\u201c", "kultur_a1b2c3d4",
+    parts.append(vu.svg_hash_node(kgcx, kg_cy, kg_r, "\u201eFBG\u201c", "kultur_a36e9d6d",
                                    fill=CULTURE["fill"], stroke=CULTURE["stroke"]))
 
     chip_w, chip_h = 190, 50
     centers = [560, 650, 740, 830]
-    labels = ["site_12", "site_57", "site_101", "site_205"]
+    labels = ["FID 32", "FID 33", "FID 61", "FID 77"]
     for cy, lbl in zip(centers, labels):
         cy0 = cy - chip_h / 2
         parts.append(vu.svg_box(90, cy0, chip_w, chip_h, c("Fundstelle"), lbl,

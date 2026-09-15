@@ -18,6 +18,15 @@ Bilingual (revision 2026-09-10c) -- see step_00 docstring for the
 translation convention. "SBK"/"SBK?"/"Grab"/"Grab?" are real CSV/culture
 values and are never translated in either language.
 
+**Revision 2026-09-11 (correction):** the example FIDs (site_12/57 for
+SBK/SBK?, site_3/88/144 for Grab/Grab?) were placeholders that happened
+to be real rows but did not actually carry those values -- FID 144, for
+instance, is real but is "Grab" (certain), not "Grab?". Replaced with
+FIDs verified against ``fst_wgs84_lit_enriched.csv`` 2026-09-11: FID 1
+("Tuengeda", kultur=SBK) and FID 81 ("Gartz ?", kultur=SBK?) on the left;
+FID 98 and FID 107 (both fundstellenart=Grab) and FID 54 (Grab?) on the
+right.
+
 Writes: uncertainty-markers.de.svg/.png, uncertainty-markers.en.svg/.png
 Run standalone: ``python py/step_05_uncertainty_markers.py``
 """
@@ -62,26 +71,26 @@ def build(lang: str = "en") -> list[str]:
     kgcx = kzx + KZW + 70 + KG_R
     qx = kgcx + KG_R + 55 + BADGE_R
 
-    # certain row
+    # certain row -- FID 1 (Tuengeda), real kultur=SBK (see step_08)
     f1y, kz1y = ROW1_CY - FH / 2, ROW1_CY - KZH / 2
-    parts.append(vu.svg_box(fx, f1y, FW, FH, f"{c('Fundstelle')} A", "site_12", fill=SITE["fill"], stroke=SITE["stroke"]))
+    parts.append(vu.svg_box(fx, f1y, FW, FH, f"{c('Fundstelle')} A", "site_1", fill=SITE["fill"], stroke=SITE["stroke"]))
     parts.append(vu.svg_arrow(fx + FW, ROW1_CY, kzx, ROW1_CY))
-    parts.append(vu.svg_box(kzx, kz1y, KZW, KZH, c("KulturelleZuordnung"), "site_12_culture",
+    parts.append(vu.svg_box(kzx, kz1y, KZW, KZH, c("KulturelleZuordnung"), "site_1_culture",
                              fill=ZUORDNUNG["fill"], stroke=ZUORDNUNG["stroke"]))
     parts.append(vu.svg_arrow(kzx + KZW, ROW1_CY, kgcx - KG_R, ROW1_CY))
     parts.append(vu.svg_hash_node(kgcx, ROW1_CY, KG_R, "\u201eSBK\u201c", "kultur_a36e9d6d",
                                    fill=CULTURE["fill"], stroke=CULTURE["stroke"]))
 
-    # uncertain row
+    # uncertain row -- FID 81 ("Gartz ?"), real kultur=SBK?
     f2y, kz2y = ROW2_CY - FH / 2, ROW2_CY - KZH / 2
-    parts.append(vu.svg_box(fx, f2y, FW, FH, f"{c('Fundstelle')} B", "site_57", fill=SITE["fill"], stroke=SITE["stroke"]))
+    parts.append(vu.svg_box(fx, f2y, FW, FH, f"{c('Fundstelle')} B", "site_81", fill=SITE["fill"], stroke=SITE["stroke"]))
     parts.append(vu.svg_arrow(fx + FW, ROW2_CY, kzx, ROW2_CY))
-    parts.append(vu.svg_box(kzx, kz2y, KZW, KZH, c("KulturelleZuordnung"), "site_57_culture",
+    parts.append(vu.svg_box(kzx, kz2y, KZW, KZH, c("KulturelleZuordnung"), "site_81_culture",
                              fill=U_FILL, stroke=U_STROKE, dashed=True))
     parts.append(f'<text x="{kzx:.1f}" y="{kz2y + KZH + 24:.1f}" font-family="Fira Sans" font-size="12" '
                  f'fill="{U_STROKE}">+ certaintyDesc \u201euncertain\u201c@en</text>')
     parts.append(vu.svg_arrow(kzx + KZW, ROW2_CY, kgcx - KG_R, ROW2_CY))
-    parts.append(vu.svg_hash_node(kgcx, ROW2_CY, KG_R, "\u201eSBK?\u201c", "kultur_{hash}",
+    parts.append(vu.svg_hash_node(kgcx, ROW2_CY, KG_R, "\u201eSBK?\u201c", "kultur_7a001224",
                                    fill=CULTURE["fill"], stroke=U_STROKE))
 
     # shared QID badge both rows converge on
@@ -109,16 +118,16 @@ def build(lang: str = "en") -> list[str]:
     tuw, tuh = 230, 76
     qx2 = tcx2 + KG_R + 70 + BADGE_R
 
-    parts.append(vu.svg_box(fx2, ROW1_CY - 40 - FH / 2, FW, FH, f"{c('Fundstelle')} X", "site_3",
+    parts.append(vu.svg_box(fx2, ROW1_CY - 40 - FH / 2, FW, FH, f"{c('Fundstelle')} X", "site_98",
                              fill=SITE["fill"], stroke=SITE["stroke"]))
-    parts.append(vu.svg_box(fx2, ROW1_CY + 40 - FH / 2, FW, FH, f"{c('Fundstelle')} Y", "site_88",
+    parts.append(vu.svg_box(fx2, ROW1_CY + 40 - FH / 2, FW, FH, f"{c('Fundstelle')} Y", "site_107",
                              fill=SITE["fill"], stroke=SITE["stroke"]))
     parts.append(vu.svg_arrow(fx2 + FW, ROW1_CY - 40, tcx2 - KG_R, ROW1_CY - 10))
     parts.append(vu.svg_arrow(fx2 + FW, ROW1_CY + 40, tcx2 - KG_R, ROW1_CY + 10))
     parts.append(vu.svg_hash_node(tcx2, ROW1_CY, KG_R, "\u201eGrab\u201c", tt("geteilt, viele Fundstellen", "shared, many sites"),
                                    fill=TYPE["fill"], stroke=TYPE["stroke"]))
 
-    parts.append(vu.svg_box(fx2, ROW2_CY - FH / 2, FW, FH, f"{c('Fundstelle')} Z", "site_144",
+    parts.append(vu.svg_box(fx2, ROW2_CY - FH / 2, FW, FH, f"{c('Fundstelle')} Z", "site_54",
                              fill=SITE["fill"], stroke=SITE["stroke"]))
     parts.append(vu.svg_arrow(fx2 + FW, ROW2_CY, tx2u, ROW2_CY))
     parts.append(vu.svg_box(tx2u, ROW2_CY - tuh / 2, tuw, tuh, "\u201eGrab?\u201c",
